@@ -1,0 +1,34 @@
+﻿@using Project.Web.Mvc4
+@using Project.Web.Mvc4.Helpers
+@using ReportViewerForMvc;
+
+@{
+    var dir = "";
+    var kdir = "";
+    var localdir = "";
+    if (CurrentLocale.Language == Locale.Rtl)
+    {
+        dir = "rtl";
+        kdir = "k-rtl";
+        localdir = "local-rtl";
+    }
+
+}
+
+<script>
+    $(document).ready(function() {
+        if (dir != "") {
+            $(".dxXtraReports_PageTable").attr("dir", @dir);
+            $("#report_div").attr("dir", @dir);}
+    });
+
+
+</script>
+@*@Html.Action("DocumentViewerPartial","ReportBuilder")*@
+
+@{
+    if (ViewBag.ReportViewer != null)
+    {
+        @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { scrolling = "no", width = "100%", height = ViewBag.Height })
+    }
+}

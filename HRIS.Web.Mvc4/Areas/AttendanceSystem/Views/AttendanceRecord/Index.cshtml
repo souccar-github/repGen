@@ -1,0 +1,122 @@
+﻿
+<script type="text/javascript">
+
+    function GenerateAttendanceRecord(attendanceRecordId) {
+        AttendanceRecordOperation(attendanceRecordId, "Generate");        
+    };
+
+    function CalculateAttendanceRecord(attendanceRecordId) {
+        
+        AttendanceRecordOperation(attendanceRecordId, "Calculate");
+        
+    };
+
+    function LockAttendanceRecord(attendanceRecordId) {
+        AttendanceRecordOperation(attendanceRecordId, "Lock");
+    };
+
+    function GenerateFilteredEmployeeAttendanceCards(attendanceRecordId) {
+        $.ajax({
+            url: window.applicationpath + 'AttendanceSystem/AttendanceRecord/GenerateFilteredEmployeeAttendanceCards',
+            type: "POST",
+            data: JSON.stringify({ attendanceRecordId: attendanceRecordId, filter: $("#grid").data("kendoGrid").dataSource.filter() }),
+            contentType: 'application/json',
+            success: function (data) {
+                $('#Ribbon').show();
+                var commands = [{ Title: "Ok", ClassName: "k-icon k-update" }];
+                ShowMessageBox("info", data.Msg, "k-icon w-b-info", commands);
+                $.ajax({
+                    url: window.applicationpath + "Crud",
+                    type: "POST",
+                    contentType: 'application/json',
+                    //async:false,
+                    data: JSON.stringify(window.requestInformation),
+                    success: function (data) {
+                        window.requestInformation = data.requestInfo;
+                        window.gridModel = data.gridModel;
+                        $("#dynamic_content").html("<div id='grid'></div>");
+                        generateGrid(data.gridModel);
+                        $("#ribbonContainer").html("").append(getRibbonHtml(window.requestInformation));
+                        $("#breadcrumbContainer").html("").append(createBreadcrumb());
+                        registerGridKeydownEvent();
+                        registerGridMouseEvent(data.gridModel.Name);
+                    }
+                });
+            }
+        });
+    }
+    function simple_grid_dataBound(e) {
+        if (e.sender.dataSource.view().length == 0) {
+
+            var colspan = e.sender.thead.find("th").length;
+            //insert empty row with colspan equal to the table header th count
+            var emptyRow = "<tr><td colspan='" + colspan + "'></td></tr>";
+            e.sender.tbody.html(emptyRow);
+        }
+    }
+    function AttendanceRecordOperation(attendanceRecordId, operation) {
+        if (operation == "Generate") {
+
+            var isSuccess = false;
+
+            $.ajax({
+                url: window.applicationpath + 'AttendanceSystem/AttendanceRecord/CheckGeneralSettings',
+                type: "POST",
+                async:false,
+                contentType: 'application/json',
+                success: function (data) {
+                    var commands = [{ Title: "Ok", ClassName: "k-icon k-update" }];
+                    if (!data.Success) {
+                        isSuccess = false;
+                        ShowMessageBox("info", data.Msg, "k-icon w-b-info", commands);
+                    }
+                    else
+                    {
+                        isSuccess = true;                    
+                    }
+                }
+            });
+
+            if (isSuccess)
+            {
+                $.ajax({
+                    url: window.applicationpath + 'AttendanceSystem/AttendanceRecord/GetEmployeeAttendanceCardGridModel',
+                    type: "POST",
+                    contentType: 'application/json',
+                    success: function (data) {
+                        $('#Ribbon').hide();
+                        $("#dynamic_content").html("<div id='grid'></div>");
+                        window.gridModel = data;
+                        new Grid(data).CreateSimpleGrid();
+                        var grid = $("#grid").data("kendoGrid");
+                       // grid.bind("dataBound", simple_grid_dataBound);
+                        //grid.hideColumn(0);
+                        $(".EmployeeAttendanceCardGenerator").off("click").on("click", function () {
+
+                            GenerateFilteredEmployeeAttendanceCards(attendanceRecordId);
+                        });
+                    }
+                });
+            }
+            
+          
+        } else {
+            $.ajax({
+                url: window.applicationpath + 'AttendanceSystem/AttendanceRecord/AttendanceRecordOperation',
+                type: "POST",
+                data: JSON.stringify({ attendanceRecordId: attendanceRecordId, operation: operation }),
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data.Success) {
+                        //alert(data.Msg);
+                        $("#grid").data("kendoGrid").dataSource.read();
+                    } else {
+                        var commands = [{ Title: "Ok", ClassName: "k-icon k-update" }];
+                        ShowMessageBox("Error", data.Msg, "k-icon w-b-error", commands);
+                    }
+                }
+            });
+        }
+    }
+
+</script>

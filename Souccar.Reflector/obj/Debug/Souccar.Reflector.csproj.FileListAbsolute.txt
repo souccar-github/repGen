@@ -1,0 +1,14 @@
+D:\Projects\ORC-HR\HR System\UI\Binaries\Souccar.Reflector.dll
+D:\Projects\ORC-HR\HR System\UI\Binaries\Souccar.Reflector.pdb
+D:\Projects\ORC-HR\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
+D:\Projects\ORC-HR\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb
+D:\Projects\ORC-HR\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
+C:\Projects\HR System\UI\Binaries\Souccar.Reflector.dll
+C:\Projects\HR System\UI\Binaries\Souccar.Reflector.pdb
+C:\Projects\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
+C:\Projects\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb
+C:\Projects-ReportGenerator\HR System\UI\Binaries\Souccar.Reflector.dll
+C:\Projects-ReportGenerator\HR System\UI\Binaries\Souccar.Reflector.pdb
+C:\Projects-ReportGenerator\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
+C:\Projects-ReportGenerator\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
+C:\Projects-ReportGenerator\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb

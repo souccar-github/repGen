@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DirectManagerWeightRule" xml:space="preserve">
+    <value>direct manager weight field is required</value>
+  </data>
+  <data name="DirectManagerWeightRule1" xml:space="preserve">
+    <value>direct manager weight can't be smaller than 0.</value>
+  </data>
+  <data name="DirectManagerWeightRule2" xml:space="preserve">
+    <value>direct manager weight can not be greater than 100.</value>
+  </data>
+  <data name="FromDateRule" xml:space="preserve">
+    <value>from date can't be greater than current date</value>
+  </data>
+  <data name="FullMarkMustLessThanSkillThresholdRule" xml:space="preserve">
+    <value>full mark threshold must be less than the skill threshold</value>
+  </data>
+  <data name="FullMarkThresholdRule" xml:space="preserve">
+    <value>full mark threshold field is required</value>
+  </data>
+  <data name="FullMarkThresholdRule1" xml:space="preserve">
+    <value>full mark threshold can't be smaller than 1.</value>
+  </data>
+  <data name="FullMarkThresholdRule2" xml:space="preserve">
+    <value>full mark threshold can not be greater than 5.</value>
+  </data>
+  <data name="GapMustLessThanTheFullMarkRule" xml:space="preserve">
+    <value>gap threshold must be less than the full mark threshold</value>
+  </data>
+  <data name="GapThresholdRule" xml:space="preserve">
+    <value>gap threshold field is required</value>
+  </data>
+  <data name="GapThresholdRule1" xml:space="preserve">
+    <value>gap threshold can't be smaller than 1.</value>
+  </data>
+  <data name="GapThresholdRule2" xml:space="preserve">
+    <value>gap threshold can not be greater than 5.</value>
+  </data>
+  <data name="IndirectManagerWeightRule" xml:space="preserve">
+    <value>indirect manager weight field is required</value>
+  </data>
+  <data name="IndirectManagerWeightRule1" xml:space="preserve">
+    <value>indirect manager weight can't be smaller than 0.</value>
+  </data>
+  <data name="IndirectManagerWeightRule2" xml:space="preserve">
+    <value>indirect manager weight can not be greater than 100.</value>
+  </data>
+  <data name="PeriodReq" xml:space="preserve">
+    <value>period field is required</value>
+  </data>
+  <data name="SelfAssessmentIsCheckedRule" xml:space="preserve">
+    <value>self assessment weight shoud be &gt; 0 when Self assessment is checked</value>
+  </data>
+  <data name="SelfAssessmentWeightRule" xml:space="preserve">
+    <value>self assessment weight field is required</value>
+  </data>
+  <data name="SelfAssessmentWeightRule1" xml:space="preserve">
+    <value>self assessment weight can't be smaller than 0.</value>
+  </data>
+  <data name="SelfAssessmentWeightRule2" xml:space="preserve">
+    <value>self assessment weight can not be greater than 100.</value>
+  </data>
+  <data name="SkillThresholdRule" xml:space="preserve">
+    <value>skill threshold weight field is required</value>
+  </data>
+  <data name="SkillThresholdRule1" xml:space="preserve">
+    <value>skill threshold can't be smaller than 1.</value>
+  </data>
+  <data name="SkillThresholdRule2" xml:space="preserve">
+    <value>skill threshold can not be greater than 5.</value>
+  </data>
+  <data name="StartDateRule" xml:space="preserve">
+    <value>start date must be graeter than or equal to date</value>
+  </data>
+  <data name="ToDateRule" xml:space="preserve">
+    <value>to date can't be greater than current date</value>
+  </data>
+  <data name="ToDateRule1" xml:space="preserve">
+    <value>to date must be greater than from date</value>
+  </data>
+  <data name="TopLevelGradeReq" xml:space="preserve">
+    <value>Top Level Grade field is required</value>
+  </data>
+  <data name="TotalWeightsRule" xml:space="preserve">
+    <value>total weights of Self Assessment, Direct Manager and Indirect Manager fields must equal to 100.</value>
+  </data>
+  <data name="YearRule1" xml:space="preserve">
+    <value>year must be less than or equal to current year</value>
+  </data>
+  <data name="YearRule2" xml:space="preserve">
+    <value>year must be greater than zero</value>
+  </data>
+</root>

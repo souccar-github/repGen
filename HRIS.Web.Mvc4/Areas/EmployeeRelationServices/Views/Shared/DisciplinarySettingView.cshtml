@@ -1,0 +1,133 @@
+﻿@*//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//
+    //*******company name: souccar for electronic industries*******//
+    //author: Ammar Alziebak
+    //description:
+    //start date: 04/03/2015
+    //end date:
+    //last update:
+    //update by:
+    //-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//-//*@
+
+@using HRIS.Domain.EmployeeRelationServices.Enums
+@using  Project.Web.Mvc4.Helpers
+@using  Project.Web.Mvc4.Helpers.Resource
+
+<script>
+
+    function DisciplinarySettingEditHandler(e) {
+        var container = e.container.find(".controls-div");
+        var isDeductFromSalary = e.model.IsDeductFromSalary;
+        var isPercentage = e.model.IsPercentage;
+
+        if (isDeductFromSalary) {
+
+            container.find(".control-IsPercentage").show();
+
+            if (isPercentage) {
+
+                container.find(".control-Percentage").show();
+                container.find(".control-FixedValue").hide();
+
+                container.find("[name='FixedValue']").data("kendoNumericTextBox").value(0);
+                container.find("[name='IsPercentage']").attr("checked", true);
+
+            } else {
+
+                container.find("[name='Percentage']").data("kendoNumericTextBox").value(0);
+                container.find("[name='IsPercentage']").attr("checked", false);
+
+                container.find(".control-Percentage").hide();
+                container.find(".control-FixedValue").show();
+            }
+        } else {
+
+            container.find("[name='FixedValue']").data("kendoNumericTextBox").value(0);
+            container.find("[name='Percentage']").data("kendoNumericTextBox").value(0);
+            container.find("[name='IsPercentage']").attr("checked", false);
+
+            container.find(".control-IsPercentage").hide();
+            container.find(".control-FixedValue").hide();
+            container.find(".control-Percentage").hide();
+        }
+
+        var isDeductFromSalaryCkb = e.container.find('[name="IsDeductFromSalary"]');
+        var isPercentageCkb = e.container.find('[name="IsPercentage"]');
+        isDeductFromSalaryCkb.bind("change", status_change);
+        isPercentageCkb.bind("change", status_change);
+
+        function status_change() {
+            var isDeductFromSalary = $('[name="IsDeductFromSalary"]').is(':checked');
+            var isPercentage = $('[name="IsPercentage"]').is(':checked');
+            if (isDeductFromSalary) {
+
+                container.find(".control-IsPercentage").show();
+
+                if (isPercentage) {
+                    e.model.FixedValue = 0;
+                    e.model.IsPercentage = true;
+
+                    container.find(".control-Percentage").show();
+                    container.find(".control-FixedValue").hide();
+
+                    container.find("[name='FixedValue']").data("kendoNumericTextBox").value(0);
+                    container.find("[name='IsPercentage']").attr("checked", true);
+
+                } else {
+                    e.model.Percentage = 0;
+                    e.model.IsPercentage = false;
+
+                    container.find("[name='Percentage']").data("kendoNumericTextBox").value(0);
+                    container.find("[name='IsPercentage']").attr("checked", false);
+
+                    container.find(".control-Percentage").hide();
+                    container.find(".control-FixedValue").show();
+                }
+            } else {
+
+                e.model.FixedValue = 0;
+                e.model.Percentage = 0;
+                e.model.IsPercentage = false;
+
+                container.find("[name='FixedValue']").data("kendoNumericTextBox").value(0);
+                container.find("[name='Percentage']").data("kendoNumericTextBox").value(0);
+                container.find("[name='IsPercentage']").attr("checked", false);
+
+                container.find(".control-IsPercentage").hide();
+                container.find(".control-FixedValue").hide();
+                container.find(".control-Percentage").hide();
+            }
+        }
+        reOrderControls(container);
+        
+    }
+
+    function DisciplinarySettingViewHandler(e) {
+        var container = e.container.find("#default-view-controls");
+        var isDeductFromSalary = e.model.IsDeductFromSalary;
+        var isPercentage = e.model.IsPercentage;
+        if (isDeductFromSalary) {
+            
+            container.find(".control-IsDeductFromSalary").show();
+            
+            if (isPercentage) {
+
+                container.find(".control-Percentage").show();
+                container.find(".control-IsPercentage").show();
+                container.find(".control-FixedValue").hide();
+
+            } else {
+
+                container.find(".control-Percentage").hide();
+                container.find(".control-IsPercentage").hide();
+                container.find(".control-FixedValue").show();
+            }
+        } else {
+
+            container.find(".control-IsDeductFromSalary").hide();
+            container.find(".control-IsPercentage").hide();
+            container.find(".control-FixedValue").hide();
+            container.find(".control-Percentage").hide();
+        }
+        reOrderControls(container);
+    }
+</script>

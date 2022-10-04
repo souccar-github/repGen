@@ -1,0 +1,2 @@
+D:\Projects\ORC-HR\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+C:\Projects\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache

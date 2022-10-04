@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition"><Body><ReportItems><Tablix Name="Tablix1"><TablixBody><TablixColumns><TablixColumn><Width>2.19502cm</Width></TablixColumn><TablixColumn><Width>1.96823cm</Width></TablixColumn><TablixColumn><Width>1.96823cm</Width></TablixColumn><TablixColumn><Width>1.70364cm</Width></TablixColumn><TablixColumn><Width>4.30789cm</Width></TablixColumn><TablixColumn><Width>2.25927cm</Width></TablixColumn><TablixColumn><Width>2.02114cm</Width></TablixColumn><TablixColumn><Width>2.15343cm</Width></TablixColumn><TablixColumn><Width>4.95802cm</Width></TablixColumn><TablixColumn><Width>5.32843cm</Width></TablixColumn><TablixColumn><Width>6.46614cm</Width></TablixColumn></TablixColumns><TablixRows><TablixRow><Height>1.02333cm</Height><TablixCells><TablixCell><CellContents><Textbox Name="Textbox4"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>عدد المرات المتبقية</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox4</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox1"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>عدد المرات الممنوحة</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox1</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox38"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>العدد الاعظمي للاجازة</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox38</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox36"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>يوجد للاجازة عدد اعظمي </Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox36</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox34"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>الموقع الوظيفي</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox34</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox18"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>الممنوح من الاجازة</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox18</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox32"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>الرصيد المتبقي</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox32</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox30"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>رصيد الموظف من الاجازة</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox30</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox8"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>نوع الاجازة</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox8</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox28"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>اسم الاجازة</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox28</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox5"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>اسم الموظف</Value><Style /></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox5</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell></TablixCells></TablixRow><TablixRow><Height>0.6cm</Height><TablixCells><TablixCell><CellContents><Textbox Name="TheRemainingNumberOfTimes"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!TheRemainingNumberOfTimes.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">TheRemainingNumberOfTimes</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="GivenTheNumberOfTimes"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!GivenTheNumberOfTimes.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">GivenTheNumberOfTimes</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="MaximumNumber"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!MaximumNumber.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">MaximumNumber</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="HasMaximumNumber"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=IIF(Fields!HasMaximumNumber.Value = False, "لا", "نعم")</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">HasMaximumNumber</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="JobDescriptionName"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!JobDescriptionName.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">JobDescriptionName</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="SumSpentDays"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!SumSpentDays.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">SumSpentDays</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="LeaveBalance1"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!LeaveBalance.Value-Fields!SumSpentDays.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">LeaveBalance1</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="LeaveBalance"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!LeaveBalance.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">LeaveBalance</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox><rd:Selected xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">true</rd:Selected></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="LeaveTypeName"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!LeaveTypeName.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">LeaveTypeName</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="LeaveName"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!LeaveName.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">LeaveName</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="FullName"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!FullName.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">FullName</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell></TablixCells></TablixRow><TablixRow><Height>0.6cm</Height><TablixCells><TablixCell><CellContents><Textbox Name="Textbox7"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox7</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox3"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox3</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox9"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox9</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox10"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox10</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox11"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox11</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox22"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox22</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox21"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox21</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox13"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox13</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox17"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value /><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox17</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox14"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Count(Fields!FullName.Value)</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox14</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell><TablixCell><CellContents><Textbox Name="Textbox15"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>عدد البنود</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Textbox15</rd:DefaultName><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></CellContents></TablixCell></TablixCells></TablixRow></TablixRows></TablixBody><TablixColumnHierarchy><TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers></TablixColumnHierarchy><TablixRowHierarchy><TablixMembers><TablixMember><KeepWithGroup>After</KeepWithGroup></TablixMember><TablixMember><Group Name="Details" /><TablixMembers><TablixMember /></TablixMembers></TablixMember><TablixMember><KeepWithGroup>Before</KeepWithGroup></TablixMember></TablixMembers></TablixRowHierarchy><DataSetName>BasicInfoDataSet</DataSetName><Top>2.86618cm</Top><Left>0cm</Left><Height>2.22333cm</Height><Width>35.32944cm</Width><Style><Border><Style>None</Style></Border></Style></Tablix><Textbox Name="TotalTextbox15"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>الموظف</Value><Style><FontSize>12pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>0.89887cm</Top><Left>31.11376cm</Left><Height>0.67938cm</Height><Width>4.21569cm</Width><ZIndex>1</ZIndex><Style><Border><Style>Solid</Style></Border><TopBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></TopBorder><BottomBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></BottomBorder><LeftBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></LeftBorder><RightBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></RightBorder><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox><Textbox Name="TotalTextbox18"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Parameters!Employee.Label</Value><Style><FontSize>12pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Top>0.89886cm</Top><Height>0.67938cm</Height><Width>31.11376cm</Width><ZIndex>2</ZIndex><Style><Border><Style>Solid</Style></Border><TopBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></TopBorder><BottomBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></BottomBorder><LeftBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></LeftBorder><RightBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></RightBorder><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></ReportItems><Height>2.42747in</Height><Style /></Body><Width>13.90923in</Width><Page><PageHeader><Height>2.33425cm</Height><PrintOnFirstPage>true</PrintOnFirstPage><PrintOnLastPage>true</PrintOnLastPage><ReportItems><Textbox Name="TitleTextbox"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>تقرير رصيد اجازات موظف</Value><Style><FontFamily>Tahoma</FontFamily><FontSize>18pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Top>0.6441cm</Top><Height>1.69015cm</Height><Width>35.32945cm</Width><Style><Border><Style>Solid</Style></Border><TopBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></TopBorder><BottomBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></BottomBorder><LeftBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></LeftBorder><RightBorder><Color>Black</Color><Style>Solid</Style><Width>1pt</Width></RightBorder><BackgroundColor>LightGrey</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox><Textbox Name="DateTextbox"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>= "تاريخ التقرير: " &amp; Format(Globals!ExecutionTime,"yyyy/MM/dd")</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Height>0.60882cm</Height><Width>35.32945cm</Width><ZIndex>1</ZIndex><Style><Border><Style>None</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></ReportItems><Style><Border><Style>None</Style></Border></Style></PageHeader><PageFooter><Height>0.63528cm</Height><PrintOnFirstPage>true</PrintOnFirstPage><PrintOnLastPage>true</PrintOnLastPage><ReportItems><Textbox Name="PageTextbox"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>= "الصفحة "&amp; Globals!PageNumber &amp; " من " &amp; Globals!TotalPages</Value><Style /></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><Height>0.6cm</Height><Width>35.32945cm</Width><Style><Border><Style>None</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom><Direction>RTL</Direction></Style></Textbox></ReportItems><Style><Border><Style>None</Style></Border></Style></PageFooter><PageHeight>29.7cm</PageHeight><PageWidth>37cm</PageWidth><LeftMargin>0.5cm</LeftMargin><RightMargin>0.5cm</RightMargin><TopMargin>2cm</TopMargin><BottomMargin>2cm</BottomMargin><ColumnSpacing>0.13cm</ColumnSpacing><Style /></Page><AutoRefresh>0</AutoRefresh><DataSources><DataSource Name="DataSource"><DataSourceReference>SharedDataSource</DataSourceReference><rd:SecurityType xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">None</rd:SecurityType><rd:DataSourceID xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">9a350a56-51d6-40e0-b0cf-07e98984a2ce</rd:DataSourceID></DataSource></DataSources><DataSets><DataSet Name="BasicInfoDataSet"><Query><DataSourceName>DataSource</DataSourceName><CommandText>DECLARE @DateNow datetime;
+SET @DateNow = GETDATE();
+
+SELECT 
+--YEAR(@DateNow),
+--YEAR(dbo.EmployeeCard.StartWorkingDate),
+--YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate),
+dbo.Employee.FirstName + ' ' + dbo.Employee.FatherName + ' ' + dbo.Employee.LastName AS FullName,
+dbo.Employee.Id AS EmployeeId,
+dbo.JobDescription.Node_id,
+dbo.JobDescription.Name JobDescriptionName,
+dbo.EmployeeCard.Id AS EmployeeCardId,  
+dbo.LeaveSetting.Name AS LeaveName,
+dbo.LeaveType.Name AS LeaveTypeName, 
+dbo.LeaveType.Id AS LeaveTypeId, 
+
+CASE 
+WHEN (YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= 1 
+THEN
+(
+ISNULL(
+		(SELECT TOP 1 N.Balance FROM dbo.BalanceSlice N 
+		WHERE  N.IsVertualDeleted = 0 AND
+		N.LeaveSetting_id = dbo.LeaveSetting.Id AND
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= N.FromYearOfServices AND 
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= N.ToYearOfServices)
+		+
+		(SELECT  ISNULL(SUM(M.RoundedBalance),0) FROM dbo.RecycledLeave M 
+		WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+		M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+		M.Year = YEAR(@DateNow))
+		,
+		(
+			dbo.LeaveSetting.Balance
+			+
+			(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+			WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+			M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+			M.Year = YEAR(@DateNow))
+		)
+	)	
+) 
+WHEN ((YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= 1)  AND dbo.LeaveSetting.IsAffectedByAssigningDate = 1
+THEN
+	
+(
+ISNULL(
+		(SELECT TOP 1 (N.Balance/12)*(12-(MONTH(dbo.EmployeeCard.StartWorkingDate))) FROM dbo.BalanceSlice N 
+		WHERE  N.IsVertualDeleted = 0 AND
+		N.LeaveSetting_id = dbo.LeaveSetting.Id AND
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= N.FromYearOfServices AND 
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= N.ToYearOfServices)
+		+
+		(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+		WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+		M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+		M.Year = YEAR(@DateNow))
+		,
+		(
+			(dbo.LeaveSetting.Balance/12)*(12-(MONTH(dbo.EmployeeCard.StartWorkingDate)))
+			+
+			(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+			WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+			M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+			M.Year = YEAR(@DateNow))
+		)
+	)	
+) 
+WHEN ((YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= 1)  AND dbo.LeaveSetting.IsAffectedByAssigningDate = 0
+THEN
+	
+(
+ISNULL(
+		(SELECT TOP 1 N.Balance FROM dbo.BalanceSlice N 
+		WHERE  N.IsVertualDeleted = 0 AND
+		N.LeaveSetting_id = dbo.LeaveSetting.Id AND
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= N.FromYearOfServices AND 
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= N.ToYearOfServices)
+		+
+		(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+		WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+		M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+		M.Year = YEAR(@DateNow))
+		,
+		(
+			(dbo.LeaveSetting.Balance)
+			+
+			(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+			WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+			M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+			M.Year = YEAR(@DateNow))
+		)
+	)	
+) 	
+	
+	
+END AS LeaveBalance,
+
+
+'' AS RemainingBalance,
+'' AS GrantedBalance,
+dbo.LeaveSetting.HasMaximumNumber, 
+dbo.LeaveSetting.MaximumNumber,
+
+CASE 
+WHEN dbo.LeaveSetting.HasMaximumNumber = 1
+THEN 
+(SELECT COUNT(N.Id) 
+FROM dbo.LeaveRequest N 
+WHERE 
+(YEAR(N.StartDate) = YEAR(@DateNow) OR YEAR(N.EndDate) = YEAR(@DateNow)) AND
+N.IsVertualDeleted = 0 AND N.EmployeeCard_id = dbo.EmployeeCard.Id AND N.LeaveSetting_id = dbo.LeaveSetting.Id)
+WHEN dbo.LeaveSetting.HasMaximumNumber = 0
+THEN '0'
+END AS GivenTheNumberOfTimes,
+
+
+CASE 
+WHEN dbo.LeaveSetting.HasMaximumNumber = 1
+THEN 
+dbo.LeaveSetting.MaximumNumber - (SELECT COUNT(N.Id) 
+FROM dbo.LeaveRequest N 
+WHERE 
+(YEAR(N.StartDate) = YEAR(@DateNow) OR YEAR(N.EndDate) = YEAR(@DateNow)) AND
+N.IsVertualDeleted = 0 AND N.EmployeeCard_id = dbo.EmployeeCard.Id AND N.LeaveSetting_id = dbo.LeaveSetting.Id)
+WHEN dbo.LeaveSetting.HasMaximumNumber = 0
+THEN '0'
+END AS TheRemainingNumberOfTimes,
+
+(SELECT SUM(N.SpentDays) 
+FROM dbo.LeaveRequest N 
+WHERE 
+(YEAR(N.StartDate) = YEAR(@DateNow) OR YEAR(N.EndDate) = YEAR(@DateNow)) AND
+N.IsVertualDeleted = 0 AND N.EmployeeCard_id = dbo.EmployeeCard.Id AND N.LeaveSetting_id = dbo.LeaveSetting.Id
+) AS SumSpentDays
+FROM         
+dbo.Employee INNER JOIN
+dbo.EmployeeCard ON dbo.Employee.Id = dbo.EmployeeCard.Employee_id INNER JOIN
+dbo.AssigningEmployeeToPosition ON dbo.Employee.Id = dbo.AssigningEmployeeToPosition.Employee_id INNER JOIN
+dbo.Position ON dbo.AssigningEmployeeToPosition.Id = dbo.Position.AssigningEmployeeToPosition_id INNER JOIN
+dbo.JobDescription ON dbo.Position.JobDescription_id = dbo.JobDescription.Id INNER JOIN
+---------------
+dbo.LeaveTemplateMaster ON dbo.EmployeeCard.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id AND 
+dbo.EmployeeCard.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id INNER JOIN
+dbo.LeaveTemplateDetail ON dbo.LeaveTemplateDetail.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id AND 
+dbo.LeaveTemplateDetail.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id INNER JOIN
+dbo.LeaveSetting ON dbo.LeaveTemplateDetail.LeaveSetting_id = dbo.LeaveSetting.Id INNER JOIN
+dbo.LeaveType ON dbo.LeaveSetting.Type_id = dbo.LeaveType.Id
+WHERE 
+dbo.Employee.IsVertualDeleted = 0 AND
+dbo.EmployeeCard.IsVertualDeleted = 0 AND
+dbo.LeaveTemplateMaster.IsVertualDeleted = 0 AND
+dbo.LeaveTemplateDetail.IsVertualDeleted = 0 AND
+dbo.LeaveSetting.IsVertualDeleted = 0 AND
+dbo.LeaveType.IsVertualDeleted = 0
+
+Union
+
+
+SELECT   
+--YEAR(@DateNow),
+--YEAR(dbo.EmployeeCard.StartWorkingDate),  
+--YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate),
+dbo.Employee.FirstName + ' ' + dbo.Employee.FatherName + ' ' + dbo.Employee.LastName AS FullName,
+dbo.Employee.Id AS EmployeeId,
+dbo.JobDescription.Node_id,
+dbo.JobDescription.Name JobDescriptionName,
+dbo.EmployeeCard.Id AS EmployeeCardId,  
+dbo.LeaveSetting.Name AS LeaveName,
+dbo.LeaveType.Name AS LeaveTypeName, 
+dbo.LeaveType.Id AS LeaveTypeId, 
+
+CASE 
+WHEN (YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= 1 
+THEN 
+(
+ISNULL(
+		(SELECT TOP 1 N.Balance FROM dbo.BalanceSlice N 
+		WHERE  N.IsVertualDeleted = 0 AND
+		N.LeaveSetting_id = dbo.LeaveSetting.Id AND
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= N.FromYearOfServices AND 
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= N.ToYearOfServices)
+		+
+		(SELECT ISNULL(SUM(M.RoundedBalance),0) FROM dbo.RecycledLeave M 
+		WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+		M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+		M.Year = YEAR(@DateNow))
+		,
+		(
+			dbo.LeaveSetting.Balance
+			+
+			(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+			WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+			M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+			M.Year = YEAR(@DateNow))
+		)
+	)	
+) 
+WHEN ((YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= 1)  AND dbo.LeaveSetting.IsAffectedByAssigningDate = 1
+THEN 
+	
+(
+ISNULL(
+		(SELECT TOP 1 (N.Balance/12)*(12-(MONTH(dbo.EmployeeCard.StartWorkingDate))) FROM dbo.BalanceSlice N 
+		WHERE  N.IsVertualDeleted = 0 AND
+		N.LeaveSetting_id = dbo.LeaveSetting.Id AND
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= N.FromYearOfServices AND 
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= N.ToYearOfServices)
+		+
+		(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+		WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+		M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+		M.Year = YEAR(@DateNow))
+		,
+		(
+			(dbo.LeaveSetting.Balance/12)*(12-(MONTH(dbo.EmployeeCard.StartWorkingDate)))
+			+
+			(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+			WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+			M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+			M.Year = YEAR(@DateNow))
+		)
+	)	
+) 
+WHEN ((YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= 1)  AND dbo.LeaveSetting.IsAffectedByAssigningDate = 0
+THEN 
+	
+(
+ISNULL(
+		(SELECT TOP 1 N.Balance FROM dbo.BalanceSlice N 
+		WHERE  N.IsVertualDeleted = 0 AND
+		N.LeaveSetting_id = dbo.LeaveSetting.Id AND
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &gt;= N.FromYearOfServices AND 
+		(YEAR(@DateNow)-YEAR(dbo.EmployeeCard.StartWorkingDate)) &lt;= N.ToYearOfServices)
+		+
+		(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+		WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+		M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+		M.Year = YEAR(@DateNow))
+		,
+		(
+			dbo.LeaveSetting.Balance
+			+
+			(SELECT ISNULL(SUM(M.RoundedBalance), 0) FROM dbo.RecycledLeave M 
+			WHERE M.EmployeeCard_id = dbo.EmployeeCard.Id AND 
+			M.leaveSetting_Id = dbo.LeaveSetting.Id AND 
+			M.Year = YEAR(@DateNow))
+		)
+	)	
+) 
+	
+	
+	
+END AS LeaveBalance,
+
+
+
+  
+'' AS RemainingBalance,
+'' AS GrantedBalance,
+dbo.LeaveSetting.HasMaximumNumber, 
+dbo.LeaveSetting.MaximumNumber,
+
+CASE 
+WHEN dbo.LeaveSetting.HasMaximumNumber = 1
+THEN 
+(SELECT COUNT(N.Id) 
+FROM dbo.LeaveRequest N 
+WHERE 
+(YEAR(N.StartDate) = YEAR(@DateNow) OR YEAR(N.EndDate) = YEAR(@DateNow)) AND
+N.IsVertualDeleted = 0 AND N.EmployeeCard_id = dbo.EmployeeCard.Id AND N.LeaveSetting_id = dbo.LeaveSetting.Id)
+
+WHEN dbo.LeaveSetting.HasMaximumNumber = 0
+THEN '0'
+END AS GivenTheNumberOfTimes,
+
+CASE 
+WHEN dbo.LeaveSetting.HasMaximumNumber = 1
+THEN 
+dbo.LeaveSetting.MaximumNumber - (SELECT COUNT(N.Id) 
+FROM dbo.LeaveRequest N 
+WHERE 
+(YEAR(N.StartDate) = YEAR(@DateNow) OR YEAR(N.EndDate) = YEAR(@DateNow)) AND
+N.IsVertualDeleted = 0 AND N.EmployeeCard_id = dbo.EmployeeCard.Id AND N.LeaveSetting_id = dbo.LeaveSetting.Id)
+WHEN dbo.LeaveSetting.HasMaximumNumber = 0
+THEN '0'
+END AS TheRemainingNumberOfTimes,
+
+(SELECT SUM(N.SpentDays) 
+FROM dbo.LeaveRequest N 
+WHERE 
+(YEAR(N.StartDate) = YEAR(@DateNow) OR YEAR(N.EndDate) = YEAR(@DateNow)) AND
+N.IsVertualDeleted = 0 AND N.EmployeeCard_id = dbo.EmployeeCard.Id AND N.LeaveSetting_id = dbo.LeaveSetting.Id
+) AS SumSpentDays
+       
+FROM         
+dbo.Employee INNER JOIN
+dbo.EmployeeCard ON dbo.Employee.Id = dbo.EmployeeCard.Employee_id INNER JOIN
+dbo.AssigningEmployeeToPosition ON dbo.Employee.Id = dbo.AssigningEmployeeToPosition.Employee_id INNER JOIN
+dbo.Position ON dbo.AssigningEmployeeToPosition.Id = dbo.Position.AssigningEmployeeToPosition_id INNER JOIN
+dbo.JobDescription ON dbo.Position.JobDescription_id = dbo.JobDescription.Id INNER JOIN
+dbo.JobTitle ON dbo.JobDescription.JobTitle_id = dbo.JobTitle.Id INNER JOIN
+dbo.Grade ON dbo.JobTitle.Grade_id = dbo.Grade.Id INNER JOIN
+dbo.LeaveTemplateDetail INNER JOIN
+dbo.LeaveTemplateMaster ON dbo.LeaveTemplateDetail.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id AND 
+dbo.LeaveTemplateDetail.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id INNER JOIN
+dbo.LeaveSetting ON dbo.LeaveTemplateDetail.LeaveSetting_id = dbo.LeaveSetting.Id INNER JOIN
+dbo.LeaveType ON dbo.LeaveSetting.Type_id = dbo.LeaveType.Id ON dbo.Grade.LeaveTemplateMaster_id = dbo.LeaveTemplateMaster.Id</CommandText></Query><Fields><Field Name="FullName"><DataField>FullName</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="EmployeeId"><DataField>EmployeeId</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="Node_id"><DataField>Node_id</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="JobDescriptionName"><DataField>JobDescriptionName</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="EmployeeCardId"><DataField>EmployeeCardId</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="LeaveName"><DataField>LeaveName</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="LeaveTypeName"><DataField>LeaveTypeName</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="LeaveTypeId"><DataField>LeaveTypeId</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="LeaveBalance"><DataField>LeaveBalance</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Double</rd:TypeName></Field><Field Name="RemainingBalance"><DataField>RemainingBalance</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="GrantedBalance"><DataField>GrantedBalance</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="HasMaximumNumber"><DataField>HasMaximumNumber</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Boolean</rd:TypeName></Field><Field Name="MaximumNumber"><DataField>MaximumNumber</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="GivenTheNumberOfTimes"><DataField>GivenTheNumberOfTimes</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="TheRemainingNumberOfTimes"><DataField>TheRemainingNumberOfTimes</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="SumSpentDays"><DataField>SumSpentDays</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Double</rd:TypeName></Field></Fields><Filters><Filter><FilterExpression>=Fields!EmployeeId.Value</FilterExpression><Operator>In</Operator><FilterValues><FilterValue>=Parameters!Employee.Value</FilterValue></FilterValues></Filter></Filters></DataSet><DataSet Name="EmployeeDataSet"><Query><DataSourceName>DataSource</DataSourceName><CommandText>WITH Temp AS(
+SELECT 
+dbo.Employee.Id,
+dbo.Employee.FirstName+' '+dbo.Employee.FatherName+' '+ dbo.Employee.LastName  AS FullName,
+(SELECT top(1) LeaveTemplateMaster_id FROM EmployeeCard WHERE EmployeeCard.IsVertualDeleted=0 AND EmployeeCard.Employee_id = dbo.Employee.Id) AS EmployeeCardLeaveTemplateMaster,
+(SELECT top(1) dbo.Grade.LeaveTemplateMaster_id--, dbo.AssigningEmployeeToPosition.Employee_id
+FROM dbo.Grade 
+INNER JOIN dbo.JobTitle ON dbo.Grade.Id = dbo.JobTitle.Grade_id 
+INNER JOIN dbo.JobDescription ON dbo.JobTitle.Id = dbo.JobDescription.JobTitle_id 
+INNER JOIN dbo.Position ON dbo.JobDescription.Id = dbo.Position.JobDescription_id 
+INNER JOIN dbo.AssigningEmployeeToPosition ON dbo.Position.Id = dbo.AssigningEmployeeToPosition.Position_Id
+WHERE dbo.AssigningEmployeeToPosition.Employee_id = dbo.Employee.Id AND
+Grade.IsVertualDeleted = 0 AND
+JobTitle.IsVertualDeleted = 0 AND
+JobDescription.IsVertualDeleted = 0 AND
+Position.IsVertualDeleted = 0 AND
+AssigningEmployeeToPosition.IsVertualDeleted = 0
+) AS GradeLeaveTemplateMaster
+FROM Employee
+)
+SELECT * 
+FROM	Temp
+WHERE	EmployeeCardLeaveTemplateMaster IS NOT NULL OR
+		GradeLeaveTemplateMaster IS NOT NULL
+ORDER BY FullName</CommandText></Query><Fields><Field Name="Id"><DataField>Id</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="FullName"><DataField>FullName</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.String</rd:TypeName></Field><Field Name="EmployeeCardLeaveTemplateMaster"><DataField>EmployeeCardLeaveTemplateMaster</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field><Field Name="GradeLeaveTemplateMaster"><DataField>GradeLeaveTemplateMaster</DataField><rd:TypeName xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">System.Int32</rd:TypeName></Field></Fields></DataSet></DataSets><ReportParameters><ReportParameter Name="Employee"><DataType>Integer</DataType><Prompt>الموظف</Prompt><ValidValues><DataSetReference><DataSetName>EmployeeDataSet</DataSetName><ValueField>Id</ValueField><LabelField>FullName</LabelField></DataSetReference></ValidValues></ReportParameter></ReportParameters><rd:ReportUnitType xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">Cm</rd:ReportUnitType><rd:ReportID xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">0ea7a57c-d865-429d-b149-0922ff15b21f</rd:ReportID></Report>
