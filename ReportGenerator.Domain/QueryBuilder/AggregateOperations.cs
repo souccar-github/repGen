@@ -8,7 +8,7 @@ namespace Souccar.ReportGenerator.Domain.QueryBuilder
     public class AggregateOperations : ValueObject
     {
         public string PropertyName { get; set; }
-        public string SubPropertyName { get; set; }
+        public string SubPropertyName { get; set; } 
         public string DisplayName { get; set; }
         /// <summary>
         /// Get or set the <see cref="AggregateFunction"/>.
