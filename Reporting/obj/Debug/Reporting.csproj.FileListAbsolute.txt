@@ -42,3 +42,14 @@ C:\Projects-ReportGenerator\HR System\Reporting\obj\Debug\Reporting.JobDesc.Test
 C:\Projects-ReportGenerator\HR System\Reporting\obj\Debug\Reporting.csproj.GenerateResource.Cache
 C:\Projects-ReportGenerator\HR System\Reporting\obj\Debug\Reporting.dll
 C:\Projects-ReportGenerator\HR System\Reporting\obj\Debug\Reporting.pdb
+D:\Git Hub\repGen\UI\Binaries\Reporting.dll
+D:\Git Hub\repGen\UI\Binaries\Reporting.pdb
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.DynamicReports.DynamicReport.resources
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.Infrastructure.BaseReport.resources
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.JobDesc.SubReport.resources
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.JobDesc.JobDescTemplate.resources
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.JobDesc.TestReporting.resources
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.csproj.GenerateResource.Cache
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.dll
+D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.pdb

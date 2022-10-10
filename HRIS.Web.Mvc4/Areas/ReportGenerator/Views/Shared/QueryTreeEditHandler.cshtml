@@ -5,6 +5,7 @@
         var template = kendo.template($("#queryTreeTemplate").html());
         $('.controls-div').append(template({}));
         kendo.init($(".k-edit-form-container"));
+        $(".k-edit-form-container").width(1100);
         $.ajax(
             {
                 url: window.applicationpath + "ReportGenerator/ReportBuilder/GetAggregates",

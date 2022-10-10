@@ -13,3 +13,8 @@ C:\Projects-ReportGenerator\HR System\ui\binaries\Souccar.Infrastructure.pdb
 C:\Projects-ReportGenerator\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
 C:\Projects-ReportGenerator\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
 C:\Projects-ReportGenerator\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+D:\Git Hub\repGen\ui\binaries\Souccar.Infrastructure.dll
+D:\Git Hub\repGen\ui\binaries\Souccar.Infrastructure.pdb
+D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb

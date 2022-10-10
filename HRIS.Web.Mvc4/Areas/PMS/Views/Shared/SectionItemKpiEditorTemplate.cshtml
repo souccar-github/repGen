@@ -24,6 +24,7 @@
             }
         });
         function initEditForm(e, sectionViewModel) {
+            debugger;
             var template = kendo.template($("#section-items-template").html());
             e.container.find(".section-items-container").html(template(sectionViewModel));
 

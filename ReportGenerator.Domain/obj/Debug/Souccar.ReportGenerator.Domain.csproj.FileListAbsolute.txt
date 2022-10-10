@@ -18,3 +18,8 @@ C:\Projects-ReportGenerator\HR System\UI\Binaries\Souccar.ReportGenerator.Domain
 C:\Projects-ReportGenerator\HR System\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
 C:\Projects-ReportGenerator\HR System\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
 C:\Projects-ReportGenerator\HR System\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb
+D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Domain.dll
+D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Domain.pdb
+D:\Git Hub\repGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
+D:\Git Hub\repGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb

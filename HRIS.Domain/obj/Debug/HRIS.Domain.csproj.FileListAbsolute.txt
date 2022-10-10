@@ -13,3 +13,8 @@ C:\Projects-ReportGenerator\HR System\ui\binaries\HRIS.Domain.pdb
 C:\Projects-ReportGenerator\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
 C:\Projects-ReportGenerator\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.dll
 C:\Projects-ReportGenerator\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.pdb
+D:\Git Hub\repGen\ui\binaries\HRIS.Domain.dll
+D:\Git Hub\repGen\ui\binaries\HRIS.Domain.pdb
+D:\Git Hub\repGen\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\HRIS.Domain\obj\Debug\HRIS.Domain.dll
+D:\Git Hub\repGen\HRIS.Domain\obj\Debug\HRIS.Domain.pdb

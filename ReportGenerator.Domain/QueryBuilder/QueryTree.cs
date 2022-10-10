@@ -13,7 +13,7 @@ using Souccar.ReportGenerator.Domain.QueryBuilder;
 
 namespace Souccar.ReportGenerator.Domain.QueryBuilder
 {
-
+    [Details(IsDetailHidden =false)]
     public class QueryTree : Entity, IEquatable<QueryTree>
     {
         public QueryTree()
