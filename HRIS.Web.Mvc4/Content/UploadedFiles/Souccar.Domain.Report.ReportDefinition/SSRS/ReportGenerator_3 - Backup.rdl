@@ -30,19 +30,13 @@
               </Paragraph>
             </Paragraphs>
           </Textbox>
-          <Tablix Name="EmployeeTable">
+          <Tablix Name="ApplicantTable">
             <Left>1in</Left>
             <Top>1in</Top>
             <Height>0.50000in</Height>
-            <Width>9in</Width>
+            <Width>5in</Width>
             <TablixBody>
               <TablixColumns>
-                <TablixColumn>
-                  <Width>2in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2in</Width>
-                </TablixColumn>
                 <TablixColumn>
                   <Width>2in</Width>
                 </TablixColumn>
@@ -56,7 +50,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0FirstName">
+                        <Textbox Name="LabelRecruitment0Applicant0FirstName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -90,7 +84,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0LastName">
+                        <Textbox Name="LabelRecruitment0Applicant0LastName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -122,74 +116,6 @@
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0FatherName">
-                          <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Style>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <FontFamily>tahoma</FontFamily>
-                            <FontSize>12pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <TextAlign>Center</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                          </Style>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Father Name</Value>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                                <VerticalAlign>Middle</VerticalAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0MotherName">
-                          <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Style>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <FontFamily>tahoma</FontFamily>
-                            <FontSize>12pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <TextAlign>Center</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                          </Style>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Mother Name</Value>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                                <VerticalAlign>Middle</VerticalAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
@@ -197,7 +123,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeFirstName">
+                        <Textbox Name="ApplicantFirstName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -215,7 +141,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeFirstName.Value</Value>
+                                  <Value>=Fields!ApplicantFirstName.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -229,7 +155,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeLastName">
+                        <Textbox Name="ApplicantLastName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -247,71 +173,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeLastName.Value</Value>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                                <VerticalAlign>Middle</VerticalAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="EmployeeFatherName">
-                          <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Style>
-                            <FontFamily>tahoma</FontFamily>
-                            <FontSize>11pt</FontSize>
-                            <TextAlign>Center</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                          </Style>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!EmployeeFatherName.Value</Value>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                                <VerticalAlign>Middle</VerticalAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="EmployeeMotherName">
-                          <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Style>
-                            <FontFamily>tahoma</FontFamily>
-                            <FontSize>11pt</FontSize>
-                            <TextAlign>Center</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                          </Style>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!EmployeeMotherName.Value</Value>
+                                  <Value>=Fields!ApplicantLastName.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -331,20 +193,18 @@
               <TablixMembers>
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="Employee_Details_Group">
+                  <Group Name="Applicant_Details_Group">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!EmployeeId.Value</GroupExpression>
+                      <GroupExpression>=Fields!ApplicantId.Value</GroupExpression>
                     </GroupExpressions>
-                    <DataElementName>EmployeeDetail</DataElementName>
+                    <DataElementName>ApplicantDetail</DataElementName>
                   </Group>
-                  <DataElementName>Employee_Collection</DataElementName>
+                  <DataElementName>Applicant_Collection</DataElementName>
                   <DataElementOutput>Output</DataElementOutput>
                   <KeepTogether>true</KeepTogether>
                 </TablixMember>
@@ -355,10 +215,10 @@
         </ReportItems>
         <Height>2.03333in</Height>
       </Body>
-      <Width>9in</Width>
+      <Width>5in</Width>
       <Page>
         <PageHeight>5in</PageHeight>
-        <PageWidth>9in</PageWidth>
+        <PageWidth>5in</PageWidth>
         <LeftMargin>0.50000in</LeftMargin>
         <RightMargin>0.50000in</RightMargin>
         <TopMargin>0.50000in</TopMargin>
@@ -379,26 +239,20 @@
   <DataSets>
     <DataSet Name="DataSet1">
       <Fields>
-        <Field Name="EmployeeId">
-          <DataField>EmployeeId</DataField>
+        <Field Name="ApplicantId">
+          <DataField>ApplicantId</DataField>
         </Field>
-        <Field Name="EmployeeFirstName">
-          <DataField>EmployeeFirstName</DataField>
+        <Field Name="ApplicantFirstName">
+          <DataField>ApplicantFirstName</DataField>
         </Field>
-        <Field Name="EmployeeLastName">
-          <DataField>EmployeeLastName</DataField>
-        </Field>
-        <Field Name="EmployeeFatherName">
-          <DataField>EmployeeFatherName</DataField>
-        </Field>
-        <Field Name="EmployeeMotherName">
-          <DataField>EmployeeMotherName</DataField>
+        <Field Name="ApplicantLastName">
+          <DataField>ApplicantLastName</DataField>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Employee].[FatherName] AS EmployeeFatherName , [Employee].[MotherName] AS EmployeeMotherName FROM Employee</CommandText>
+        <CommandText>SELECT DISTINCT  [Applicant].[Id] AS ApplicantId , [Applicant].[FirstName] AS ApplicantFirstName , [Applicant].[LastName] AS ApplicantLastName FROM Applicant</CommandText>
         <Timeout>30</Timeout>
       </Query>
     </DataSet>

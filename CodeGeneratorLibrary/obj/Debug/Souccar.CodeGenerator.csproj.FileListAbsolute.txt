@@ -8,3 +8,8 @@ C:\Projects\HR System\UI\Binaries\Souccar.CodeGenerator.pdb
 C:\Projects\HR System\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.csprojResolveAssemblyReference.cache
 C:\Projects\HR System\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.dll
 C:\Projects\HR System\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.pdb
+D:\Git Hub\repGen\UI\Binaries\Souccar.CodeGenerator.dll
+D:\Git Hub\repGen\UI\Binaries\Souccar.CodeGenerator.pdb
+D:\Git Hub\repGen\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.dll
+D:\Git Hub\repGen\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.pdb

@@ -12,3 +12,8 @@ C:\Projects-ReportGenerator\HR System\UI\Binaries\Souccar.Reflector.pdb
 C:\Projects-ReportGenerator\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
 C:\Projects-ReportGenerator\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
 C:\Projects-ReportGenerator\HR System\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb
+D:\Git Hub\repGen\UI\Binaries\Souccar.Reflector.dll
+D:\Git Hub\repGen\UI\Binaries\Souccar.Reflector.pdb
+D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
+D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb

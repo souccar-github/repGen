@@ -1,2 +1,3 @@
 D:\Projects\ORC-HR\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
 C:\Projects\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
