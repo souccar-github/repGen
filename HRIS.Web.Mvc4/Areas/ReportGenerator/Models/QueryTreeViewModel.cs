@@ -8,13 +8,13 @@ using Project.Web.Mvc4.Models;
 
 namespace project.Web.Mvc4.Areas.ReportGenerator.Models
 {
-    public class QueryTreeViewModel:ViewModel
+    public class QueryTreeViewModel : ViewModel
     {
         public override void CustomizeGridModel(GridViewModel model, Type type, RequestInformation requestInformation)
         {
             //add
             model.ViewModelTypeFullName = typeof(QueryTreeViewModel).FullName;
-            model.Views[0].EditHandler = "QueryTreeEditHandler"; 
+           
         }
 
         public override void BeforeInsert(RequestInformation requestInformation, Entity entity,

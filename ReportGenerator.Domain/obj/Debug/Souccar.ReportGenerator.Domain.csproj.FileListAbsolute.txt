@@ -23,3 +23,13 @@ D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Domain.pdb
 D:\Git Hub\repGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
 D:\Git Hub\repGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
 D:\Git Hub\repGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb
+F:\Projects\RepGen\UI\Binaries\Souccar.ReportGenerator.Domain.dll
+F:\Projects\RepGen\UI\Binaries\Souccar.ReportGenerator.Domain.pdb
+F:\Projects\RepGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
+F:\Projects\RepGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
+F:\Projects\RepGen\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb
+F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Domain.dll
+F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Domain.pdb
+F:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
+F:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb

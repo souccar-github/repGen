@@ -37,6 +37,7 @@ function SubmitReport() {
 }
 
 function treeview_databound(e) {
+    debugger;
     var treeview = e.sender;
     var root = $('.k-item:first');
     treeview.select(root);
@@ -564,6 +565,7 @@ function GetAggregateFunctionsNameById(id) {
 }
 
 function IntializeFiltersDataSource(selectedTreeNodeData) {
+    debugger;
     var nodeFiltersDataSource = new Array();
     CurrentFiltersFieldsNames = new Array();
     FielterIdCounter = 0;
@@ -619,6 +621,7 @@ function IntializeFiltersDataSource(selectedTreeNodeData) {
 
     if ($("#filtersPager").data("kendoPager") != null) {
         $("#filtersPager").data("kendoPager").setDataSource(dataSource);
+        
         $("#filtersListView").data("kendoListView").setDataSource(dataSource);
     } else {
         $("#filtersPager").kendoPager({
