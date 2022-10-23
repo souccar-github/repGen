@@ -26,3 +26,15 @@ D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Interop.zkemkeeper.dll
 D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
 D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.dll
 D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.pdb
+F:\Projects\RepGen\ui\binaries\Souccar.dll
+F:\Projects\RepGen\ui\binaries\Souccar.pdb
+F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
+F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.dll
+F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.pdb
+F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\ui\binaries\Souccar.dll
+F:\Projects\ReportGenerator\ui\binaries\Souccar.pdb
+F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
+F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.dll
+F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.pdb

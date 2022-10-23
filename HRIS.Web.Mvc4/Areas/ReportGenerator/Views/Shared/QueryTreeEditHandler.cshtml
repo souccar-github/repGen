@@ -1,530 +1,565 @@
-﻿<script src="~/Scripts/ReportBuilder.js"></script>
+﻿@using Project.Web.Mvc4.Helpers
+@using HRIS.Validation.MessageKeys;
+@using Souccar.Infrastructure.Core;
+@using Project.Web.Mvc4.Helpers.Resource
+<script src="~/Scripts/ReportBuilder.js"></script>
 <script>
+
+
     function QueryTreeEditHandler(e) {
-        e.container.find(".control").hide();
-        var template = kendo.template($("#queryTreeTemplate").html());
-        $('.controls-div').append(template({}));
-        kendo.init($(".k-edit-form-container"));
-        $(".k-edit-form-container").width(1100);
-        $.ajax(
-            {
-                url: window.applicationpath + "ReportGenerator/ReportBuilder/GetAggregates",
-                type: "POST",
-                data: {},
-                success: function(response) {
-                    var data = response;
+        @*$.ajax({
+            url: '@Url.Action("GetSectionViewModel", "ReportBuilder", new { area = "ReportGenerator" })',
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({ id: e.model.Id }),
+            success: function (sectionViewModel) {
+                e.model.CustomInformation = sectionViewModel;
 
-                    $("#Aggregates").kendoDropDownList({
-                        dataTextField: "text",
-                        dataValueField: "value",
-                        dataSource: data,
-                        index: 0,
-                        change: Aggregates_OnChange
-                    });
-                }
+                e.container.find(".controls-div").append('<div class="section-items-container control">ADD</div>');
+                initEditForm(e, sectionViewModel);
+            },
+            error: function () {
+                alert("Error");
             }
-        );
-
-
-        $.ajax(
-            {
-                url: window.applicationpath + "ReportGenerator/ReportBuilder/GetAvailableFilterOperators",
-                type: "POST",
-                data: {},
-                success: function(response) {
-                    FiltersStringOperators = response.stringOperators;
-                    FiltersNumericAndDateOperators = response.numericAndDateOperators;
-                    AggregateFilterOperators = response.aggregateOperators;
-                    AggregateFilterFunctions = response.aggregateFunctions;
-                    AggregateOperationsFunctions = response.aggregateFunctions;
-                }
-            }
-        );
-
-
-        $("#tabstrip").kendoTabStrip({
-            animation: {
-                open: {
-                    effects: "fadeIn"
-                }
-            }
-        });
-
-        $("#tabstrip").hide();
-        $("#removeAllSelected").click(function() {
-            var item = SelectedTreeNode;
-            item.Leaves.forEach(function(leaf) {
-                leaf.Selected = 0;
-            });
-            refreshSelectList(item);
-        });
-
-        $("#removeSelected").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedFieldList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).Selected = 0;
-            }
-            var ordreList = _.sortBy(item.Leaves, function(leaf) { return leaf.Selected; });
-            var count = 1;
-            for (var j = 0; j < ordreList.length; j++) {
-                if (ordreList[j].Selected != 0)
-                    ordreList[j].Selected = count++;
-            }
-            refreshSelectList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#fieldList").val(temp);
-        });
-
-        $("#addSelected").click(function() {
-            var item = SelectedTreeNode;
-            var maxSelected = _.max(item.Leaves, function(leaf) { return leaf.Selected; }).Selected;
-            var selectedItems = $("#fieldList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).Selected = ++maxSelected;
-            }
-            refreshSelectList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedFieldList").val(temp);
-        });
-
-        $("#selectAll").click(function() {
-            var item = SelectedTreeNode;
-            var maxSelected = _.max(item.Leaves, function(leaf) { return leaf.Selected; }).Selected;
-            var selectedItems = $("#fieldList option");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).Selected = ++maxSelected;
-            }
-            refreshSelectList(item);
-        });
-
-        $("#moveSelectUp").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedFieldList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                if (selectedItems[i].selected) {
-                    var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
-                    if (leaf.Selected == 1) {
-                        continue;
-                    }
-                    var prevLeaf = _.findWhere(item.Leaves, { Selected: leaf.Selected - 1 });
-                    leaf.Selected--;
-                    prevLeaf.Selected++;
-                }
-            }
-            refreshSelectList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedFieldList").val(temp);
-        });
-
-        $("#moveSelectDown").click(function() {
-            var item = SelectedTreeNode;
-            var maxSelected = _.max(item.Leaves, function(l) { return l.Selected; }).Selected;
-            var selectedItems = $("#selectedFieldList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                if (selectedItems[i].selected) {
-                    var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[selectedItems.length - (i + 1)].value });
-                    if (leaf.Selected == maxSelected) {
-                        continue;
-                    }
-                    var prevLeaf = _.findWhere(item.Leaves, { Selected: leaf.Selected + 1 });
-                    leaf.Selected++;
-                    prevLeaf.Selected--;
-                }
-            }
-            refreshSelectList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedFieldList").val(temp);
-        });
-
-        $("#removeAllGroups").click(function() {
-            var item = SelectedTreeNode;
-            item.Leaves.forEach(function(leaf) {
-                leaf.GroupDescriptor.GroupByOrder = 0;
-            });
-            refreshGroupList(item);
-        });
-
-        $("#removeGroup").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedGroupList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).GroupDescriptor.GroupByOrder = 0;
-            }
-            var ordreList = _.sortBy(item.Leaves, function(leaf) { return leaf.GroupDescriptor.GroupByOrder; });
-            var count = 1;
-            for (var j = 0; j < ordreList.length; j++) {
-                if (ordreList[j].GroupDescriptor.GroupByOrder != 0)
-                    ordreList[j].GroupDescriptor.GroupByOrder = count++;
-            }
-            refreshGroupList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#groupList").val(temp);
-        });
-
-        $("#addGroup").click(function() {
-            var item = SelectedTreeNode;
-            var maxGroupOrder = _.max(item.Leaves, function(leaf) { return leaf.GroupDescriptor.GroupByOrder; }).GroupDescriptor.GroupByOrder;
-            var selectedItems = $("#groupList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).GroupDescriptor.GroupByOrder = ++maxGroupOrder;
-            }
-            refreshGroupList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedGroupList").val(temp);
-        });
-
-        $("#addAllGroups").click(function() {
-            var item = SelectedTreeNode;
-            var maxGroupOrder = _.max(item.Leaves, function(leaf) { return leaf.GroupDescriptor.GroupByOrder; }).GroupDescriptor.GroupByOrder;
-            var selectedItems = $("#groupList option");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).GroupDescriptor.GroupByOrder = ++maxGroupOrder;
-            }
-            refreshGroupList(item);
-        });
-
-        $("#moveGroupUp").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedGroupList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
-                if (leaf.GroupDescriptor.GroupByOrder == 1) {
-                    continue;
-                }
-                var prevLeaf;
-                for (var j = 0; j < item.Leaves.length; j++) {
-                    if (item.Leaves[j].GroupDescriptor.GroupByOrder == leaf.GroupDescriptor.GroupByOrder - 1) {
-                        prevLeaf = item.Leaves[j];
-                        break;
-                    }
-                }
-                leaf.GroupDescriptor.GroupByOrder--;
-                prevLeaf.GroupDescriptor.GroupByOrder++;
-
-            }
-            refreshGroupList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedGroupList").val(temp);
-        });
-
-        $("#moveGroupDown").click(function() {
-            var item = SelectedTreeNode;
-            var maxSelected = _.max(item.Leaves, function(l) { return l.GroupDescriptor.GroupByOrder; }).GroupDescriptor.GroupByOrder;
-            var selectedItems = $("#selectedGroupList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-
-                var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[selectedItems.length - (i + 1)].value });
-                if (leaf.GroupDescriptor.GroupByOrder == maxSelected) {
-                    continue;
-                }
-                var prevLeaf;
-                for (var j = 0; j < item.Leaves.length; j++) {
-                    if (item.Leaves[j].GroupDescriptor.GroupByOrder == leaf.GroupDescriptor.GroupByOrder + 1) {
-                        prevLeaf = item.Leaves[j];
-                        break;
-                    }
-                }
-                leaf.GroupDescriptor.GroupByOrder++;
-                prevLeaf.GroupDescriptor.GroupByOrder--;
-            }
-
-            refreshGroupList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedGroupList").val(temp);
-        });
-
-        $("#removeAllSorts").click(function() {
-            var item = SelectedTreeNode;
-            item.Leaves.forEach(function(leaf) {
-                leaf.SortDescriptor.SortOrder = 0;
-                leaf.SortDescriptor.SortDirection = "";
-            });
-            refreshSortList(item);
-        });
-
-        $("#removeSort").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedSortList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = 0;
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "";
-            }
-            var ordreList = _.sortBy(item.Leaves, function(leaf) { return leaf.SortDescriptor.SortOrder; });
-            var count = 1;
-            for (var j = 0; j < ordreList.length; j++) {
-                if (ordreList[j].SortDescriptor.SortOrder != 0)
-                    ordreList[j].SortDescriptor.SortOrder = count++;
-            }
-            refreshSortList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#sortList").val(temp);
-        });
-
-        $("#addSort").click(function() {
-            var item = SelectedTreeNode;
-            var maxSortOrder = _.max(item.Leaves, function(leaf) { return leaf.SortDescriptor.SortOrder; }).SortDescriptor.SortOrder;
-            var selectedItems = $("#sortList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = ++maxSortOrder;
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "Asc";
-            }
-            refreshSortList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedSortList").val(temp);
-        });
-
-        $("#addAllSorts").click(function() {
-            var item = SelectedTreeNode;
-            var maxSortOrder = _.max(item.Leaves, function(leaf) { return leaf.SortDescriptor.SortOrder; }).SortDescriptor.SortOrder;
-            var selectedItems = $("#sortList option");
-            for (var i = 0; i < selectedItems.length; i++) {
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = ++maxSortOrder;
-                _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "Asc";
-            }
-            refreshSortList(item);
-        });
-
-        $("#moveSortUp").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedSortList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
-                if (leaf.SortDescriptor.SortOrder == 1) {
-                    continue;
-                }
-                var prevLeaf;
-                for (var j = 0; j < item.Leaves.length; j++) {
-                    if (item.Leaves[j].SortDescriptor.SortOrder == leaf.SortDescriptor.SortOrder - 1) {
-                        prevLeaf = item.Leaves[j];
-                        break;
-                    }
-                }
-                leaf.SortDescriptor.SortOrder--;
-                prevLeaf.SortDescriptor.SortOrder++;
-
-            }
-            refreshSortList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedSortList").val(temp);
-        });
-
-        $("#moveSortDown").click(function() {
-            var item = SelectedTreeNode;
-            var maxSelected = _.max(item.Leaves, function(l) { return l.SortDescriptor.SortOrder; }).SortDescriptor.SortOrder;
-            var selectedItems = $("#selectedSortList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-
-                var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[selectedItems.length - (i + 1)].value });
-                if (leaf.SortDescriptor.SortOrder == maxSelected) {
-                    continue;
-                }
-                var prevLeaf;
-                for (var j = 0; j < item.Leaves.length; j++) {
-                    if (item.Leaves[j].SortDescriptor.SortOrder == leaf.SortDescriptor.SortOrder + 1) {
-                        prevLeaf = item.Leaves[j];
-                        break;
-                    }
-                }
-                leaf.SortDescriptor.SortOrder++;
-                prevLeaf.SortDescriptor.SortOrder--;
-            }
-
-            refreshSortList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedSortList").val(temp);
-        });
-
-        $("#_sortDirection").click(function() {
-            var item = SelectedTreeNode;
-            var selectedItems = $("#selectedSortList :selected");
-            for (var i = 0; i < selectedItems.length; i++) {
-                var temp = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
-                if (temp.SortDescriptor.SortDirection == "Asc") {
-                    temp.SortDescriptor.SortDirection = "Desc";
-                } else {
-                    temp.SortDescriptor.SortDirection = "Asc";
-                }
-            }
-            refreshSortList(item);
-            var temp = [];
-            for (i = 0; i < selectedItems.length; i++) {
-                temp[i] = selectedItems[i].value;
-            }
-            $("#selectedSortList").val(temp);
-        });
-        $('.k-grid-update').click(function() {
-            SubmitQueryTree();
-            e.model = QueryTree;
-            console.log(e.model);
-        });
+        });*@
+        e.container.find(".controls-div").append('<div class="section-items-container control">ADD</div>');
+        initEditForm(e);
     }
+        function initEditForm(e) {
+           
+
+            e.model.dirty = true;
+
+            var template = kendo.template($("#queryTreeTemplate").html());
+            e.container.find(".section-items-container").html(template({}));
+
+            kendo.init($(".k-edit-form-container"));
+            $(".k-edit-form-container").width(1200);
+            $.ajax(
+             {
+                 url: window.applicationpath + "ReportGenerator/ReportBuilder/GetAggregates",
+                 type: "POST",
+                 data: {},
+                 success: function (response) {
+                     var data = response;
+
+                     $("#Aggregates").kendoDropDownList({
+                         dataTextField: "text",
+                         dataValueField: "value",
+                         dataSource: data,
+                         index: 0,
+                         change: Aggregates_OnChange
+                     });
+                 }
+             }
+         );
 
 
+            $.ajax(
+                {
+                    url: window.applicationpath + "ReportGenerator/ReportBuilder/GetAvailableFilterOperators",
+                    type: "POST",
+                    data: {},
+                    success: function (response) {
+                        FiltersStringOperators = response.stringOperators;
+                        FiltersNumericAndDateOperators = response.numericAndDateOperators;
+                        AggregateFilterOperators = response.aggregateOperators;
+                        AggregateFilterFunctions = response.aggregateFunctions;
+                        AggregateOperationsFunctions = response.aggregateFunctions;
+                    }
+                }
+            );
+
+
+            $("#tabstrip").kendoTabStrip({
+                animation: {
+                    open: {
+                        effects: "fadeIn"
+                    }
+                }
+            });
+
+            $("#tabstrip").hide();
+            $("#removeAllSelected").click(function () {
+                var item = SelectedTreeNode;
+                item.Leaves.forEach(function (leaf) {
+                    leaf.Selected = 0;
+                });
+                refreshSelectList(item);
+            });
+
+            $("#removeSelected").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedFieldList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).Selected = 0;
+                }
+                var ordreList = _.sortBy(item.Leaves, function (leaf) { return leaf.Selected; });
+                var count = 1;
+                for (var j = 0; j < ordreList.length; j++) {
+                    if (ordreList[j].Selected != 0)
+                        ordreList[j].Selected = count++;
+                }
+                refreshSelectList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#fieldList").val(temp);
+            });
+
+            $("#addSelected").click(function () {
+                var item = SelectedTreeNode;
+                var maxSelected = _.max(item.Leaves, function (leaf) { return leaf.Selected; }).Selected;
+                var selectedItems = $("#fieldList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).Selected = ++maxSelected;
+                }
+                refreshSelectList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedFieldList").val(temp);
+            });
+
+            $("#selectAll").click(function () {
+                var item = SelectedTreeNode;
+                var maxSelected = _.max(item.Leaves, function (leaf) { return leaf.Selected; }).Selected;
+                var selectedItems = $("#fieldList option");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).Selected = ++maxSelected;
+                }
+                refreshSelectList(item);
+            });
+
+            $("#moveSelectUp").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedFieldList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    if (selectedItems[i].selected) {
+                        var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
+                        if (leaf.Selected == 1) {
+                            continue;
+                        }
+                        var prevLeaf = _.findWhere(item.Leaves, { Selected: leaf.Selected - 1 });
+                        leaf.Selected--;
+                        prevLeaf.Selected++;
+                    }
+                }
+                refreshSelectList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedFieldList").val(temp);
+            });
+
+            $("#moveSelectDown").click(function () {
+                var item = SelectedTreeNode;
+                var maxSelected = _.max(item.Leaves, function (l) { return l.Selected; }).Selected;
+                var selectedItems = $("#selectedFieldList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    if (selectedItems[i].selected) {
+                        var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[selectedItems.length - (i + 1)].value });
+                        if (leaf.Selected == maxSelected) {
+                            continue;
+                        }
+                        var prevLeaf = _.findWhere(item.Leaves, { Selected: leaf.Selected + 1 });
+                        leaf.Selected++;
+                        prevLeaf.Selected--;
+                    }
+                }
+                refreshSelectList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedFieldList").val(temp);
+            });
+
+            $("#removeAllGroups").click(function () {
+                var item = SelectedTreeNode;
+                item.Leaves.forEach(function (leaf) {
+                    leaf.GroupDescriptor.GroupByOrder = 0;
+                });
+                refreshGroupList(item);
+            });
+
+            $("#removeGroup").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedGroupList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).GroupDescriptor.GroupByOrder = 0;
+                }
+                var ordreList = _.sortBy(item.Leaves, function (leaf) { return leaf.GroupDescriptor.GroupByOrder; });
+                var count = 1;
+                for (var j = 0; j < ordreList.length; j++) {
+                    if (ordreList[j].GroupDescriptor.GroupByOrder != 0)
+                        ordreList[j].GroupDescriptor.GroupByOrder = count++;
+                }
+                refreshGroupList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#groupList").val(temp);
+            });
+
+            $("#addGroup").click(function () {
+                var item = SelectedTreeNode;
+                var maxGroupOrder = _.max(item.Leaves, function (leaf) { return leaf.GroupDescriptor.GroupByOrder; }).GroupDescriptor.GroupByOrder;
+                var selectedItems = $("#groupList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).GroupDescriptor.GroupByOrder = ++maxGroupOrder;
+                }
+                refreshGroupList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedGroupList").val(temp);
+            });
+
+            $("#addAllGroups").click(function () {
+                var item = SelectedTreeNode;
+                var maxGroupOrder = _.max(item.Leaves, function (leaf) { return leaf.GroupDescriptor.GroupByOrder; }).GroupDescriptor.GroupByOrder;
+                var selectedItems = $("#groupList option");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).GroupDescriptor.GroupByOrder = ++maxGroupOrder;
+                }
+                refreshGroupList(item);
+            });
+
+            $("#moveGroupUp").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedGroupList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
+                    if (leaf.GroupDescriptor.GroupByOrder == 1) {
+                        continue;
+                    }
+                    var prevLeaf;
+                    for (var j = 0; j < item.Leaves.length; j++) {
+                        if (item.Leaves[j].GroupDescriptor.GroupByOrder == leaf.GroupDescriptor.GroupByOrder - 1) {
+                            prevLeaf = item.Leaves[j];
+                            break;
+                        }
+                    }
+                    leaf.GroupDescriptor.GroupByOrder--;
+                    prevLeaf.GroupDescriptor.GroupByOrder++;
+
+                }
+                refreshGroupList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedGroupList").val(temp);
+            });
+
+            $("#moveGroupDown").click(function () {
+                var item = SelectedTreeNode;
+                var maxSelected = _.max(item.Leaves, function (l) { return l.GroupDescriptor.GroupByOrder; }).GroupDescriptor.GroupByOrder;
+                var selectedItems = $("#selectedGroupList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+
+                    var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[selectedItems.length - (i + 1)].value });
+                    if (leaf.GroupDescriptor.GroupByOrder == maxSelected) {
+                        continue;
+                    }
+                    var prevLeaf;
+                    for (var j = 0; j < item.Leaves.length; j++) {
+                        if (item.Leaves[j].GroupDescriptor.GroupByOrder == leaf.GroupDescriptor.GroupByOrder + 1) {
+                            prevLeaf = item.Leaves[j];
+                            break;
+                        }
+                    }
+                    leaf.GroupDescriptor.GroupByOrder++;
+                    prevLeaf.GroupDescriptor.GroupByOrder--;
+                }
+
+                refreshGroupList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedGroupList").val(temp);
+            });
+
+            $("#removeAllSorts").click(function () {
+                var item = SelectedTreeNode;
+                item.Leaves.forEach(function (leaf) {
+                    leaf.SortDescriptor.SortOrder = 0;
+                    leaf.SortDescriptor.SortDirection = "";
+                });
+                refreshSortList(item);
+            });
+
+            $("#removeSort").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedSortList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = 0;
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "";
+                }
+                var ordreList = _.sortBy(item.Leaves, function (leaf) { return leaf.SortDescriptor.SortOrder; });
+                var count = 1;
+                for (var j = 0; j < ordreList.length; j++) {
+                    if (ordreList[j].SortDescriptor.SortOrder != 0)
+                        ordreList[j].SortDescriptor.SortOrder = count++;
+                }
+                refreshSortList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#sortList").val(temp);
+            });
+
+            $("#addSort").click(function () {
+                var item = SelectedTreeNode;
+                var maxSortOrder = _.max(item.Leaves, function (leaf) { return leaf.SortDescriptor.SortOrder; }).SortDescriptor.SortOrder;
+                var selectedItems = $("#sortList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = ++maxSortOrder;
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "Asc";
+                }
+                refreshSortList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedSortList").val(temp);
+            });
+
+            $("#addAllSorts").click(function () {
+                var item = SelectedTreeNode;
+                var maxSortOrder = _.max(item.Leaves, function (leaf) { return leaf.SortDescriptor.SortOrder; }).SortDescriptor.SortOrder;
+                var selectedItems = $("#sortList option");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = ++maxSortOrder;
+                    _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "Asc";
+                }
+                refreshSortList(item);
+            });
+
+            $("#moveSortUp").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedSortList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
+                    if (leaf.SortDescriptor.SortOrder == 1) {
+                        continue;
+                    }
+                    var prevLeaf;
+                    for (var j = 0; j < item.Leaves.length; j++) {
+                        if (item.Leaves[j].SortDescriptor.SortOrder == leaf.SortDescriptor.SortOrder - 1) {
+                            prevLeaf = item.Leaves[j];
+                            break;
+                        }
+                    }
+                    leaf.SortDescriptor.SortOrder--;
+                    prevLeaf.SortDescriptor.SortOrder++;
+
+                }
+                refreshSortList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedSortList").val(temp);
+            });
+
+            $("#moveSortDown").click(function () {
+                var item = SelectedTreeNode;
+                var maxSelected = _.max(item.Leaves, function (l) { return l.SortDescriptor.SortOrder; }).SortDescriptor.SortOrder;
+                var selectedItems = $("#selectedSortList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+
+                    var leaf = _.findWhere(item.Leaves, { PropertyName: selectedItems[selectedItems.length - (i + 1)].value });
+                    if (leaf.SortDescriptor.SortOrder == maxSelected) {
+                        continue;
+                    }
+                    var prevLeaf;
+                    for (var j = 0; j < item.Leaves.length; j++) {
+                        if (item.Leaves[j].SortDescriptor.SortOrder == leaf.SortDescriptor.SortOrder + 1) {
+                            prevLeaf = item.Leaves[j];
+                            break;
+                        }
+                    }
+                    leaf.SortDescriptor.SortOrder++;
+                    prevLeaf.SortDescriptor.SortOrder--;
+                }
+
+                refreshSortList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedSortList").val(temp);
+            });
+
+            $("#_sortDirection").click(function () {
+                var item = SelectedTreeNode;
+                var selectedItems = $("#selectedSortList :selected");
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var temp = _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value });
+                    if (temp.SortDescriptor.SortDirection == "Asc") {
+                        temp.SortDescriptor.SortDirection = "Desc";
+                    } else {
+                        temp.SortDescriptor.SortDirection = "Asc";
+                    }
+                }
+                refreshSortList(item);
+                var temp = [];
+                for (i = 0; i < selectedItems.length; i++) {
+                    temp[i] = selectedItems[i].value;
+                }
+                $("#selectedSortList").val(temp);
+            });
+            $('.k-grid-update').click(function () {
+                debugger;
+                var reportName = $(".controls-div").find("[name='Name']").val();
+                var reportResourceName = $(".controls-div").find("[name='ReportResourceName']").val();
+                var reportTemplate = $(".controls-div").find("[name='Template']").data("kendoDropDownList").value();
+                SubmitQueryTree(reportName, reportResourceName, reportTemplate);
+                e.model = QueryTree;
+            });
+        }
+
+    
 
 </script>
+
 <script id="queryTreeTemplate" type="text/x-kendo-template">
-    <div style="overflow: hidden">
-        @*<input id="ReportTemplates" />
+    <br />
+    <br />
+    <fieldset>
+        <legend>@ReportLocalizationHelper.GetResource(ReportLocalizationHelper.AddQueryTree)</legend>
+        <div style="overflow: hidden">
+
+            @*<input id="ReportTemplates" />
+                <br />
+                <br />*@
+
+            <input id="Aggregates" />
             <br />
-            <br />*@
-        <input id="Aggregates" />
-        <br />
-        <br />
-        <br />
-        <div id="tree" style="float: right"></div>
-        <div id="forecast" style="float: left">
-            <div id="tabstrip">
-                <ul>
-                    <li class="k-state-active">
-                        Fields
-                    </li>
-                    <li>
-                        Grouping
-                    </li>
-                    <li>
-                        Sorting
-                    </li>
-                    <li>
-                        Filter
-                    </li>
-                    <li>
-                        Aggregate Operations
-                    </li>
-                    <li>
-                        Aggregate Filter
-                    </li>
-                </ul>
-                <div style="overflow: hidden">
+            <br />
+            <br />
+            <div id="tree" style="float: right"></div>
+            <div id="forecast" style="float: left">
+                <div id="tabstrip">
+                    <ul>
+                        <li class="k-state-active">
+                            Fields
+                        </li>
+                        <li>
+                            Grouping
+                        </li>
+                        <li>
+                            Sorting
+                        </li>
+                        <li>
+                            Filter
+                        </li>
+                        <li>
+                            Aggregate Operations
+                        </li>
+                        <li>
+                            Aggregate Filter
+                        </li>
+                    </ul>
+                    <div style="overflow: hidden">
+                        <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
+                            <div id="fields" style="float: left; width: 250px">
+                            </div>
+                            <div style="float: left; width: 50px">
+                                <input id="removeAllSelected" type="button" value="&lt;&lt;"><br>
+                                <input id="removeSelected" type="button" value="&lt;"><br>
+                                <input id="addSelected" type="button" value="&gt;"><br>
+                                <input id="selectAll" type="button" value="&gt;&gt;">
+                            </div>
+                            <div id="selectedFields" style="float: left; width: 250px">
+                            </div>
+                            <div style="float: left; width: 50px">
+                                <input id="moveSelectUp" type="button" value="Up"><br>
+                                <input id="moveSelectDown" type="button" value="Down">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow: hidden">
+                        <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
+                            <div id="groups" style="float: left; width: 250px">
+                            </div>
+                            <div style="float: left; width: 50px">
+                                <input id="removeAllGroups" type="button" value="&lt;&lt;"><br>
+                                <input id="removeGroup" type="button" value="&lt;"><br>
+                                <input id="addGroup" type="button" value="&gt;"><br>
+                                <input id="addAllGroups" type="button" value="&gt;&gt;">
+                            </div>
+                            <div id="selectedGroups" style="float: left; width: 250px">
+                            </div>
+                            <div style="float: left; width: 50px">
+                                <input id="moveGroupUp" type="button" value="Up"><br>
+                                <input id="moveGroupDown" type="button" value="Down">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow: hidden">
+                        <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
+                            <div id="sorts" style="float: left; width: 250px">
+                            </div>
+                            <div style="float: left; width: 50px">
+                                <input id="removeAllSorts" type="button" value="&lt;&lt;"><br>
+                                <input id="removeSort" type="button" value="&lt;"><br>
+                                <input id="addSort" type="button" value="&gt;"><br>
+                                <input id="addAllSorts" type="button" value="&gt;&gt;">
+                            </div>
+                            <div id="selectedSorts" style="float: left; width: 250px">
+                            </div>
+                            <div style="float: left; width: 50px">
+                                <input id="moveSortUp" type="button" value="Up"><br>
+                                <input id="moveSortDown" type="button" value="Down">
+                                <input id="_sortDirection" type="button" value="Sort Asc/Desc" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="filter" class="k-content">
+                        <div class="demo-section">
+                            <a class="k-button k-button-icontext k-add-button"><span class="k-icon k-add"></span>Add new filter</a>
+                        </div>
+                        <div class="demo-section">
+                            <div id="filtersListView"></div>
+                            <div id="filtersPager" class="k-pager-wrap"></div>
+                        </div>
+                    </div>
+                    <div id="aggregateFunation" class="k-content">
+                        <div class="demo-section">
+                            <a class="k-button k-button-icontext k-add-button"><span class="k-icon k-add"></span>Add new aggregate Operations</a>
+                        </div>
+                        <div class="demo-section">
+                            <div id="aggregatesOperationsListView"></div>
+                            <div id="aggregatesOperationsPager" class="k-pager-wrap"></div>
+                        </div>
+                    </div>
+                    <div id="aggregateFilter" class="k-content">
+                        <div class="demo-section">
+                            <a class="k-button k-button-icontext k-add-button"><span class="k-icon k-add"></span>Add new aggregate filter</a>
+                        </div>
+                        <div class="demo-section">
+                            <div id="aggregatesListView"></div>
+                            <div id="aggregatesPager" class="k-pager-wrap"></div>
+                        </div>
+                    </div>
                     <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
-                        <div id="fields" style="float: left; width: 250px">
-                        </div>
-                        <div style="float: left; width: 50px">
-                            <input id="removeAllSelected" type="button" value="&lt;&lt;"><br>
-                            <input id="removeSelected" type="button" value="&lt;"><br>
-                            <input id="addSelected" type="button" value="&gt;"><br>
-                            <input id="selectAll" type="button" value="&gt;&gt;">
-                        </div>
-                        <div id="selectedFields" style="float: left; width: 250px">
-                        </div>
-                        <div style="float: left; width: 50px">
-                            <input id="moveSelectUp" type="button" value="Up"><br>
-                            <input id="moveSelectDown" type="button" value="Down">
-                        </div>
                     </div>
-                </div>
-
-                <div style="overflow: hidden">
-                    <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
-                        <div id="groups" style="float: left; width: 250px">
-                        </div>
-                        <div style="float: left; width: 50px">
-                            <input id="removeAllGroups" type="button" value="&lt;&lt;"><br>
-                            <input id="removeGroup" type="button" value="&lt;"><br>
-                            <input id="addGroup" type="button" value="&gt;"><br>
-                            <input id="addAllGroups" type="button" value="&gt;&gt;">
-                        </div>
-                        <div id="selectedGroups" style="float: left; width: 250px">
-                        </div>
-                        <div style="float: left; width: 50px">
-                            <input id="moveGroupUp" type="button" value="Up"><br>
-                            <input id="moveGroupDown" type="button" value="Down">
-                        </div>
-                    </div>
-                </div>
-
-                <div style="overflow: hidden">
-                    <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
-                        <div id="sorts" style="float: left; width: 250px">
-                        </div>
-                        <div style="float: left; width: 50px">
-                            <input id="removeAllSorts" type="button" value="&lt;&lt;"><br>
-                            <input id="removeSort" type="button" value="&lt;"><br>
-                            <input id="addSort" type="button" value="&gt;"><br>
-                            <input id="addAllSorts" type="button" value="&gt;&gt;">
-                        </div>
-                        <div id="selectedSorts" style="float: left; width: 250px">
-                        </div>
-                        <div style="float: left; width: 50px">
-                            <input id="moveSortUp" type="button" value="Up"><br>
-                            <input id="moveSortDown" type="button" value="Down">
-                            <input id="_sortDirection" type="button" value="Sort Asc/Desc" />
-                        </div>
-                    </div>
-                </div>
-
-                <div id="filter" class="k-content">
-                    <div class="demo-section">
-                        <a class="k-button k-button-icontext k-add-button"><span class="k-icon k-add"></span>Add new filter</a>
-                    </div>
-                    <div class="demo-section">
-                        <div id="filtersListView"></div>
-                        <div id="filtersPager" class="k-pager-wrap"></div>
-                    </div>
-                </div>
-                <div id="aggregateFunation" class="k-content">
-                    <div class="demo-section">
-                        <a class="k-button k-button-icontext k-add-button"><span class="k-icon k-add"></span>Add new aggregate Operations</a>
-                    </div>
-                    <div class="demo-section">
-                        <div id="aggregatesOperationsListView"></div>
-                        <div id="aggregatesOperationsPager" class="k-pager-wrap"></div>
-                    </div>
-                </div>
-                <div id="aggregateFilter" class="k-content">
-                    <div class="demo-section">
-                        <a class="k-button k-button-icontext k-add-button"><span class="k-icon k-add"></span>Add new aggregate filter</a>
-                    </div>
-                    <div class="demo-section">
-                        <div id="aggregatesListView"></div>
-                        <div id="aggregatesPager" class="k-pager-wrap"></div>
-                    </div>
-                </div>
-                <div style="margin-left: auto; margin-right: auto; width: 600px; height: 300px">
                 </div>
             </div>
         </div>
-
-    </div>
+    </fieldset>
 </script>
-<script type="text/x-kendo-tmpl" id="filtersDisplayModeTemplate">
-
+<script type="text/x-kendo-template" id="filtersDisplayModeTemplate">
 
     <div class="product-view k-widget">
         <div class="edit-buttons">
@@ -540,15 +575,13 @@
             <dd>#:Value#</dd>
         </dl>
     </div>
-
 </script>
 
-<script type="text/x-kendo-tmpl" id="filtersEditModeTemplate">
+<script type="text/x-kendo-template" id="filtersEditModeTemplate">
     <div class="product-view k-widget">
         <div class="edit-buttons">
             <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
             <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
-
         </div>
         <dl>
             <dt>Field</dt>
@@ -558,24 +591,20 @@
             </dd>
             <dt>Operator</dt>
             <dd>
-                <input id="FilterFieldOperator" data-role="dropdownlist" data-text-field="text" data-value-field="value" # if(data.type == "String" ){ # data-source="FiltersStringOperators" # }else { # data-source="FiltersNumericAndDateOperators" # } # data-bind="value:Operator" required="required" validationmessage="required" />
+                <input id="FilterFieldOperator" data-role="dropdownlist" data-text-field="text" data-value-field="value" # if(data.type=="String" ){ # data-source="FiltersStringOperators" # }else { # data-source="FiltersNumericAndDateOperators" # } # data-bind="value:Operator" required="required" validationmessage="required" />
                 <span data-for="FilterFieldOperator" class="k-invalid-msg"></span>
             </dd>
             <dt>Value</dt>
             <dd>
-
-                <input type="text" #if(data.type == "DateTime" ){ # data-role="datepicker" # }else if(data.type == "Integer" ){ # data-role="numerictextbox" # } # class="k-textbox" data-bind="value:Value" id="FilterFieldValue" required="required" validationmessage="required" />
-
+                <input type="text" #if(data.type=="DateTime" ){ # data-role="datepicker" # }else if(data.type=="Integer" ){ # data-role="numerictextbox" # } # class="k-textbox" data-bind="value:Value" id="FilterFieldValue" required="required" validationmessage="required" />
                 <span data-for="FilterFieldValue" class="k-invalid-msg"></span>
             </dd>
             @*<input type="hidden" data-bind="value:Type" id="FilterFieldType" />*@
         </dl>
     </div>
-
 </script>
 
 <script type="text/x-kendo-tmpl" id="aggregateOperationsDisplayModeTemplate">
-
 
     <div class="product-view k-widget">
         <div class="edit-buttons">
@@ -593,14 +622,13 @@
             <dd>#:DisplayName#</dd>
         </dl>
     </div>
-
 </script>
+
 <script type="text/x-kendo-tmpl" id="aggregateOperationsEditModeTemplate">
     <div class="product-view k-widget">
         <div class="edit-buttons">
             <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
             <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
-
         </div>
         <dl>
             <dt>Fields</dt>
@@ -626,8 +654,8 @@
         </dl>
     </div>
 </script>
-<script type="text/x-kendo-tmpl" id="aggregateFilterDisplayModeTemplate">
 
+<script type="text/x-kendo-tmpl" id="aggregateFilterDisplayModeTemplate">
 
     <div class="product-view k-widget">
         <div class="edit-buttons">
@@ -647,7 +675,6 @@
             <dd>#:Value#</dd>
         </dl>
     </div>
-
 </script>
 
 <script type="text/x-kendo-tmpl" id="aggregateFilterEditModeTemplate">
@@ -655,7 +682,6 @@
         <div class="edit-buttons">
             <a class="k-button k-button-icontext k-update-button" href="\\#"><span class="k-icon k-update"></span></a>
             <a class="k-button k-button-icontext k-cancel-button" href="\\#"><span class="k-icon k-cancel"></span></a>
-
         </div>
         <dl>
             <dt>Aggregate Fields</dt>
@@ -685,7 +711,6 @@
         </dl>
     </div>
 </script>
-
 
 <script id="fieldListTemplate" type="text/x-kendo-template">
     <select id="fieldList" multiple="multiple" name="fieldList" size="15" style="width:250px;">
@@ -748,6 +773,7 @@
 </script>
 
 <style scoped>
+   
     .demo-section {
         width: 605px;
     }

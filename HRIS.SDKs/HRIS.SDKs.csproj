@@ -41,6 +41,11 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\UI\Binaries\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.zkemkeeper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>bin\Debug\Interop.zkemkeeper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -57,17 +62,6 @@
     <Compile Include="Domain\AttendanceSystem\BioMetricDevice\SupportedDevices\BioStationV14.cs" />
     <Compile Include="Domain\AttendanceSystem\BioMetricDevice\SupportedDevices\ZKTeco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="zkemkeeper">
-      <Guid>{FE9DED34-E159-408E-8490-B720A5E632C7}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Domain\AttendanceSystem\SDKs\BioStationV14\BS_SDK.dll" />

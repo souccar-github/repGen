@@ -1,5 +1,6 @@
 ﻿using HRIS.Domain.Global.Constant;
 using project.Web.Mvc4.Areas.ReportGenerator.Models;
+using Project.Web.Mvc4.Areas.ReportGenerator.EventHandlers;
 using Project.Web.Mvc4.Models;
 using Project.Web.Mvc4.Models.Navigation;
 using Souccar.ReportGenerator.Domain.QueryBuilder;
@@ -25,9 +26,11 @@ namespace Project.Web.Mvc4.Areas.ReportGenerator.Models
         {
             if (parent.Count == 0)
             {
-                parent.Add("QueryTree", new QueryTreeViewModel());
+               // parent.Add("QueryTree", new QueryTreeViewModel());
                 parent.Add("ReportTemplate", new ReportTemplateViewModel());
-
+                parent.Add("QueryTree", new QueryTreeViewModel());
+                parent.Add("Report", new ReportViewModel());
+                //parent.Add("Report", new ReportEventHandlers());
             }
             try
             {

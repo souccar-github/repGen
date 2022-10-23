@@ -10,10 +10,11 @@ namespace Project.Web.Mvc4.Helpers.Resource
     public class ReportLocalizationHelper
     {
         public const string ResourceGroupName = "Report";
-
+        public const string AddQueryTree = "AddQueryTree";
         public const string TitleAlreadyExists = "TitleAlreadyExists";
         public const string FileNameAlreadyExists = "FileNameAlreadyExists";
-        
+        public const string ReportNameAlreadyExists = "ReportNameAlreadyExists";
+
 
         public static string GetResource(string key)
         {

@@ -641,7 +641,10 @@
     <Compile Include="Areas\Recruitment\Models\OralExaminationViewModel.cs" />
     <Compile Include="Areas\Recruitment\Models\RJobRelatedInfoViewModel.cs" />
     <Compile Include="Areas\Recruitment\Models\RSpouseViewModel.cs" />
+    <Compile Include="Areas\ReportGenerator\EventHandlers\QueryTreeViewModel.cs" />
+    <Compile Include="Areas\ReportGenerator\EventHandlers\ReportEventHandlers.cs" />
     <Compile Include="Areas\ReportGenerator\Models\QueryTreeViewModel.cs" />
+    <Compile Include="Areas\ReportGenerator\Models\ReportViewModel.cs" />
     <Compile Include="Areas\ReportGenerator\Models\ReportGeneratorAdjustment.cs" />
     <Compile Include="Areas\ReportGenerator\Models\ReportTemplateViewModel.cs" />
     <Compile Include="Areas\Reporting\Helpers\ReportingHelper.cs" />
@@ -3006,7 +3009,7 @@
     <Content Include="Areas\ReportGenerator\Views\Shared\ReportTemplateEditor.cshtml" />
     <Content Include="Areas\ReportGenerator\Views\Shared\DisplayReport.cshtml" />
     <Content Include="Areas\ReportGenerator\Views\Shared\QueryTreeEditHandler.cshtml" />
-    <Content Include="Areas\ReportGenerator\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\ReportGenerator\Views\ReportForm\Index.cshtml" />
     <None Include="Properties\PublishProfiles\15-9-2015.pubxml" />
     <None Include="Properties\PublishProfiles\18-1-2016.pubxml" />
     <None Include="Properties\PublishProfiles\30-6-2021.pubxml" />

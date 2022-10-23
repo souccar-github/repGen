@@ -17,3 +17,8 @@ D:\Git Hub\repGen\UI\Binaries\Souccar.Reflector.pdb
 D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
 D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
 D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb
+F:\Projects\RepGen\UI\Binaries\Souccar.Reflector.dll
+F:\Projects\RepGen\UI\Binaries\Souccar.Reflector.pdb
+F:\Projects\RepGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
+F:\Projects\RepGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb
+F:\Projects\RepGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache

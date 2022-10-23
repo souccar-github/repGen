@@ -38,3 +38,10 @@ D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\Interop.zkemkeeper.dll
 D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.csproj.ResolveComReference.cache
 D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.dll
 D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.pdb
+F:\Projects\RepGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.csprojResolveAssemblyReference.cache
+F:\Projects\RepGen\HRIS.SDKs\bin\Debug\HRIS.SDKs.dll
+F:\Projects\RepGen\HRIS.SDKs\bin\Debug\HRIS.SDKs.pdb
+F:\Projects\RepGen\HRIS.SDKs\bin\Debug\Castle.Core.dll
+F:\Projects\RepGen\HRIS.SDKs\bin\Debug\Castle.Windsor.dll
+F:\Projects\RepGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.dll
+F:\Projects\RepGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.pdb

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="TextBoxBodyTitle">
+            <Left>1in</Left>
+            <Top>0in</Top>
+            <Height>0.50000in</Height>
+            <Width>6.27in</Width>
+            <Style>
+              <TextAlign>Center</TextAlign>
+              <VerticalAlign>Middle</VerticalAlign>
+            </Style>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Body Title</Value>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+          </Textbox>
+          <Tablix Name="EmployeeTable">
+            <Left>1in</Left>
+            <Top>1in</Top>
+            <Height>0.50000in</Height>
+            <Width>1in</Width>
+            <TablixBody>
+              <TablixColumns />
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25000in</Height>
+                  <TablixCells />
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25000in</Height>
+                  <TablixCells />
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers />
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Employee_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!EmployeeId.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>EmployeeDetail</DataElementName>
+                  </Group>
+                  <DataElementName>Employee_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <LayoutDirection>LTR</LayoutDirection>
+          </Tablix>
+        </ReportItems>
+        <Height>2.03333in</Height>
+      </Body>
+      <Width>1in</Width>
+      <Page>
+        <PageHeight>5in</PageHeight>
+        <PageWidth>1in</PageWidth>
+        <LeftMargin>0.50000in</LeftMargin>
+        <RightMargin>0.50000in</RightMargin>
+        <TopMargin>0.50000in</TopMargin>
+        <BottomMargin>0.50000in</BottomMargin>
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=.;Initial Catalog=SEI-ORC;User ID=sa;Password=123456;</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields>
+        <Field Name="EmployeeId">
+          <DataField>EmployeeId</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId FROM Employee</CommandText>
+        <Timeout>30</Timeout>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+</Report>

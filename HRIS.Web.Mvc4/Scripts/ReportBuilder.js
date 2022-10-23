@@ -24,7 +24,8 @@ var SelectedTreeNode;
 var QueryTree;
 var TreeNodeSelectedFirstTime = 1;
 
-function SubmitQueryTree() {
+function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
+    debugger;
     var treeview = $("#tree").data("kendoTreeView");
     var root = $("#tree").find('.k-item').first();
     treeview.select(root);
@@ -35,7 +36,11 @@ function SubmitQueryTree() {
         {
             url: window.applicationpath + "ReportGenerator/ReportBuilder/SaveQueryTree",
             type: "POST",
-            data: JSON.stringify({ queryTree: QueryTree, requestInformation: window.requestInformation }),
+            data: JSON.stringify({
+                queryTree: QueryTree, requestInformation: window.requestInformation,
+                /////
+                reportName: reportName, reportResourceName: reportResourceName, reportTemplate_id: reportTemplate
+            }),
             contentType: 'application/json',
             success: function () {
             }
@@ -415,7 +420,6 @@ function IntializeAggregateOperationsDataSource(selectedTreeNodeData) {
         nodeAggregateOperationsDataSource.push(operation);
     }
 
-    console.log(nodeAggregateOperationsDataSource);
     dataSource = new kendo.data.DataSource({
         data: nodeAggregateOperationsDataSource,
         pageSize: 4,
@@ -432,7 +436,6 @@ function IntializeAggregateOperationsDataSource(selectedTreeNodeData) {
             }
         }
     });
-    debugger;
     if ($("#aggregatesOperationsPager").data("kendoPager") != null) {
         $("#aggregatesOperationsPager").data("kendoPager").setDataSource(dataSource);
         $("#aggregatesOperationsListView").data("kendoListView").setDataSource(dataSource);
@@ -472,7 +475,6 @@ function IntializeAggregateOperationsDataSource(selectedTreeNodeData) {
 }
 function AggregateOperationsFieldsName_Changed() {
     $("#AggregateOperationsFieldName").data("kendoDropDownList").bind("change", function (e) {
-        debugger;
         var item = SelectedTreeNode;
         for (var j = 0; j < item.Nodes.length; j++) {
             if (item.Nodes[j].PropertyName == e.sender.value()) {
@@ -484,7 +486,6 @@ function AggregateOperationsFieldsName_Changed() {
                     };
                     AggregateOperationsSubProperty.push(fieldName);
                 }
-                console.log(AggregateOperationsSubProperty);
                 $("#AggregateOperationsSubProperty").data("kendoDropDownList").setDataSource(AggregateOperationsSubProperty);
             }
         }

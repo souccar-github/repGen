@@ -33,6 +33,7 @@ using Reporting.RDL;
 using System.Data.SqlClient;
 using Project.Web.Mvc4.Areas.Reporting.Helpers;
 using System.Windows.Forms;
+using Project.Web.Mvc4.Areas.ReportGenerator.Models;
 
 namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
 {
@@ -81,31 +82,43 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             var report = ServiceFactory.ORMService.GetById<Report>(id.Value);
             //Deploy
             ReportingHelper.SynchronizeReport($"ReportGenerator_{report.Id}");
-            return Json(new { Success = true},JsonRequestBehavior.AllowGet);
+            return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult SaveQueryTree(QueryTree queryTree, RequestInformation requestInformation)
+        public ActionResult SaveQueryTree(QueryTree queryTree, RequestInformation requestInformation, string reportName, string reportResourceName, int reportTemplate_id)
         {
             InitialzeDefaultValues();
-            var report =
-                ServiceFactory.ORMService.GetById<Report>(requestInformation.NavigationInfo.Previous[0].RowId);
+            ReportTemplate template = ServiceFactory.ORMService.GetById<ReportTemplate>(reportTemplate_id);
+            Report report = new Report()
+            {
+                Name = reportName,
+                ReportResourceName = reportResourceName,
+                //ReportType=report.ReportType,
+                Template = template
+            };
+           
+            //report.Save();
+            //ServiceFactory.ORMService.Save<Report>(report, UserExtensions.CurrentUser);
             report.AddQuery(assignParentQueryTree(queryTree));
             Session["Report"] = report;
+
+
+            //ServiceFactory.ORMService.Save<Report>(report, UserExtensions.CurrentUser);
             report.Save(UserExtensions.CurrentUser);
-            return null;
+            return Json(new { Success = true }, JsonRequestBehavior.AllowGet); ;
         }
 
         [HttpPost]
         public ActionResult SaveReport(Report report)
         {
             //test
-            
+
             Report newReport = new Report()
-            { 
-                IsVertualDeleted=report.IsVertualDeleted,
-                Name=report.Name,
-                ReportResourceName=report.ReportResourceName,
+            {
+                IsVertualDeleted = report.IsVertualDeleted,
+                Name = report.Name,
+                ReportResourceName = report.ReportResourceName,
                 //ReportType=report.ReportType,
                 Template = report.Template
             };
@@ -113,7 +126,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             {
                 newReport.QueryTreesList.Add(assignParentQueryTree(report.QueryTreesList.FirstOrDefault()));
             }
-            
+
             Session["Report"] = newReport;
             newReport.Save();
             return null;
@@ -163,15 +176,15 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             lbDescription.DataBindings.Add("Text", null, "LastName");
 
             report.DataSource = typeof(EmployeeBase).GetAll<EmployeeBase>().ToList<EmployeeBase>();
-            
-            
+
+
             return report;
         }
         public ActionResult DocumentViewerPartial()
         {
             DynamicReport report = new DynamicReport(CultureInfo.CurrentCulture, (Report)Session["Report"], UserExtensions.CurrentUser, NHibernateSession.Current);
             XtraReport finalreport = (XtraReport)report;
-            
+
             var path = Server.MapPath("~/Content/UploadedFiles/Souccar.Domain.Report.ReportDefinition/SSRS");
             string con = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             var rep = (Report)Session["Report"];
@@ -282,7 +295,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             var assembly = Assembly.GetAssembly(typeof(Employee));
             Type t = assembly.GetType(aggregateClass);
             var queryTree = QueryTreeFactory.Create(t);
-            foreach(var node in queryTree.Nodes)
+            foreach (var node in queryTree.Nodes)
             {
                 GenerateNodes(node, assembly);
             }
@@ -290,7 +303,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             return result;
         }
 
-        public  void GenerateNodes(QueryTree queryTree, Assembly assembly)
+        public void GenerateNodes(QueryTree queryTree, Assembly assembly)
         {
             var type = assembly.GetType(queryTree.FullClassName);
             var nodes = QueryTreeFactory.Create(type).Nodes;
@@ -507,7 +520,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
                 type.TryGetPropertyLocalizedName(property.Name, out title);
 
                 var nativeValidationRules = validationRules.SingleOrDefault(x => x.PropertyName == property.Name);
-             //   generateValidationRules(field, title, nativeValidationRules);
+                //   generateValidationRules(field, title, nativeValidationRules);
                 model.SchemaFields.Add(field);
 
                 var columnType = ColumnType.Simple;
@@ -552,7 +565,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
                 var title = referencesProperty.Name;
                 type.TryGetPropertyLocalizedName(referencesProperty.PropertyType.Name, out title);
 
-               // generateValidationRules(field, title, validationRules.SingleOrDefault(x => x.PropertyName == referencesProperty.Name));
+                // generateValidationRules(field, title, validationRules.SingleOrDefault(x => x.PropertyName == referencesProperty.Name));
                 model.SchemaFields.Add(field);
 
                 ColumnType columnType = ColumnType.DropDown;
@@ -602,7 +615,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
                     view.DestroyUrl = "ReportGenerator/ReportTemplate/Delete";
                     // generateReportAdditionalFields(model, columnOrder);
                 }
-                
+
             }
 
             view1.OrderColumns();
@@ -833,5 +846,20 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
 
         //#endregion
 
+        public ActionResult GetSectionViewModel(int? id)
+        {
+            var viewModel = new ReportViewModel();
+            if (id == null || id == 0)
+                return Json(viewModel, JsonRequestBehavior.AllowGet);
+
+            var section = ServiceFactory.ORMService.GetById<Report>((int)id);
+            viewModel.Id = section.Id;
+
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
+
 }
+
