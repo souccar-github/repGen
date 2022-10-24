@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Projects\ORC-HR\HR System\ui\binaries\Souccar.Infrastructure.dll
 D:\Projects\ORC-HR\HR System\ui\binaries\Souccar.Infrastructure.pdb
 D:\Projects\ORC-HR\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
@@ -23,3 +24,35 @@ F:\Projects\RepGen\ui\binaries\Souccar.Infrastructure.pdb
 F:\Projects\RepGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
 F:\Projects\RepGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
 F:\Projects\RepGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+F:\Projects\ReportGenerator\ui\binaries\Souccar.Infrastructure.dll
+F:\Projects\ReportGenerator\ui\binaries\Souccar.Infrastructure.pdb
+F:\Projects\ReportGenerator\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+F:\Projects\ReportGenerator\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+=======
+D:\Projects\ORC-HR\HR System\ui\binaries\Souccar.Infrastructure.dll
+D:\Projects\ORC-HR\HR System\ui\binaries\Souccar.Infrastructure.pdb
+D:\Projects\ORC-HR\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+D:\Projects\ORC-HR\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+D:\Projects\ORC-HR\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Projects\HR System\ui\binaries\Souccar.Infrastructure.dll
+C:\Projects\HR System\ui\binaries\Souccar.Infrastructure.pdb
+C:\Projects\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Projects\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+C:\Projects\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+C:\Projects-ReportGenerator\HR System\ui\binaries\Souccar.Infrastructure.dll
+C:\Projects-ReportGenerator\HR System\ui\binaries\Souccar.Infrastructure.pdb
+C:\Projects-ReportGenerator\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Projects-ReportGenerator\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+C:\Projects-ReportGenerator\HR System\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+D:\Git Hub\repGen\ui\binaries\Souccar.Infrastructure.dll
+D:\Git Hub\repGen\ui\binaries\Souccar.Infrastructure.pdb
+D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+F:\Projects\RepGen\ui\binaries\Souccar.Infrastructure.dll
+F:\Projects\RepGen\ui\binaries\Souccar.Infrastructure.pdb
+F:\Projects\RepGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+F:\Projects\RepGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+F:\Projects\RepGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+>>>>>>> 64ac6d3dd3dd5c86210de390ede5694426d8661f

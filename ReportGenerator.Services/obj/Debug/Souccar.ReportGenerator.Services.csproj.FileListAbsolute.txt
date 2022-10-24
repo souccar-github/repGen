@@ -1,3 +1,35 @@
+<<<<<<< HEAD
+D:\Projects\HRIS\2010\HR System-PS\UI\Binaries\Souccar.ReportGenerator.Services.dll
+D:\Projects\HRIS\2010\HR System-PS\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+D:\Projects\HRIS\2010\HR System-PS\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+D:\Projects\HRIS\2010\HR System-PS\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+D:\Projects\HRIS\2010\HR System-PS\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+C:\Projects\HR System\UI\Binaries\Souccar.ReportGenerator.Services.dll
+C:\Projects\HR System\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+C:\Projects\HR System\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+C:\Projects\HR System\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+C:\Projects\HR System\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+C:\Projects-ReportGenerator\HR System\UI\Binaries\Souccar.ReportGenerator.Services.dll
+C:\Projects-ReportGenerator\HR System\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+C:\Projects-ReportGenerator\HR System\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+C:\Projects-ReportGenerator\HR System\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+C:\Projects-ReportGenerator\HR System\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Services.dll
+D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+D:\Git Hub\repGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+D:\Git Hub\repGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+F:\Projects\RepGen\UI\Binaries\Souccar.ReportGenerator.Services.dll
+F:\Projects\RepGen\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+F:\Projects\RepGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+F:\Projects\RepGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+F:\Projects\RepGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Services.dll
+F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+=======
 D:\Projects\HRIS\2010\HR System-PS\UI\Binaries\Souccar.ReportGenerator.Services.dll
 D:\Projects\HRIS\2010\HR System-PS\UI\Binaries\Souccar.ReportGenerator.Services.pdb
 D:\Projects\HRIS\2010\HR System-PS\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
@@ -28,3 +60,4 @@ F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Services.pdb
 F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
 F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
 F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+>>>>>>> 64ac6d3dd3dd5c86210de390ede5694426d8661f

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 D:\Projects\ORC-HR\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
 C:\Projects\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
 D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
 F:\Projects\RepGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+=======
+D:\Projects\ORC-HR\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+C:\Projects\HR System\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+F:\Projects\RepGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+>>>>>>> 64ac6d3dd3dd5c86210de390ede5694426d8661f

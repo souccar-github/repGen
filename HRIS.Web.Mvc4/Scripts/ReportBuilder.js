@@ -25,13 +25,17 @@ var QueryTree;
 var TreeNodeSelectedFirstTime = 1;
 
 function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
-    debugger;
+   
     var treeview = $("#tree").data("kendoTreeView");
     var root = $("#tree").find('.k-item').first();
     treeview.select(root);
     treeview.trigger('select', { node: root });
     treeview.select($());
     QueryTree = SelectedTreeNode;
+    //debugger;
+    if (reportTemplate == "") {
+        reportTemplate = 0 
+    }
     $.ajax(
         {
             url: window.applicationpath + "ReportGenerator/ReportBuilder/SaveQueryTree",

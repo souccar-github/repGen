@@ -18,3 +18,8 @@ F:\Projects\RepGen\UI\Binaries\Souccar.CodeGenerator.pdb
 F:\Projects\RepGen\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.dll
 F:\Projects\RepGen\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.pdb
 F:\Projects\RepGen\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\UI\Binaries\Souccar.CodeGenerator.dll
+F:\Projects\ReportGenerator\UI\Binaries\Souccar.CodeGenerator.pdb
+F:\Projects\ReportGenerator\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.dll
+F:\Projects\ReportGenerator\CodeGeneratorLibrary\obj\Debug\Souccar.CodeGenerator.pdb

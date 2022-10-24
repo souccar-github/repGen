@@ -127,13 +127,13 @@ namespace Reporting.RDL
             //Row
             table.TablixRowHierarchy = GetRowHierarchy(_queryTree);
 
-            //var tablixRowHierarchy = new TablixRowHierarchy();
-            //tablixRowHierarchy.TablixMembers = new TablixMembers();
-            //tablixRowHierarchy.TablixMembers.Add(new TablixMember()
-            //{
-            //    KeepWithGroup = KeepWithGroup.After,
-            //    KeepTogether = true
-            //});
+            var tablixRowHierarchy = new TablixRowHierarchy();
+            tablixRowHierarchy.TablixMembers = new TablixMembers();
+            tablixRowHierarchy.TablixMembers.Add(new TablixMember()
+            {
+                KeepWithGroup = KeepWithGroup.After,
+                KeepTogether = true
+            });
             //tablixRowHierarchy.TablixMembers.Add(new TablixMember()
             //{
             //    DataElementName = "Detail_Collection",
