@@ -32,7 +32,7 @@ function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
     treeview.trigger('select', { node: root });
     treeview.select($());
     QueryTree = SelectedTreeNode;
-    //debugger;
+    
     if (reportTemplate == "") {
         reportTemplate = 0 
     }
