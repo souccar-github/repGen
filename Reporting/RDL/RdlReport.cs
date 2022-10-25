@@ -112,9 +112,15 @@ namespace Reporting.RDL
 
             #region Body
             var tablixBody = new TablixBody();
-            tablixBody.TablixColumns = CreateTableColumns(_queryTree);
-            
-            var tablixRows = new TablixRows();
+            //  tablixBody.TablixColumns = CreateTableColumns(_queryTree);
+
+            ///Edits
+            TablixColumns tabCols = new TablixColumns();
+            tablixBody.TablixColumns = CreateChildTablixColumns(tabCols, _queryTree);
+           //Endd
+
+
+           var tablixRows = new TablixRows();
             tablixBody.TablixRows = GetTablixRows(tablixRows, _queryTree);
 
             table.TablixBody = tablixBody;
@@ -189,7 +195,7 @@ namespace Reporting.RDL
             //    },
             //    TablixMembers = GetChildRowHierarchyMembers(queryTree)
             //});
-
+          
             return rowTablixMembers;
         }
 
@@ -249,7 +255,7 @@ namespace Reporting.RDL
         {
             var columnTablixMembers = new TablixMembers();
             foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
-            {
+             {
                 columnTablixMembers.Add(new TablixMember());
             }
 
@@ -384,6 +390,24 @@ namespace Reporting.RDL
                 var tablixColumn = new TablixColumn();
                 tablixColumn.Width = "2in";
                 tablixColumns.Add(tablixColumn);
+            }
+
+            return tablixColumns;
+        }
+
+      //  Amer And Walaa Edits
+        private TablixColumns CreateChildTablixColumns(TablixColumns tablixColumns, QueryTree queryTree)
+        {
+            foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
+            {
+                var tablixColumn = new TablixColumn();
+                tablixColumn.Width = "2in";
+                tablixColumns.Add(tablixColumn);
+            }
+
+            foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            {
+                CreateChildTablixColumns(tablixColumns,supQueryTree);
             }
 
             return tablixColumns;

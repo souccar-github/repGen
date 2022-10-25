@@ -124,12 +124,12 @@ namespace Reporting.RDL
 
             foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
-                   .PropertyType
-                   .GetInterface("IEnumerable") != null)
-                {
+                //if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
+                //   .PropertyType
+                //   .GetInterface("IEnumerable") != null)
+                //{
                     GetQueryFields(fields, supQueryTree, queryTree);
-                }
+                //}
             }
 
             return fields;
@@ -142,6 +142,8 @@ namespace Reporting.RDL
             {
                 var parentName = parent.GetTableName();
                 tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[Id] = [{name}].[{parentName}_id] ");
+                // في حال كان الربط One to many
+              //  tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[{name}_Id] = [{name}].[Id]");
             }
             else
             {
@@ -150,12 +152,12 @@ namespace Reporting.RDL
 
             foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
-                   .PropertyType
-                   .GetInterface("IEnumerable") != null)
-                {
+                //if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
+                //   .PropertyType
+                //   .GetInterface("IEnumerable") != null)
+                //{
                     GetTablesWithRelations(tables, supQueryTree, queryTree);
-                }
+                //}
             }
 
             return tables;
