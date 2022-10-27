@@ -3,3 +3,8 @@ F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Services.pdb
 F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
 F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
 F:\Projects\ReportGenerator\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb
+D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Services.dll
+D:\Git Hub\repGen\UI\Binaries\Souccar.ReportGenerator.Services.pdb
+D:\Git Hub\repGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.dll
+D:\Git Hub\repGen\ReportGenerator.Services\obj\Debug\Souccar.ReportGenerator.Services.pdb

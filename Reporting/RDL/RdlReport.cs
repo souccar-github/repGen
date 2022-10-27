@@ -284,16 +284,6 @@ namespace Reporting.RDL
         {
             tablixRows.Add(CreateHeaderRow(queryTree));
             tablixRows.Add(CreateDetailRow(queryTree));
-
-            foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
-            {
-                if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
-                   .PropertyType
-                   .GetInterface("IEnumerable") != null)
-                {
-                    GetTablixRows(tablixRows, supQueryTree);
-                }
-            }
             return tablixRows;
         }
 

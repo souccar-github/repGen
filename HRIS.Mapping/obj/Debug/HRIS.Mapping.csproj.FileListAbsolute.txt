@@ -3,3 +3,8 @@ F:\Projects\ReportGenerator\ui\binaries\HRIS.Mapping.pdb
 F:\Projects\ReportGenerator\HRIS.Mapping\obj\Debug\HRIS.Mapping.csprojResolveAssemblyReference.cache
 F:\Projects\ReportGenerator\HRIS.Mapping\obj\Debug\HRIS.Mapping.dll
 F:\Projects\ReportGenerator\HRIS.Mapping\obj\Debug\HRIS.Mapping.pdb
+D:\Git Hub\repGen\ui\binaries\HRIS.Mapping.dll
+D:\Git Hub\repGen\ui\binaries\HRIS.Mapping.pdb
+D:\Git Hub\repGen\HRIS.Mapping\obj\Debug\HRIS.Mapping.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\HRIS.Mapping\obj\Debug\HRIS.Mapping.dll
+D:\Git Hub\repGen\HRIS.Mapping\obj\Debug\HRIS.Mapping.pdb
