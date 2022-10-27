@@ -1,37 +1,3 @@
-D:\Projects\ORC-HR\HR System\ui\binaries\Souccar.dll
-D:\Projects\ORC-HR\HR System\ui\binaries\Souccar.pdb
-D:\Projects\ORC-HR\HR System\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
-D:\Projects\ORC-HR\HR System\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
-D:\Projects\ORC-HR\HR System\Souccar.Domain\obj\Debug\Souccar.dll
-D:\Projects\ORC-HR\HR System\Souccar.Domain\obj\Debug\Souccar.pdb
-D:\Projects\ORC-HR\HR System\Souccar.Domain\obj\Debug\Interop.zkemkeeper.dll
-C:\Projects\HR System\ui\binaries\Souccar.dll
-C:\Projects\HR System\ui\binaries\Souccar.pdb
-C:\Projects\HR System\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
-C:\Projects\HR System\Souccar.Domain\obj\Debug\Interop.zkemkeeper.dll
-C:\Projects\HR System\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
-C:\Projects\HR System\Souccar.Domain\obj\Debug\Souccar.dll
-C:\Projects\HR System\Souccar.Domain\obj\Debug\Souccar.pdb
-C:\Projects-ReportGenerator\HR System\ui\binaries\Souccar.dll
-C:\Projects-ReportGenerator\HR System\ui\binaries\Souccar.pdb
-C:\Projects-ReportGenerator\HR System\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
-C:\Projects-ReportGenerator\HR System\Souccar.Domain\obj\Debug\Interop.zkemkeeper.dll
-C:\Projects-ReportGenerator\HR System\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
-C:\Projects-ReportGenerator\HR System\Souccar.Domain\obj\Debug\Souccar.dll
-C:\Projects-ReportGenerator\HR System\Souccar.Domain\obj\Debug\Souccar.pdb
-D:\Git Hub\repGen\ui\binaries\Souccar.dll
-D:\Git Hub\repGen\ui\binaries\Souccar.pdb
-D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
-D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Interop.zkemkeeper.dll
-D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
-D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.dll
-D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.pdb
-F:\Projects\RepGen\ui\binaries\Souccar.dll
-F:\Projects\RepGen\ui\binaries\Souccar.pdb
-F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
-F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.dll
-F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.pdb
-F:\Projects\RepGen\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
 F:\Projects\ReportGenerator\ui\binaries\Souccar.dll
 F:\Projects\ReportGenerator\ui\binaries\Souccar.pdb
 F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache

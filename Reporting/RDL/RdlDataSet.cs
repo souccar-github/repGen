@@ -70,12 +70,14 @@ namespace Reporting.RDL
 
             foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
-                   .PropertyType
-                   .GetInterface("IEnumerable") != null)
-                {
+                //Edit Walaa 26
+                //if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
+                //   .PropertyType
+                //   .GetInterface("IEnumerable") != null)
+                //{
                     GetFieldsNames(fields, supQueryTree);
-                }
+                //} 
+                //end
             }
 
             return fields;
@@ -141,9 +143,18 @@ namespace Reporting.RDL
             if (parent != null)
             {
                 var parentName = parent.GetTableName();
+                //Edit Walaa 
+                var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == parentName); 
+                if (foreignKey)
+                { 
                 tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[Id] = [{name}].[{parentName}_id] ");
-                // في حال كان الربط One to many
-              //  tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[{name}_Id] = [{name}].[Id]");
+                    // في حال كان الربط One to many
+                    //  tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[{name}_Id] = [{name}].[Id]");
+                }
+                else
+                {
+                    tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[{name}_Id] = [{name}].[Id] ");
+                }
             }
             else
             {

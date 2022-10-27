@@ -74,7 +74,7 @@ namespace Reporting.RDL
             _report.RDLType = RDLType.RDL2010;
         }
 
-        
+
         private Syncfusion.RDL.DOM.DataSource CreateDataSource()
         {
             return new RdlDataSource(_connectionString).Create();
@@ -114,13 +114,13 @@ namespace Reporting.RDL
             var tablixBody = new TablixBody();
             //  tablixBody.TablixColumns = CreateTableColumns(_queryTree);
 
-            ///Edits
+            ///Edits Amer And Walaa
             TablixColumns tabCols = new TablixColumns();
             tablixBody.TablixColumns = CreateChildTablixColumns(tabCols, _queryTree);
-           //Endd
+            //Endd
 
 
-           var tablixRows = new TablixRows();
+            var tablixRows = new TablixRows();
             tablixBody.TablixRows = GetTablixRows(tablixRows, _queryTree);
 
             table.TablixBody = tablixBody;
@@ -178,7 +178,7 @@ namespace Reporting.RDL
             {
                 Group = new Syncfusion.RDL.DOM.Group()
                 {
-                    Name ="Detail"
+                    Name = "Detail"
                 }
             });
             //var name = queryTree.GetTableName();
@@ -195,18 +195,18 @@ namespace Reporting.RDL
             //    },
             //    TablixMembers = GetChildRowHierarchyMembers(queryTree)
             //});
-          
+
             return rowTablixMembers;
         }
 
         private TablixMembers GetChildRowHierarchyMembers(QueryTree queryTree)
         {
             var rowTablixMembers = new TablixMembers();
-            
+
             var nodes = queryTree.Nodes.Where(x => x.HasSelectedFields).OrderBy(x => x.SelectOrder)
                 .Where(x => queryTree.Type.GetProperty(x.DisplayName).PropertyType.GetInterface("IEnumerable") != null);
 
-            if(nodes != null && nodes.Any())
+            if (nodes != null && nodes.Any())
             {
                 rowTablixMembers.Add(new TablixMember());
                 rowTablixMembers.Add(new TablixMember());
@@ -247,16 +247,21 @@ namespace Reporting.RDL
         private TablixColumnHierarchy GetColumnHierarchy(QueryTree queryTree)
         {
             var tablixColumnHierarchy = new TablixColumnHierarchy();
-            tablixColumnHierarchy.TablixMembers = GetColumnHierarchyMembers(queryTree);
+            var columnTablixMembers = new TablixMembers();
+            tablixColumnHierarchy.TablixMembers = GetColumnHierarchyMembers(columnTablixMembers, queryTree);
             return tablixColumnHierarchy;
         }
 
-        private TablixMembers GetColumnHierarchyMembers(QueryTree queryTree)
+        private TablixMembers GetColumnHierarchyMembers(TablixMembers columnTablixMembers, QueryTree queryTree)
         {
-            var columnTablixMembers = new TablixMembers();
+            //var columnTablixMembers = new TablixMembers();
             foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
-             {
+            {
                 columnTablixMembers.Add(new TablixMember());
+            }
+            foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            {
+                GetColumnHierarchyMembers(columnTablixMembers, supQueryTree);
             }
 
             return columnTablixMembers;
@@ -279,7 +284,7 @@ namespace Reporting.RDL
         {
             tablixRows.Add(CreateHeaderRow(queryTree));
             tablixRows.Add(CreateDetailRow(queryTree));
-            
+
             foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
                 if (queryTree.Type.GetProperty(supQueryTree.DisplayName)
@@ -296,17 +301,26 @@ namespace Reporting.RDL
         {
             var tablixRow = new TablixRow();
             tablixRow.Height = "0.25in";
-
             tablixRow.TablixCells = new TablixCells();
-            foreach (var leaf in queryTree.Leaves.Where(x=>x.IsSelected))
+            CreateHeaderRowTablixCells(tablixRow, queryTree);
+            return tablixRow;
+        }
+        //Edit Walaa 26
+        private TablixRow CreateHeaderRowTablixCells(TablixRow tablixRow, QueryTree queryTree)
+        {
+            foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 string labelName = GetLabelName(queryTree, leaf);
                 tablixRow.TablixCells.Add(CreateHeaderCell(labelName, GetLabelText(queryTree, leaf)));
             }
-
+            foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            {
+                CreateHeaderRowTablixCells(tablixRow, supQueryTree);
+            }
             return tablixRow;
         }
 
+        //End
         private TablixCell CreateHeaderCell(string name, string value)
         {
             var style = GetTableHeaderStyle();
@@ -339,18 +353,29 @@ namespace Reporting.RDL
         private TablixRow CreateDetailRow(QueryTree queryTree)
         {
             var tablixRow = new TablixRow();
-
             tablixRow.Height = "0.25in";
             tablixRow.TablixCells = new TablixCells();
+
+            CreateDetailRowTablixCells(tablixRow, queryTree);
+
+
+            return tablixRow;
+        }
+        //Edit Walaa 26
+        private TablixRow CreateDetailRowTablixCells(TablixRow tablixRow, QueryTree queryTree)
+        {
             foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 string name = queryTree.GetTableName() + leaf.DisplayName;
                 tablixRow.TablixCells.Add(CreateCell(name));
             }
-
+            foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            {
+                CreateDetailRowTablixCells(tablixRow, supQueryTree);
+            }
             return tablixRow;
         }
-
+        //End 
         private TablixCell CreateCell(string name)
         {
             var style = GetTableBodyStyle();
@@ -385,7 +410,7 @@ namespace Reporting.RDL
         {
             var tablixColumns = new TablixColumns();
 
-            foreach(var leaf in queryTree.Leaves.Where(x => x.IsSelected))
+            foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 var tablixColumn = new TablixColumn();
                 tablixColumn.Width = "2in";
@@ -395,7 +420,7 @@ namespace Reporting.RDL
             return tablixColumns;
         }
 
-      //  Amer And Walaa Edits
+        //  Amer And Walaa Edits
         private TablixColumns CreateChildTablixColumns(TablixColumns tablixColumns, QueryTree queryTree)
         {
             foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
@@ -407,7 +432,7 @@ namespace Reporting.RDL
 
             foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                CreateChildTablixColumns(tablixColumns,supQueryTree);
+                CreateChildTablixColumns(tablixColumns, supQueryTree);
             }
 
             return tablixColumns;
@@ -555,11 +580,11 @@ namespace Reporting.RDL
 
             try
             {
-                TextWriter ws2 = new StreamWriter(_reportPath + "\\ReportGenerator_"+ _reportId + ".rdl");
+                TextWriter ws2 = new StreamWriter(_reportPath + "\\ReportGenerator_" + _reportId + ".rdl");
                 xs2.Serialize(ws2, _report, xs);
                 ws2.Close();
             }
-            catch(Exception ex) { }
+            catch (Exception ex) { }
         }
 
         private string GetLabelText(QueryTree queryTree, QueryLeaf leaf)
@@ -575,7 +600,7 @@ namespace Reporting.RDL
         private string GetLabelName(QueryTree queryTree, QueryLeaf leaf)
         {
             var sections = queryTree.FullClassName.Split('.');
-            if(sections != null && sections.Length >= 3)
+            if (sections != null && sections.Length >= 3)
             {
                 return $"Label{sections[2]}0{queryTree.GetTableName()}0{leaf.DisplayName}";
             }
@@ -584,3 +609,5 @@ namespace Reporting.RDL
         }
     }
 }
+
+
