@@ -1,6 +1,5 @@
 F:\Projects\ReportGenerator\ui\binaries\Souccar.dll
 F:\Projects\ReportGenerator\ui\binaries\Souccar.pdb
-F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
 F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
 F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.dll
 F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.pdb
