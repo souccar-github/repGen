@@ -17,35 +17,67 @@ namespace Reporting.RDL
         private QueryTree _queryTree;
         public RdlParameter(QueryTree queryTree)
         {
-             parameter = new Syncfusion.RDL.DOM.ReportParameter();
+           
             _queryTree = queryTree;
+            _reportParameters = new Syncfusion.RDL.DOM.ReportParameters();
         }
 
-        public Syncfusion.RDL.DOM.ReportParameters Create()
+        //public Syncfusion.RDL.DOM.ReportParameters Create()
+        //{
+        //    _reportParameters = new Syncfusion.RDL.DOM.ReportParameters();
+
+        //    foreach (var leave in _queryTree.Leaves.Where(x => x.IsSelected))
+        //    {
+        //        if (leave.FilterDescriptors.Count > 0)
+        //        {
+        //            foreach (var filter in leave.FilterDescriptors)
+        //            {
+        //                var type = _queryTree.Type;
+        //                var propInfo = type.GetProperty(leave.PropertyName);
+        //                parameter.Name = propInfo.Name;
+        //                parameter.Prompt = leave.DisplayName;
+        //                //Method to get Data type from Type
+        //                parameter.DataType = Syncfusion.RDL.DOM.DataTypes.String;
+        //                parameter.ValidValues = GetValidValues(propInfo);
+        //                parameter.DefaultValue = GetDefaultValue(propInfo);
+        //                _reportParameters.Add(parameter);
+        //            }
+        //        }
+        //    }
+        //    foreach (var node in _queryTree.Nodes.Where(x => x.HasSelectedFields))
+        //    {
+        //        Create();
+        //    }
+        //    return _reportParameters;
+        //}
+
+
+        public Syncfusion.RDL.DOM.ReportParameters Create(QueryTree queryTree)
         {
-             _reportParameters = new Syncfusion.RDL.DOM.ReportParameters();
             foreach (var leave in _queryTree.Leaves.Where(x => x.IsSelected))
             {
-                var type = _queryTree.Type;
-                var propInfo = type.GetProperty("FirstName");
-
-                parameter.Name = propInfo.Name;
-                parameter.Name = GetParameterName(_queryTree).ToString();
-                parameter.Prompt = propInfo.GetTitle();
-                parameter.DataType = Syncfusion.RDL.DOM.DataTypes.String;
-                parameter.ValidValues = GetValidValues(propInfo);
-                parameter.DefaultValue = GetDefaultValue(propInfo);
-
-                //parameter.Values.Add("10250");
-
-                _reportParameters.Add(parameter);
+                if (leave.FilterDescriptors.Count > 0)
+                {
+                        parameter = new Syncfusion.RDL.DOM.ReportParameter();
+                        var type = leave.PropertyType;
+                        var propInfo = type.GetProperty(leave.PropertyName);
+                        parameter.Name = leave.PropertyName;
+                        parameter.Prompt = leave.DisplayName;
+                        //Method to get Data type from Type
+                       // parameter.DataType = Syncfusion.RDL.DOM.DataTypes.String;
+                      //  parameter.ValidValues = GetValidValues(propInfo);
+                      //  parameter.DefaultValue = GetDefaultValue(propInfo);
+                        _reportParameters.Add(parameter);
+                }
             }
-            foreach (var node in _queryTree.Nodes.Where(x => x.HasSelectedFields))
+            foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                Create();
+                Create(node);
             }
             return _reportParameters;
         }
+
+
         private Syncfusion.RDL.DOM.ReportParameter GetParameterName(QueryTree queryTree)
         {
             var name = parameter.Name;

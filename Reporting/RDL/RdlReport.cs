@@ -15,7 +15,7 @@ namespace Reporting.RDL
         private Syncfusion.RDL.DOM.ReportDefinition _report;
         private Syncfusion.RDL.DOM.DataSource _dataSource;
         private Syncfusion.RDL.DOM.DataSet _dataSet;
-        private Syncfusion.RDL.DOM.ReportParameter _reportParameter;
+        //private Syncfusion.RDL.DOM.ReportParameter _reportParameter;
         private QueryTree _queryTree;
         private string _connectionString;
         private string _reportPath;
@@ -51,11 +51,11 @@ namespace Reporting.RDL
             _report.DataSources.Add(dataSource);
 
             //Data Set
-            _report.DataSets.Add(CreateDataSet(dataSource));
+            _report.DataSets.AddRange(CreateDataSet(dataSource));
 
             //ReportParameters
-             CreateReportParameter();
-            //_report.ReportParameters.Add(CreateReportParameter());
+             var parameters = CreateReportParameter();
+            _report.ReportParameters.AddRange(parameters);
 
             //Sections
             _report.ReportSections = new ReportSections();
@@ -86,14 +86,14 @@ namespace Reporting.RDL
             return new RdlDataSource(_connectionString).Create();
         }
 
-        private Syncfusion.RDL.DOM.DataSet CreateDataSet(Syncfusion.RDL.DOM.DataSource dataSource)
+        private Syncfusion.RDL.DOM.DataSets CreateDataSet(Syncfusion.RDL.DOM.DataSource dataSource)
         {
             return new RdlDataSet(dataSource, _queryTree).Create();
         }
 
         private Syncfusion.RDL.DOM.ReportParameters CreateReportParameter()
         {
-            return new RdlParameter(_queryTree).Create();
+            return new RdlParameter(_queryTree).Create(_queryTree);
         }
 
         Body CreateBody()
