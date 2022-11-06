@@ -30,7 +30,7 @@
               </Paragraph>
             </Paragraphs>
           </Textbox>
-          <Tablix Name="ApplicantTable">
+          <Tablix Name="EmployeeTable">
             <Left>1in</Left>
             <Top>1in</Top>
             <Height>0.50000in</Height>
@@ -50,7 +50,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelRecruitment0Applicant0FirstName">
+                        <Textbox Name="LabelPersonnel0Employee0FirstName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -84,7 +84,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelRecruitment0Applicant0LastName">
+                        <Textbox Name="LabelPersonnel0Employee0LastName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -123,7 +123,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ApplicantFirstName">
+                        <Textbox Name="EmployeeFirstName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -141,7 +141,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ApplicantFirstName.Value</Value>
+                                  <Value>=Fields!EmployeeFirstName.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -155,7 +155,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ApplicantLastName">
+                        <Textbox Name="EmployeeLastName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -173,7 +173,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ApplicantLastName.Value</Value>
+                                  <Value>=Fields!EmployeeLastName.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -201,7 +201,7 @@
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Details" />
+                  <Group Name="Detail" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -234,23 +234,52 @@
   <DataSets>
     <DataSet Name="DataSet1">
       <Fields>
-        <Field Name="ApplicantId">
-          <DataField>ApplicantId</DataField>
+        <Field Name="EmployeeId">
+          <DataField>EmployeeId</DataField>
         </Field>
-        <Field Name="ApplicantFirstName">
-          <DataField>ApplicantFirstName</DataField>
+        <Field Name="EmployeeFirstName">
+          <DataField>EmployeeFirstName</DataField>
         </Field>
-        <Field Name="ApplicantLastName">
-          <DataField>ApplicantLastName</DataField>
+        <Field Name="EmployeeLastName">
+          <DataField>EmployeeLastName</DataField>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Applicant].[Id] AS ApplicantId , [Applicant].[FirstName] AS ApplicantFirstName , [Applicant].[LastName] AS ApplicantLastName FROM Applicant</CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName FROM Employee WHERE  [Employee].[FirstName] like N'%' + @FirstName + '%' </CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@FirstName">
+            <Value>Parameters!FirstName.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
         <Timeout>30</Timeout>
       </Query>
     </DataSet>
   </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="FirstName">
+      <DataType>String</DataType>
+      <Prompt>FirstName</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>3</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>FirstName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>LastName</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
 </Report>

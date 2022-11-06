@@ -47,7 +47,6 @@ namespace Reporting.RDL
             GenerateQueryParameters(queryParameters, _queryTree);
             query.QueryParameters = new QueryParameters();
             query.QueryParameters.AddRange(queryParameters);
-
             query.CommandType = CommandType.Text;
             query.CommandText = BuilderQuery(_queryTree);
             query.Timeout = 30;
@@ -65,7 +64,7 @@ namespace Reporting.RDL
             {
                 QueryParameter par = new QueryParameter();
                 par.Name = parameter;
-                par.Value = $"Parameters!{parameter.Replace('@', ' ').Trim()}.Value";
+                par.Value = $"=Parameters!{parameter.Replace('@', ' ').Trim()}.Value";
                 queryParameters.Add(par);
             }
 
@@ -322,11 +321,11 @@ namespace Reporting.RDL
                             }
                             else if (filter.FilterOperator == FilterOperator.StartsWith)
                             {
-                                filters.Add($" [{name}].[{leave.PropertyName}] {op} N'%' + @{leave.PropertyName} + '%' ");
+                                filters.Add($" [{name}].[{leave.PropertyName}] {op}  @{leave.PropertyName} + '%' ");
                             }
                             else if (filter.FilterOperator == FilterOperator.EndsWith)
                             {
-                                filters.Add($" [{name}].[{leave.PropertyName}] {op} N'%' + @{leave.PropertyName} + '%' ");
+                                filters.Add($" [{name}].[{leave.PropertyName}] {op} N'%' + @{leave.PropertyName} ");
                             }
                         }
                         else

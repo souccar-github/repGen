@@ -7,6 +7,7 @@ using System.Linq;
 using Souccar.Infrastructure.Core;
 using System.Text.RegularExpressions;
 using Reporting.Extensions;
+using System.Collections.Generic;
 
 namespace Reporting.RDL
 {
@@ -46,6 +47,20 @@ namespace Reporting.RDL
 
         private void InitialReport()
         {
+            //Sections
+            _report.ReportSections = new ReportSections();
+            var reportSection = new ReportSection();
+            _report.ReportSections.Add(reportSection);
+            reportSection.Body = CreateBody();
+
+            //ReportParameters
+            var parameters = CreateReportParameter();
+            _report.ReportParameters.AddRange(parameters);
+
+            //Report Parameters Layout
+            _report.ReportParametersLayout = CreateReportParameterLayout();
+
+
             //Data Source
             var dataSource = CreateDataSource();
             _report.DataSources.Add(dataSource);
@@ -53,15 +68,8 @@ namespace Reporting.RDL
             //Data Set
             _report.DataSets.AddRange(CreateDataSet(dataSource));
 
-            //ReportParameters
-             var parameters = CreateReportParameter();
-            _report.ReportParameters.AddRange(parameters);
-
-            //Sections
-            _report.ReportSections = new ReportSections();
-            var reportSection = new ReportSection();
-            _report.ReportSections.Add(reportSection);
-            reportSection.Body = CreateBody();
+          
+         
 
             reportSection.Page = new Syncfusion.RDL.DOM.Page();
             //reportSection.Page.PageHeader = CreateHeader();
@@ -80,6 +88,50 @@ namespace Reporting.RDL
             _report.RDLType = RDLType.RDL2010;
         }
 
+        private Syncfusion.RDL.DOM.ReportParametersLayout CreateReportParameterLayout()
+        {
+            int rowIndex = 0;
+            int columnIndex = 0;
+
+
+            CellDefinitions cellDefs = new CellDefinitions();
+            foreach (var leave in _queryTree.Leaves.Where(x => x.IsSelected && x.HasFilters))
+            {
+                    var cellDef = new CellDefinition()
+                    {
+                        RowIndex = rowIndex,
+                        ColumnIndex = columnIndex,
+                        ParameterName = leave.PropertyName
+                    };
+                    cellDefs.Add(cellDef);
+                if(rowIndex >= 3)
+                {
+                    rowIndex = 0;
+                    columnIndex++;
+                }
+                else
+                    rowIndex++;
+            }
+
+            var RepParamLayout = new ReportParametersLayout()
+            {
+                GridLayoutDefinition = new GridLayoutDefinition()
+                {
+                    NumberOfRows = GetRowsAndColumnsNumber(true),
+                    NumberOfColumns = GetRowsAndColumnsNumber(false),
+                    CellDefinitions = cellDefs,
+                },
+            };
+            return RepParamLayout;
+        }
+
+        private int GetRowsAndColumnsNumber(bool isRow)
+        {
+            if(isRow)
+            { return 2; }
+            TablixMembers tablixMembers = new TablixMembers();
+            return GetColumnHierarchyMembers(tablixMembers, _queryTree).Count;
+        }
 
         private Syncfusion.RDL.DOM.DataSource CreateDataSource()
         {
