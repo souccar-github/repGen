@@ -60,14 +60,15 @@ namespace Reporting.RDL
                 {
                         parameter = new Syncfusion.RDL.DOM.ReportParameter();
                         var type = leave.PropertyType;
-                        var propInfo = type.GetProperty(leave.PropertyName);
+                        var propInfo = type.Name;
                         parameter.Name = leave.PropertyName;
                         parameter.Prompt = leave.DisplayName;
-                        //Method to get Data type from Type
-                       // parameter.DataType = Syncfusion.RDL.DOM.DataTypes.String;
-                      //  parameter.ValidValues = GetValidValues(propInfo);
-                      //  parameter.DefaultValue = GetDefaultValue(propInfo);
-                        _reportParameters.Add(parameter);
+                    //Method to get Data type from Type
+                   // parameter.DataType = GetParameterDataType(propInfo);
+                    // parameter.DataType = Syncfusion.RDL.DOM.DataTypes.String;
+                    //parameter.ValidValues = GetValidValues(propInfo);
+                    //  parameter.DefaultValue = GetDefaultValue(propInfo);
+                    _reportParameters.Add(parameter);
                 }
             }
             foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
@@ -76,7 +77,18 @@ namespace Reporting.RDL
             }
             return _reportParameters;
         }
-
+        //private Syncfusion.RDL.DOM.DataTypes GetParameterDataType(string propertyInfo)
+        //{
+        //    if(propertyInfo == Syncfusion.RDL.DOM.DataTypes.String.ToString())
+        //    {
+        //        return Syncfusion.RDL.DOM.DataTypes.String;
+        //    }
+        //    else if(propertyInfo == Syncfusion.RDL.DOM.DataTypes.Boolean.ToString())
+        //    {
+        //        return Syncfusion.RDL.DOM.DataTypes.Boolean;
+        //    }
+           
+        //}
 
         private Syncfusion.RDL.DOM.ReportParameter GetParameterName(QueryTree queryTree)
         {
