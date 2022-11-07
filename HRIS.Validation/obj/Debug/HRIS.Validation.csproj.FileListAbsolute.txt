@@ -1,36 +1,9 @@
-D:\Projects\ORC-HR\HR System\ui\binaries\HRIS.Validation.dll
-D:\Projects\ORC-HR\HR System\ui\binaries\HRIS.Validation.pdb
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.csprojResolveAssemblyReference.cache
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.CustomMessagesResource.resources
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.DefaultValidationMessagesResource.resources
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalMessagesResource.resources
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.dll
-D:\Projects\ORC-HR\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.pdb
-C:\Projects\HR System\ui\binaries\HRIS.Validation.dll
-C:\Projects\HR System\ui\binaries\HRIS.Validation.pdb
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.csprojResolveAssemblyReference.cache
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.CustomMessagesResource.resources
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.DefaultValidationMessagesResource.resources
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalMessagesResource.resources
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.dll
-C:\Projects\HR System\HRIS.Validation\obj\Debug\HRIS.Validation.pdb
-D:\Git Hub\repGen\ui\binaries\HRIS.Validation.dll
-D:\Git Hub\repGen\ui\binaries\HRIS.Validation.pdb
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.csprojResolveAssemblyReference.cache
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.CustomMessagesResource.resources
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.DefaultValidationMessagesResource.resources
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalMessagesResource.resources
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.dll
-D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.pdb
-F:\Projects\RepGen\ui\binaries\HRIS.Validation.dll
-F:\Projects\RepGen\ui\binaries\HRIS.Validation.pdb
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.CustomMessagesResource.resources
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.DefaultValidationMessagesResource.resources
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalMessagesResource.resources
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.dll
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.pdb
-F:\Projects\RepGen\HRIS.Validation\obj\Debug\HRIS.Validation.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\ui\binaries\HRIS.Validation.dll
+F:\Projects\ReportGenerator\ui\binaries\HRIS.Validation.pdb
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.CustomMessagesResource.resources
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.DefaultValidationMessagesResource.resources
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalMessagesResource.resources
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.dll
+F:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.pdb

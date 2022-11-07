@@ -1,25 +1,10 @@
-D:\Projects\ORC-HR\HR System\ui\binaries\HRIS.Domain.dll
-D:\Projects\ORC-HR\HR System\ui\binaries\HRIS.Domain.pdb
-D:\Projects\ORC-HR\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.dll
-D:\Projects\ORC-HR\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.pdb
-D:\Projects\ORC-HR\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
-C:\Projects\HR System\ui\binaries\HRIS.Domain.dll
-C:\Projects\HR System\ui\binaries\HRIS.Domain.pdb
-C:\Projects\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
-C:\Projects\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.dll
-C:\Projects\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.pdb
-C:\Projects-ReportGenerator\HR System\ui\binaries\HRIS.Domain.dll
-C:\Projects-ReportGenerator\HR System\ui\binaries\HRIS.Domain.pdb
-C:\Projects-ReportGenerator\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
-C:\Projects-ReportGenerator\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.dll
-C:\Projects-ReportGenerator\HR System\HRIS.Domain\obj\Debug\HRIS.Domain.pdb
+F:\Projects\ReportGenerator\ui\binaries\HRIS.Domain.dll
+F:\Projects\ReportGenerator\ui\binaries\HRIS.Domain.pdb
+F:\Projects\ReportGenerator\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\HRIS.Domain\obj\Debug\HRIS.Domain.dll
+F:\Projects\ReportGenerator\HRIS.Domain\obj\Debug\HRIS.Domain.pdb
 D:\Git Hub\repGen\ui\binaries\HRIS.Domain.dll
 D:\Git Hub\repGen\ui\binaries\HRIS.Domain.pdb
 D:\Git Hub\repGen\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
 D:\Git Hub\repGen\HRIS.Domain\obj\Debug\HRIS.Domain.dll
 D:\Git Hub\repGen\HRIS.Domain\obj\Debug\HRIS.Domain.pdb
-F:\Projects\RepGen\ui\binaries\HRIS.Domain.dll
-F:\Projects\RepGen\ui\binaries\HRIS.Domain.pdb
-F:\Projects\RepGen\HRIS.Domain\obj\Debug\HRIS.Domain.csprojResolveAssemblyReference.cache
-F:\Projects\RepGen\HRIS.Domain\obj\Debug\HRIS.Domain.dll
-F:\Projects\RepGen\HRIS.Domain\obj\Debug\HRIS.Domain.pdb

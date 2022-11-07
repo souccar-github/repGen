@@ -101,3 +101,44 @@ C:\Projects\HR System\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateMana
 C:\Projects\HR System\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.pdb
 C:\Projects\HR System\Souccar.NHibernateManager\bin\Debug\Souccar.ReportGenerator.Domain.dll
 C:\Projects\HR System\Souccar.NHibernateManager\bin\Debug\Souccar.ReportGenerator.Domain.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernateManager.exe.config
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernateManager.exe.manifest
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernateManager.application
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernateManager.exe
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernateManager.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\FluentNHibernate.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\HRIS.Mapping.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Iesi.Collections.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\log4net.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\NHibernate.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\NHibernate.Linq.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernate.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\HRIS.Domain.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.ReportGenerator.Domain.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\SpecExpress.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\LinqToExcel.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.Infrastructure.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\AutoMapper.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.Reflector.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Remotion.Data.Linq.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\HRIS.Mapping.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\FluentNHibernate.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Iesi.Collections.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.NHibernate.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\HRIS.Domain.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.ReportGenerator.Domain.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.Infrastructure.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Souccar.Reflector.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.csprojResolveAssemblyReference.cache
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.Form1.resources
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.Properties.Resources.resources
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.csproj.GenerateResource.Cache
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.exe.manifest
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.application
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.exe
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.pdb

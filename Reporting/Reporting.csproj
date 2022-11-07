@@ -170,6 +170,7 @@
     <Compile Include="RDL\RdlDataSet.cs" />
     <Compile Include="RDL\RdlDataSource.cs" />
     <Compile Include="RDL\Query\RdlQuery.cs" />
+    <Compile Include="RDL\RdlParameter.cs" />
     <Compile Include="RDL\RdlReport.cs" />
   </ItemGroup>
   <ItemGroup>
