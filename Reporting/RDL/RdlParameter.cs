@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Souccar.Infrastructure.Extenstions;
 using System.Reflection;
+using Syncfusion.RDL.DOM;
 
 namespace Reporting.RDL
 {
@@ -59,16 +60,16 @@ namespace Reporting.RDL
                 if (leave.FilterDescriptors.Count > 0)
                 {
                         parameter = new Syncfusion.RDL.DOM.ReportParameter();
-                        var type = leave.PropertyType;
-                        var propInfo = type.Name;
+
+                        var type = queryTree.Type;
+                        var propInfo = type.GetProperty(leave.PropertyName);
                         parameter.Name = leave.PropertyName;
                         parameter.Prompt = leave.DisplayName;
-                    //Method to get Data type from Type
-                   // parameter.DataType = GetParameterDataType(propInfo);
-                    // parameter.DataType = Syncfusion.RDL.DOM.DataTypes.String;
-                    //parameter.ValidValues = GetValidValues(propInfo);
-                    //  parameter.DefaultValue = GetDefaultValue(propInfo);
-                    _reportParameters.Add(parameter);
+                        //Method to get Data type from Type
+                        parameter.DataType = GetTypes(propInfo);
+                      //  parameter.ValidValues = GetValidValues(propInfo);
+                      //  parameter.DefaultValue = GetDefaultValue(propInfo);
+                        _reportParameters.Add(parameter);
                 }
             }
             foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
@@ -90,28 +91,30 @@ namespace Reporting.RDL
            
         //}
 
-        private Syncfusion.RDL.DOM.ReportParameter GetParameterName(QueryTree queryTree)
-        {
-            var name = parameter.Name;
-            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
-            {
-                if (leave.FilterDescriptors.Count > 0)
-                {
-                    name = leave.DisplayName;
-                }
-                foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
-                {
-                    GetParameterName(node);
-                }
-            }
-            return null;
-        }
-        private Syncfusion.RDL.DOM.DefaultValue GetDefaultValue(PropertyInfo propertyInfo)
-        {
-            var defaultValue = new Syncfusion.RDL.DOM.DefaultValue();
-            defaultValue.Values.Add("111");
-            return defaultValue;
-        }
+        //private Syncfusion.RDL.DOM.ReportParameter GetParameterName(QueryTree queryTree)
+        //{
+        //    var name = parameter.Name;
+        //    foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
+        //    {
+        //        if (leave.FilterDescriptors.Count > 0)
+        //        {
+        //            name = leave.DisplayName;
+        //        }
+        //        foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
+        //        {
+        //            GetParameterName(node);
+        //        }
+        //    }
+        //    return null;
+        //}
+
+
+        //private Syncfusion.RDL.DOM.DefaultValue GetDefaultValue(PropertyInfo propertyInfo)
+        //{
+        //    var defaultValue = new Syncfusion.RDL.DOM.DefaultValue();
+        //    defaultValue.Values.Add("111");
+        //    return defaultValue;
+        //}
 
         private Syncfusion.RDL.DOM.ValidValues GetValidValues(PropertyInfo propInfo)
         {
@@ -125,14 +128,32 @@ namespace Reporting.RDL
             return validValue;
         }
 
-        private Syncfusion.RDL.DOM.DataTypes GetType(PropertyInfo propertyInfo)
+        private Syncfusion.RDL.DOM.DataTypes GetTypes(PropertyInfo Leave)
         {
-            if(propertyInfo.PropertyType == typeof(String))
+            var datatype = Leave.PropertyType;
+            DataTypes propType;
+            if (datatype == typeof(String))
             {
-                return Syncfusion.RDL.DOM.DataTypes.String;
+                propType = Syncfusion.RDL.DOM.DataTypes.String;
+            }
+            else if (datatype == typeof(Boolean))
+            {
+                propType = Syncfusion.RDL.DOM.DataTypes.Boolean;
+            }
+            else if (datatype == typeof(DateTime))
+            {
+                propType = Syncfusion.RDL.DOM.DataTypes.DateTime;
+            }
+            else if (datatype == typeof(int))
+            {
+                propType = Syncfusion.RDL.DOM.DataTypes.Integer;
+            }
+            else 
+            {
+                propType = Syncfusion.RDL.DOM.DataTypes.Float;
             }
 
-            return Syncfusion.RDL.DOM.DataTypes.String;
+            return propType;
         }
     }
 }

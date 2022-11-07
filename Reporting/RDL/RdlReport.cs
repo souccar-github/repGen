@@ -68,8 +68,8 @@ namespace Reporting.RDL
             //Data Set
             _report.DataSets.AddRange(CreateDataSet(dataSource));
 
-          
-         
+
+
 
             reportSection.Page = new Syncfusion.RDL.DOM.Page();
             //reportSection.Page.PageHeader = CreateHeader();
@@ -90,50 +90,49 @@ namespace Reporting.RDL
 
         private Syncfusion.RDL.DOM.ReportParametersLayout CreateReportParameterLayout(QueryTree queryTree)
         {
-            CellDefinitions cellDefs = new CellDefinitions();
-            cellDefs = CreateCellDefenition(_queryTree,cellDefs);
+            Syncfusion.RDL.DOM.CellDefinitions cellDefs = new CellDefinitions();
+            var cellDefinitions = GetCellDefinitions( _queryTree , cellDefs,0,0 );
             var RepParamLayout = new ReportParametersLayout()
             {
                 GridLayoutDefinition = new GridLayoutDefinition()
                 {
                     NumberOfRows = GetRowsAndColumnsNumber(true),
                     NumberOfColumns = GetRowsAndColumnsNumber(false),
-                    CellDefinitions = cellDefs,
+                    CellDefinitions = cellDefs
                 },
             };
             return RepParamLayout;
         }
-
-        private Syncfusion.RDL.DOM.CellDefinitions CreateCellDefenition(QueryTree queryTree, CellDefinitions cellDefs = null, int rowIndex = 0, int columnIndex = 0)
-        {
-
+        private Syncfusion.RDL.DOM.CellDefinitions GetCellDefinitions(QueryTree queryTree, CellDefinitions cellDefs, int rowIndex , int columnIndex) {
+         
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected && x.HasFilters))
             {
-                    var cellDef = new CellDefinition()
-                    {
-                        RowIndex = rowIndex,
-                        ColumnIndex = columnIndex,
-                        ParameterName = leave.PropertyName
-                    };
-                    cellDefs.Add(cellDef);
-                if(rowIndex >= 3)
+                var cellDef = new CellDefinition()
                 {
-                    rowIndex = 0;
-                    columnIndex++;
+                    RowIndex = rowIndex,
+                    ColumnIndex = columnIndex,
+                    ParameterName = leave.PropertyName
+                };
+                cellDefs.Add(cellDef);
+                if (columnIndex >= 3)
+                {
+                    columnIndex = 0;
+                    rowIndex++;
                 }
                 else
-                    rowIndex++;
+                    columnIndex++;
             }
-            foreach(var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields && x.HasFilters))
             {
-                CreateCellDefenition(node,cellDefs, rowIndex, columnIndex);
+                GetCellDefinitions(node , cellDefs, rowIndex, columnIndex);
             }
-            return cellDefs;
-        }
+
+                return cellDefs;
+            }
 
         private int GetRowsAndColumnsNumber(bool isRow)
         {
-            if(isRow)
+            if (isRow)
             { return 2; }
             TablixMembers tablixMembers = new TablixMembers();
             return GetColumnHierarchyMembers(tablixMembers, _queryTree).Count;
