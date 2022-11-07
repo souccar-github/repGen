@@ -54,7 +54,7 @@ namespace Reporting.RDL
 
         public Syncfusion.RDL.DOM.ReportParameters Create(QueryTree queryTree)
         {
-            foreach (var leave in _queryTree.Leaves.Where(x => x.IsSelected))
+            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 if (leave.FilterDescriptors.Count > 0)
                 {

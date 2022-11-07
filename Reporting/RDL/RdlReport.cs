@@ -58,7 +58,7 @@ namespace Reporting.RDL
             _report.ReportParameters.AddRange(parameters);
 
             //Report Parameters Layout
-            _report.ReportParametersLayout = CreateReportParameterLayout();
+            _report.ReportParametersLayout = CreateReportParameterLayout(_queryTree);
 
 
             //Data Source
@@ -85,17 +85,29 @@ namespace Reporting.RDL
 
             reportSection.Width = pageWidth + "in";
             _report.ReportUnitType = "Inch";
-            _report.RDLType = RDLType.RDL2010;
+            _report.RDLType = RDLType.RDL2016;
         }
 
-        private Syncfusion.RDL.DOM.ReportParametersLayout CreateReportParameterLayout()
+        private Syncfusion.RDL.DOM.ReportParametersLayout CreateReportParameterLayout(QueryTree queryTree)
         {
-            int rowIndex = 0;
-            int columnIndex = 0;
-
-
             CellDefinitions cellDefs = new CellDefinitions();
-            foreach (var leave in _queryTree.Leaves.Where(x => x.IsSelected && x.HasFilters))
+            cellDefs = CreateCellDefenition(_queryTree,cellDefs);
+            var RepParamLayout = new ReportParametersLayout()
+            {
+                GridLayoutDefinition = new GridLayoutDefinition()
+                {
+                    NumberOfRows = GetRowsAndColumnsNumber(true),
+                    NumberOfColumns = GetRowsAndColumnsNumber(false),
+                    CellDefinitions = cellDefs,
+                },
+            };
+            return RepParamLayout;
+        }
+
+        private Syncfusion.RDL.DOM.CellDefinitions CreateCellDefenition(QueryTree queryTree, CellDefinitions cellDefs = null, int rowIndex = 0, int columnIndex = 0)
+        {
+
+            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected && x.HasFilters))
             {
                     var cellDef = new CellDefinition()
                     {
@@ -112,17 +124,11 @@ namespace Reporting.RDL
                 else
                     rowIndex++;
             }
-
-            var RepParamLayout = new ReportParametersLayout()
+            foreach(var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                GridLayoutDefinition = new GridLayoutDefinition()
-                {
-                    NumberOfRows = GetRowsAndColumnsNumber(true),
-                    NumberOfColumns = GetRowsAndColumnsNumber(false),
-                    CellDefinitions = cellDefs,
-                },
-            };
-            return RepParamLayout;
+                CreateCellDefenition(node,cellDefs, rowIndex, columnIndex);
+            }
+            return cellDefs;
         }
 
         private int GetRowsAndColumnsNumber(bool isRow)
