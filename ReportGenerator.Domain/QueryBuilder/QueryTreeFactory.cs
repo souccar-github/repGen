@@ -58,7 +58,21 @@ namespace Souccar.ReportGenerator.Domain.QueryBuilder
             foreach (ReferenceProperty referencesProperty in typeClassTree.ReferencesProperties)
             {
                 if (typeClassTree.Type.GetProperty(referencesProperty.Name).CanWrite)
-                    if (!referencesProperty.PropertyType.IsEntity())
+                    if(referencesProperty.PropertyType.IsIndex())
+                    {
+                        result.Leaves.Add(new QueryLeaf
+                        {
+                            IsReference = false,
+                            IsPrimitive = true,
+                            PropertyType = referencesProperty.PropertyType,
+                            ParentType = typeClassTree.Type,
+                            PropertyName = referencesProperty.Name,
+                            DefiningType = typeClassTree.Type,
+                            PropertyFullPath =
+                           String.Format("{0}.{1}", result.FullClassPath, referencesProperty.Name)
+                        });
+                    }
+                    else if (!referencesProperty.PropertyType.IsEntity())
                     {
                         foreach (SimpleProperty simpleProperty in referencesProperty.ClassTree.SimpleProperties)
                             if (referencesProperty.PropertyType.GetProperty(simpleProperty.Name).CanWrite &&

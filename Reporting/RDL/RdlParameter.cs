@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Souccar.Infrastructure.Extenstions;
 using System.Reflection;
 using Syncfusion.RDL.DOM;
+using Souccar.Domain.DomainModel;
 
 namespace Reporting.RDL
 {
@@ -53,6 +54,12 @@ namespace Reporting.RDL
         //}
 
 
+        public bool IsIndex(System.Type type)
+        {
+            return type.GetInterfaces().Any(inter => inter == typeof(IAggregateRoot)) &&
+                   type.GetInterfaces().Any(inter => inter == typeof(IIndex));
+        }
+
         public Syncfusion.RDL.DOM.ReportParameters Create(QueryTree queryTree)
         {
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
@@ -63,13 +70,22 @@ namespace Reporting.RDL
 
                         var type = queryTree.Type;
                         var propInfo = type.GetProperty(leave.PropertyName);
-                        parameter.Name = leave.PropertyName;
-                        parameter.Prompt = leave.DisplayName;
-                        //Method to get Data type from Type
-                        parameter.DataType = GetTypes(propInfo);
-                      //  parameter.ValidValues = GetValidValues(propInfo);
-                      //  parameter.DefaultValue = GetDefaultValue(propInfo);
-                        _reportParameters.Add(parameter);
+                    parameter.Name = leave.PropertyName;
+                    parameter.Prompt = leave.DisplayName;
+                    parameter.DataType = GetTypes(propInfo);
+
+                    if (IsIndex(propInfo.PropertyType))
+                    {
+                        parameter.ValidValues = GetIndexValidValues(propInfo);
+                    }
+                    else
+                    {
+                        parameter.ValidValues = GetValidValues(propInfo);
+                    }
+                  
+                   // parameter.ValidValues = GetValidValues(propInfo);
+                    //  parameter.DefaultValue = GetDefaultValue(propInfo);
+                    _reportParameters.Add(parameter);
                 }
             }
             foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
@@ -127,16 +143,27 @@ namespace Reporting.RDL
 
             return validValue;
         }
+        private Syncfusion.RDL.DOM.ValidValues GetIndexValidValues(PropertyInfo propInfo)
+        {
+            var IndexvalidValue = new Syncfusion.RDL.DOM.ValidValues();
+            var dataSetReference = new Syncfusion.RDL.DOM.DataSetReference();
+            dataSetReference.DataSetName = $"{propInfo.Name}DataSet";
+            dataSetReference.ValueField = "Id";
+            dataSetReference.LabelField = "Name";
+            IndexvalidValue.DataSetReference = dataSetReference;
+
+            return IndexvalidValue;
+        }
 
         private Syncfusion.RDL.DOM.DataTypes GetTypes(PropertyInfo Leave)
         {
+            if(Leave == null)
+            {
+                return Syncfusion.RDL.DOM.DataTypes.String;
+            }
             var datatype = Leave.PropertyType;
             DataTypes propType;
-            if (datatype == typeof(String))
-            {
-                propType = Syncfusion.RDL.DOM.DataTypes.String;
-            }
-            else if (datatype == typeof(Boolean))
+            if (datatype == typeof(Boolean))
             {
                 propType = Syncfusion.RDL.DOM.DataTypes.Boolean;
             }
@@ -148,9 +175,13 @@ namespace Reporting.RDL
             {
                 propType = Syncfusion.RDL.DOM.DataTypes.Integer;
             }
-            else 
+            else if(datatype == typeof(float))
             {
                 propType = Syncfusion.RDL.DOM.DataTypes.Float;
+            }
+            else
+            {
+                propType = Syncfusion.RDL.DOM.DataTypes.String;
             }
 
             return propType;

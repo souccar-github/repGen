@@ -47,11 +47,14 @@ namespace Reporting.RDL
 
         private void InitialReport()
         {
-            //Sections
-            _report.ReportSections = new ReportSections();
-            var reportSection = new ReportSection();
-            _report.ReportSections.Add(reportSection);
-            reportSection.Body = CreateBody();
+            //Data Source
+            var dataSource = CreateDataSource();
+            _report.DataSources.Add(dataSource);
+
+            //Data Set
+            var dataSets = CreateDataSet(dataSource);
+            _report.DataSets.AddRange(dataSets);
+            _dataSet = dataSets.FirstOrDefault(x => x.Name == "MainDataSet");
 
             //ReportParameters
             var parameters = CreateReportParameter();
@@ -60,15 +63,11 @@ namespace Reporting.RDL
             //Report Parameters Layout
             _report.ReportParametersLayout = CreateReportParameterLayout(_queryTree);
 
-
-            //Data Source
-            var dataSource = CreateDataSource();
-            _report.DataSources.Add(dataSource);
-
-            //Data Set
-            _report.DataSets.AddRange(CreateDataSet(dataSource));
-
-
+            //Sections
+            _report.ReportSections = new ReportSections();
+            var reportSection = new ReportSection();
+            _report.ReportSections.Add(reportSection);
+            reportSection.Body = CreateBody();
 
 
             reportSection.Page = new Syncfusion.RDL.DOM.Page();
