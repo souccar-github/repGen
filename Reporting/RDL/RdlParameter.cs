@@ -78,10 +78,10 @@ namespace Reporting.RDL
                     {
                         parameter.ValidValues = GetIndexValidValues(propInfo);
                     }
-                    else
-                    {
-                        parameter.ValidValues = GetValidValues(propInfo);
-                    }
+                    //else
+                    //{
+                    //    parameter.ValidValues = GetValidValues(propInfo);
+                    //}
                   
                    // parameter.ValidValues = GetValidValues(propInfo);
                     //  parameter.DefaultValue = GetDefaultValue(propInfo);
