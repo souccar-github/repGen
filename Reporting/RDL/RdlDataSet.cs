@@ -267,21 +267,8 @@ namespace Reporting.RDL
 
             var tables = new List<string>();
 
-            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
-            {
-                if (leave.FilterDescriptors.Count > 0)
-                {
 
-                    var type = queryTree.Type;
-                    var propInfo = type.GetProperty(leave.PropertyName);
-
-                    if (IsIndex(propInfo.PropertyType))
-                    {
-                        tables.Add(propInfo.PropertyType.Name);   
-                    }
-                }
-            }
-
+            GetIndexTables(tables, queryTree, propName);
 
            
             foreach (var table in tables)
@@ -289,6 +276,29 @@ namespace Reporting.RDL
                 strBuilder.Append(table);
             }
             return strBuilder.ToString();
+        }
+
+        private List<string> GetIndexTables(List<string> tables,QueryTree queryTree,string propName)
+        {
+            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
+            {
+                if (leave.FilterDescriptors.Count > 0 && leave.PropertyName == propName)
+                {
+
+                    var type = queryTree.Type;
+                    var propInfo = type.GetProperty(leave.PropertyName);
+
+                    if (IsIndex(propInfo.PropertyType))
+                    {
+                        tables.Add(propInfo.PropertyType.Name);
+                    }
+                }
+            }
+            foreach(var node in queryTree.Nodes.Where(x=>x.HasSelectedFields))
+            {
+                GetIndexTables(tables, node, propName);
+            }
+            return tables;
         }
 
         private string BuilderQuery(QueryTree queryTree)
