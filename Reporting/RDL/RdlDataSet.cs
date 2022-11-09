@@ -1,5 +1,6 @@
 ﻿using Reporting.Extensions;
 using Souccar.Domain.DomainModel;
+using Souccar.NHibernate;
 using Souccar.ReportGenerator.Domain.QueryBuilder;
 using Syncfusion.RDL.DOM;
 using System;
@@ -222,7 +223,8 @@ namespace Reporting.RDL
 
         private List<string> GetFieldsNames(List<string> fields, QueryTree queryTree)
         {
-            var name = queryTree.GetTableName();
+           // var name = queryTree.GetTableName();
+            var name = GetTableName(queryTree.Type);
             //Id field
             fields.Add($"{name}Id");
 
@@ -287,10 +289,10 @@ namespace Reporting.RDL
 
                     var type = queryTree.Type;
                     var propInfo = type.GetProperty(leave.PropertyName);
-
+                    var name = GetTableName(propInfo.PropertyType);
                     if (IsIndex(propInfo.PropertyType))
                     {
-                        tables.Add(propInfo.PropertyType.Name);
+                        tables.Add(name);
                     }
                 }
             }
@@ -349,7 +351,8 @@ namespace Reporting.RDL
 
         private List<string> GetQueryFields(List<string> fields, QueryTree queryTree, QueryTree parent = null)
         {
-            var name = queryTree.GetTableName(); ;
+           // var name = queryTree.GetTableName();
+            var name = GetTableName(queryTree.Type);
             var comma = "";
             if (parent != null)
                 comma = ",";
@@ -364,7 +367,7 @@ namespace Reporting.RDL
                 var propInfo = type.GetProperty(leafs[i].PropertyName);
                 if (IsIndex(propInfo.PropertyType))
                 {
-                    fields.Add($" , [{propInfo.PropertyType.Name}].[Name] AS {name}{leafs[i].DisplayName}");
+                    fields.Add($" , [{GetTableName(propInfo.PropertyType)}].[Name] AS {name}{leafs[i].DisplayName}");
                 }
                 else
                 {
@@ -387,17 +390,20 @@ namespace Reporting.RDL
 
         private List<string> GetTablesWithRelations(List<string> tables, QueryTree queryTree, QueryTree parent = null)
         {
-            var name = queryTree.GetTableName();
+            //var name = queryTree.GetTableName();
+            var name = GetTableName(queryTree.Type);
             if (parent != null)
             {
-                var parentName = parent.GetTableName();
-                var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == parentName);
+                var parentName = GetTableName(parent.Type);
+              //  var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == parent.GetTableName());
+                var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == GetTableName(parent.Type));
                 if (foreignKey)
                 {
                     tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[Id] = [{name}].[{parentName}_id] ");
                 }
                 else
                 {
+                    
                     tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[{name}_Id] = [{name}].[Id] ");
                 }
             }
@@ -417,8 +423,12 @@ namespace Reporting.RDL
                 var propInfo = type.GetProperty(leaf.PropertyName);
                 if (IsIndex(propInfo.PropertyType))
                 {
-                    string newName = propInfo.PropertyType.Name;
-                    var newparentName = queryTree.GetTableName();
+                    string newName = GetTableName(propInfo.PropertyType);
+                    var newparentName = GetTableName(queryTree.Type);
+                    if (parent != null)
+                    {
+                        newparentName = GetTableName(queryTree.Type);
+                    }
                     tables.Add($" INNER JOIN [{newName}] ON [{newName}].[Id] = [{newparentName}].[{propInfo.Name}_id] ");
                 }
             }
@@ -445,8 +455,9 @@ namespace Reporting.RDL
 
         private List<string> GetQueryFilters(List<string> filters, QueryTree queryTree, int counter = 0)
         {
-            var name = queryTree.GetTableName();
-            foreach(var leave in queryTree.Leaves.Where(x => x.IsSelected))
+           // var name = queryTree.GetTableName();
+            var name = GetTableName(queryTree.Type);
+            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 if(leave.FilterDescriptors.Count > 0)
                 {
@@ -490,7 +501,7 @@ namespace Reporting.RDL
 
         private List<string> GetParameters(List<string> parameters, QueryTree queryTree)
         {
-            var name = queryTree.GetTableName();
+           // var name = queryTree.GetTableName();
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 if (leave.FilterDescriptors.Count > 0)
@@ -510,7 +521,8 @@ namespace Reporting.RDL
 
         private List<string> GetQueryFiltersbyParameter(List<string> filters, QueryTree queryTree, int counter = 0)
         {
-            var name = queryTree.GetTableName();
+           //var name = queryTree.GetTableName();
+            var name = GetTableName(queryTree.Type);
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 if (leave.FilterDescriptors.Count > 0)
@@ -581,6 +593,25 @@ namespace Reporting.RDL
                 GetQueryFiltersbyParameter(filters, node, counter);
             }
             return filters;
+        }
+
+        public string GetTableName(System.Type entityType)
+        {
+            if(entityType.Name == "Level")
+            {
+               
+            }
+            var persisterEntity = NHibernateSession.Current.SessionFactory.GetClassMetadata(entityType) as NHibernate.Persister.Entity.AbstractEntityPersister;
+            if (persisterEntity == null)
+                return string.Empty;
+
+            var tableName = persisterEntity.TableName.Replace("[", "").Replace("]", "");
+            return tableName;
+            //var txt = $"{entityType.Name}Map";
+            //var mapAssembly = Assembly.GetAssembly(typeof(EmployeeMap));
+            //var mapType = mapAssembly.GetType(txt);
+            //var list = mapType.GetProperties();
+            //return "";
         }
 
     }

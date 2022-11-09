@@ -1,7 +1,10 @@
-﻿using Souccar.ReportGenerator.Domain.QueryBuilder;
+﻿using HRIS.Mapping.Personnel.RootEntities;
+using Souccar.NHibernate;
+using Souccar.ReportGenerator.Domain.QueryBuilder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Reporting.RDL
@@ -71,6 +74,7 @@ namespace Reporting.RDL
             }
             else
             {
+                
                 tables.Add($"{queryTree.DisplayName}");
             }
 
@@ -86,5 +90,7 @@ namespace Reporting.RDL
 
             return tables;
         }
+
+        
     }
 }

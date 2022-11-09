@@ -203,7 +203,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Language0LanguageName">
+                        <Textbox Name="LabelPersonnel0Certification0Type">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -224,7 +224,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Language Name</Value>
+                                  <Value>Type</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -238,7 +238,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Language0Writing">
+                        <Textbox Name="LabelPersonnel0Certification0PlaceOfIssuance">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -259,7 +259,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Writing</Value>
+                                  <Value>Place Of Issuance</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -410,7 +410,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LanguageLanguageName">
+                        <Textbox Name="CertificationType">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -429,7 +429,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LanguageLanguageName.Value</Value>
+                                  <Value>=Fields!CertificationType.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -443,7 +443,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LanguageWriting">
+                        <Textbox Name="CertificationPlaceOfIssuance">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -462,7 +462,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LanguageWriting.Value</Value>
+                                  <Value>=Fields!CertificationPlaceOfIssuance.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -542,20 +542,20 @@
         <Field Name="EmployeeNationality">
           <DataField>EmployeeNationality</DataField>
         </Field>
-        <Field Name="LanguageId">
-          <DataField>LanguageId</DataField>
+        <Field Name="CertificationId">
+          <DataField>CertificationId</DataField>
         </Field>
-        <Field Name="LanguageLanguageName">
-          <DataField>LanguageLanguageName</DataField>
+        <Field Name="CertificationType">
+          <DataField>CertificationType</DataField>
         </Field>
-        <Field Name="LanguageWriting">
-          <DataField>LanguageWriting</DataField>
+        <Field Name="CertificationPlaceOfIssuance">
+          <DataField>CertificationPlaceOfIssuance</DataField>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [City].[Name] AS EmployeePlaceOfBirth , [Nationality].[Name] AS EmployeeNationality, [Language].[Id] AS LanguageId , [LanguageName].[Name] AS LanguageLanguageName , [LevelType].[Name] AS LanguageWriting FROM Employee LEFT JOIN [Language] ON [Employee].[Id] = [Language].[Employee_id]  INNER JOIN [LanguageName] ON [LanguageName].[Id] = [Language].[LanguageName_id]  INNER JOIN [LevelType] ON [LevelType].[Id] = [Language].[Writing_id]  INNER JOIN [City] ON [City].[Id] = [Employee].[PlaceOfBirth_id]  INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  AND  [Employee].[Nationality_Id] = @Nationality  AND  [Language].[LanguageName_Id] = @LanguageName  AND  [Language].[Writing_Id] = @Writing </CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [City].[Name] AS EmployeePlaceOfBirth , [Nationality].[Name] AS EmployeeNationality, [Certification].[Id] AS CertificationId , [CertificationType].[Name] AS CertificationType , [Country].[Name] AS CertificationPlaceOfIssuance FROM Employee LEFT JOIN [Certification] ON [Employee].[Id] = [Certification].[Employee_id]  INNER JOIN [CertificationType] ON [CertificationType].[Id] = [Certification].[Type_id]  INNER JOIN [Country] ON [Country].[Id] = [Certification].[PlaceOfIssuance_id]  INNER JOIN [City] ON [City].[Id] = [Employee].[PlaceOfBirth_id]  INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  AND  [Employee].[Nationality_Id] = @Nationality  AND  [Certification].[Type_Id] = @Type </CommandText>
         <QueryParameters>
           <QueryParameter Name="@FirstName">
             <Value>=Parameters!FirstName.Value</Value>
@@ -563,11 +563,8 @@
           <QueryParameter Name="@Nationality">
             <Value>=Parameters!Nationality.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@LanguageName">
-            <Value>=Parameters!LanguageName.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@Writing">
-            <Value>=Parameters!Writing.Value</Value>
+          <QueryParameter Name="@Type">
+            <Value>=Parameters!Type.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <Timeout>30</Timeout>
@@ -592,7 +589,7 @@
         <Timeout>30</Timeout>
       </Query>
     </DataSet>
-    <DataSet Name="LanguageNameDataSet">
+    <DataSet Name="TypeDataSet">
       <Fields>
         <Field Name="Id">
           <DataField>Id</DataField>
@@ -607,26 +604,7 @@
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT [Id],[Name],[ValueOrder] FROM LanguageName</CommandText>
-        <Timeout>30</Timeout>
-      </Query>
-    </DataSet>
-    <DataSet Name="WritingDataSet">
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="ValueOrder">
-          <DataField>ValueOrder</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource1</DataSourceName>
-        <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT [Id],[Name],[ValueOrder] FROM LevelType</CommandText>
+        <CommandText>SELECT DISTINCT [Id],[Name],[ValueOrder] FROM CertificationType</CommandText>
         <Timeout>30</Timeout>
       </Query>
     </DataSet>
@@ -647,23 +625,12 @@
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
-    <ReportParameter Name="LanguageName">
+    <ReportParameter Name="Type">
       <DataType>String</DataType>
-      <Prompt>LanguageName</Prompt>
+      <Prompt>Type</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>LanguageNameDataSet</DataSetName>
-          <ValueField>Id</ValueField>
-          <LabelField>Name</LabelField>
-        </DataSetReference>
-      </ValidValues>
-    </ReportParameter>
-    <ReportParameter Name="Writing">
-      <DataType>String</DataType>
-      <Prompt>Writing</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>WritingDataSet</DataSetName>
+          <DataSetName>TypeDataSet</DataSetName>
           <ValueField>Id</ValueField>
           <LabelField>Name</LabelField>
         </DataSetReference>
@@ -688,12 +655,7 @@
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>LanguageName</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>3</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>Writing</ParameterName>
+          <ParameterName>Type</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
