@@ -437,20 +437,20 @@ namespace Reporting.RDL
 
         private string GetOperatorChar(FilterDescriptor filter)
         {
-            if (filter.FilterOperator == FilterOperator.IsGreaterThan)
-                return ">";
-            else if (filter.FilterOperator == FilterOperator.IsGreaterThanOrEqualTo)
-                return ">=";
-            else if (filter.FilterOperator == FilterOperator.IsLessThan)
-                return "<";
-            else if (filter.FilterOperator == FilterOperator.IsLessThanOrEqualTo)
-                return "<=";
-            else if (filter.FilterOperator == FilterOperator.IsEqualTo)
-                return "=";
-            else if (filter.FilterOperator == FilterOperator.IsNotEqualTo)
-                return "!=";
-            else
-                return "like";
+                if (filter.FilterOperator == FilterOperator.IsGreaterThan)
+                    return ">";
+                else if (filter.FilterOperator == FilterOperator.IsGreaterThanOrEqualTo)
+                    return ">=";
+                else if (filter.FilterOperator == FilterOperator.IsLessThan)
+                    return "<";
+                else if (filter.FilterOperator == FilterOperator.IsLessThanOrEqualTo)
+                    return "<=";
+                else if (filter.FilterOperator == FilterOperator.IsEqualTo)
+                    return "=";
+                else if (filter.FilterOperator == FilterOperator.IsNotEqualTo)
+                    return "!=";
+                else
+                    return "like";
         }
 
         private List<string> GetQueryFilters(List<string> filters, QueryTree queryTree, int counter = 0)
@@ -556,7 +556,7 @@ namespace Reporting.RDL
                             }
                             else
                             {
-                                filters.Add($" [{name}].[{leave.PropertyName}_Id] {op} @{leave.PropertyName} ");
+                                filters.Add($" [{name}].[{leave.PropertyName}_Id] in (@{leave.PropertyName}) ");
                             }
                             counter++;
                         }

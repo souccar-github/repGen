@@ -558,7 +558,7 @@
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [City].[Name] AS EmployeePlaceOfBirth , [Nationality].[Name] AS EmployeeNationality, [EmployeeCard].[Id] AS EmployeeCardId , [EmployeeCard].[Salary] AS EmployeeCardSalary, [Language].[Id] AS LanguageId , [LanguageName].[Name] AS LanguageLanguageName FROM Employee LEFT JOIN [EmployeeCard] ON [Employee].[Id] = [EmployeeCard].[Employee_id]  LEFT JOIN [Language] ON [Employee].[Id] = [Language].[Employee_id]  INNER JOIN [LanguageName] ON [LanguageName].[Id] = [Language].[LanguageName_id]  INNER JOIN [City] ON [City].[Id] = [Employee].[PlaceOfBirth_id]  INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  AND  [Employee].[Nationality_Id] = @Nationality  AND  [EmployeeCard].[Salary] = @Salary  AND  [Language].[LanguageName_Id] = @LanguageName </CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [City].[Name] AS EmployeePlaceOfBirth , [Nationality].[Name] AS EmployeeNationality, [EmployeeCard].[Id] AS EmployeeCardId , [EmployeeCard].[Salary] AS EmployeeCardSalary, [Language].[Id] AS LanguageId , [LanguageName].[Name] AS LanguageLanguageName FROM Employee LEFT JOIN [EmployeeCard] ON [Employee].[Id] = [EmployeeCard].[Employee_id]  LEFT JOIN [Language] ON [Employee].[Id] = [Language].[Employee_id]  INNER JOIN [LanguageName] ON [LanguageName].[Id] = [Language].[LanguageName_id]  INNER JOIN [City] ON [City].[Id] = [Employee].[PlaceOfBirth_id]  INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  AND  [Employee].[Nationality_Id] in (@Nationality)  AND  [EmployeeCard].[Salary] = @Salary  AND  [Language].[LanguageName_Id] in (@LanguageName) </CommandText>
         <QueryParameters>
           <QueryParameter Name="@FirstName">
             <Value>=Parameters!FirstName.Value</Value>
@@ -630,6 +630,7 @@
           <LabelField>Name</LabelField>
         </DataSetReference>
       </ValidValues>
+      <MultiValue>true</MultiValue>
     </ReportParameter>
     <ReportParameter Name="Salary">
       <DataType>Float</DataType>
@@ -645,6 +646,7 @@
           <LabelField>Name</LabelField>
         </DataSetReference>
       </ValidValues>
+      <MultiValue>true</MultiValue>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>

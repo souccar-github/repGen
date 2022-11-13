@@ -77,6 +77,7 @@ namespace Reporting.RDL
                     if (IsIndex(propInfo.PropertyType))
                     {
                         parameter.ValidValues = GetIndexValidValues(propInfo);
+                        parameter.MultiValue = true;
                     }
                     //else
                     //{
