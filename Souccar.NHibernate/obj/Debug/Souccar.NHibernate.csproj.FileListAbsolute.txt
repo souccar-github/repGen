@@ -1,1 +1,6 @@
 F:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+D:\Git Hub\repGen\ui\binaries\Souccar.NHibernate.dll
+D:\Git Hub\repGen\ui\binaries\Souccar.NHibernate.pdb
+D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.dll
+D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.pdb

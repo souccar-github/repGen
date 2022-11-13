@@ -35,6 +35,7 @@
             <Top>1in</Top>
             <Height>0.50000in</Height>
             <Width>5in</Width>
+            <DataSetName>MainDataSet</DataSetName>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
@@ -71,6 +72,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -105,6 +107,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -139,6 +142,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -173,6 +177,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -210,6 +215,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -242,6 +248,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -274,6 +281,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -306,6 +314,7 @@
                               <Style>Solid</Style>
                             </Border>
                           </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -372,7 +381,43 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="MainDataSet">
+      <Fields>
+        <Field Name="EmployeeId">
+          <DataField>EmployeeId</DataField>
+        </Field>
+        <Field Name="EmployeeFirstName">
+          <DataField>EmployeeFirstName</DataField>
+        </Field>
+        <Field Name="EmployeeLastName">
+          <DataField>EmployeeLastName</DataField>
+        </Field>
+        <Field Name="EmployeeCardId">
+          <DataField>EmployeeCardId</DataField>
+        </Field>
+        <Field Name="EmployeeCardSalary">
+          <DataField>EmployeeCardSalary</DataField>
+        </Field>
+        <Field Name="EmployeeCardEmployeeMachineCode">
+          <DataField>EmployeeCardEmployeeMachineCode</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName, [EmployeeCard].[Id] AS EmployeeCardId , [EmployeeCard].[Salary] AS EmployeeCardSalary , [EmployeeCard].[EmployeeMachineCode] AS EmployeeCardEmployeeMachineCode FROM Employee LEFT JOIN [EmployeeCard] ON [Employee].[Id] = [EmployeeCard].[Employee_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  AND  [EmployeeCard].[Salary] = @Salary </CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@FirstName">
+            <Value>=Parameters!FirstName.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Salary">
+            <Value>=Parameters!Salary.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <Timeout>30</Timeout>
+      </Query>
+    </DataSet>
+    <DataSet Name="FirstNameDataSet">
       <Fields>
         <Field Name="EmployeeId">
           <DataField>EmployeeId</DataField>
@@ -415,7 +460,7 @@
       <Prompt>FirstName</Prompt>
     </ReportParameter>
     <ReportParameter Name="Salary">
-      <DataType>String</DataType>
+      <DataType>Float</DataType>
       <Prompt>Salary</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -430,8 +475,8 @@
           <ParameterName>FirstName</ParameterName>
         </CellDefinition>
         <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
           <ParameterName>Salary</ParameterName>
         </CellDefinition>
       </CellDefinitions>

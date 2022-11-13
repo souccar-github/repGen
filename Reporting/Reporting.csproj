@@ -201,6 +201,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HRIS.Mapping\HRIS.Mapping.csproj">
+      <Project>{911D3780-0078-45CD-BEB7-3AADD6B247F8}</Project>
+      <Name>HRIS.Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReportGenerator.Services\Souccar.ReportGenerator.Services.csproj">
       <Project>{07d014b6-c71a-4ad9-90b4-d8136cbf2b58}</Project>
       <Name>Souccar.ReportGenerator.Services</Name>
@@ -212,6 +216,10 @@
     <ProjectReference Include="..\Souccar.Infrastructure\Souccar.Infrastructure.csproj">
       <Project>{0DCEEC2B-3843-40FA-BF57-1D5901F6D6BB}</Project>
       <Name>Souccar.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Souccar.NHibernate\Souccar.NHibernate.csproj">
+      <Project>{0BD77F13-8DF6-4C16-9508-33AA4CF0677A}</Project>
+      <Name>Souccar.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
