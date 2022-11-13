@@ -91,6 +91,23 @@ namespace Reporting.RDL
         {
             Syncfusion.RDL.DOM.CellDefinitions cellDefs = new CellDefinitions();
             var cellDefinitions = GetCellDefinitions( _queryTree , cellDefs,0,0 );
+
+            int rowIndex = 0, columnIndex = 0;
+
+            foreach(var cellDef in cellDefinitions)
+            {
+                cellDef.RowIndex = rowIndex;
+                cellDef.ColumnIndex = columnIndex;
+                if (columnIndex >= 3)
+                {
+                    columnIndex = 0;
+                    rowIndex++;
+                }
+                else
+                    columnIndex++;
+            }
+
+
             var RepParamLayout = new ReportParametersLayout()
             {
                 GridLayoutDefinition = new GridLayoutDefinition()
@@ -113,13 +130,13 @@ namespace Reporting.RDL
                     ParameterName = leave.PropertyName
                 };
                 cellDefs.Add(cellDef);
-                if (columnIndex >= 3)
-                {
-                    columnIndex = 0;
-                    rowIndex++;
-                }
-                else
-                    columnIndex++;
+                //if (columnIndex >= 3)
+                //{
+                //    columnIndex = 0;
+                //    rowIndex++;
+                //}
+                //else
+                //    columnIndex++;
             }
             foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields && x.HasFilters))
             {
