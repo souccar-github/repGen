@@ -345,6 +345,19 @@ namespace Reporting.RDL
             {
                 strBuilder.Append(filter);
             }
+            //
+            var sorts = new List<string>();
+            
+            sorts = GetSorts(queryTree, sorts);
+            if (sorts.Count > 0)
+            {
+                strBuilder.Append(" order by");
+            }
+
+            foreach (var sort  in sorts )
+            {
+                strBuilder.Append(sort);
+            }
 
             return strBuilder.ToString();
         }
@@ -453,6 +466,13 @@ namespace Reporting.RDL
                     return "like";
         }
 
+        private string GetSortChar(SortDescriptor sort)
+        {
+            if (sort.SortOrder == 0)
+                return "Asc";
+            else 
+                return "Desc";
+        }
         private List<string> GetQueryFilters(List<string> filters, QueryTree queryTree, int counter = 0)
         {
            // var name = queryTree.GetTableName();
@@ -518,7 +538,28 @@ namespace Reporting.RDL
             }
             return parameters;
         }
+        private List<string> GetSorts(QueryTree queryTree ,List<string> sorts, int counter = 0)
+        {
+            var name = GetTableName(queryTree.Type);
 
+            foreach (var leave in queryTree.Leaves.Where(x=>x.IsSelected && x.IsSorted ))
+            {
+              
+                if (counter > 0)
+                {
+                    sorts.Add(" , ");
+                }
+               
+                var sortchar = GetSortChar(leave.SortDescriptor);
+                sorts.Add($" [{name}].[{leave.PropertyName}] {sortchar}");
+                counter++;
+            }
+            foreach(var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            {
+                GetSorts(node , sorts, counter);
+            }
+            return sorts;
+        }
         private List<string> GetQueryFiltersbyParameter(List<string> filters, QueryTree queryTree, int counter = 0)
         {
            //var name = queryTree.GetTableName();

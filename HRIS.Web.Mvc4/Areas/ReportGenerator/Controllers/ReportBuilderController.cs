@@ -100,12 +100,15 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
            
             //report.Save();
             //ServiceFactory.ORMService.Save<Report>(report, UserExtensions.CurrentUser);
+            if(reportName !="") { 
             report.AddQuery(assignParentQueryTree(queryTree));
             Session["Report"] = report;
 
 
             //ServiceFactory.ORMService.Save<Report>(report, UserExtensions.CurrentUser);
+
             report.Save(UserExtensions.CurrentUser);
+            }
             return Json(new { Success = true }, JsonRequestBehavior.AllowGet); ;
         }
 
@@ -323,6 +326,12 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
                     new {text = FilterOperator.EndsWith.GetDescription(), value = FilterOperator.EndsWith}
                 };
 
+            var filtersIndexOperators = new[]
+               {
+                    new {text = FilterOperator.IsEqualTo.GetDescription(), value = FilterOperator.IsEqualTo}
+                    
+                };
+
             var filtersNumericAndDateOperators = new[]
                 {
                     new {text = FilterOperator.IsEqualTo.GetDescription(), value = FilterOperator.IsEqualTo},
@@ -354,6 +363,9 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             {
                 numericAndDateOperators = filtersNumericAndDateOperators,
                 stringOperators = filtersStringOperators,
+                //
+                IndexOperators= filtersIndexOperators,
+                //
                 aggregateOperators = aggregateFilterOperators,
                 aggregateFunctions = aggregateFilterFunctions
             };
@@ -858,6 +870,7 @@ namespace HRIS.Web.Mvc4.Areas.ReportGenerator.Controllers
             return Json(viewModel, JsonRequestBehavior.AllowGet);
 
         }
+       
 
     }
 

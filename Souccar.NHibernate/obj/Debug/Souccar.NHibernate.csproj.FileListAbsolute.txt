@@ -4,3 +4,7 @@ D:\Git Hub\repGen\ui\binaries\Souccar.NHibernate.dll
 D:\Git Hub\repGen\ui\binaries\Souccar.NHibernate.pdb
 D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.dll
 D:\Git Hub\repGen\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.pdb
+F:\Projects\ReportGenerator\ui\binaries\Souccar.NHibernate.dll
+F:\Projects\ReportGenerator\ui\binaries\Souccar.NHibernate.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.dll
+F:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.pdb

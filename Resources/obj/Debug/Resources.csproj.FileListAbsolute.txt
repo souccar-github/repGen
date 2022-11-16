@@ -1303,3 +1303,4 @@ D:\Git Hub\repGen\Resources\obj\Debug\Resources.csproj.GenerateResource.Cache
 D:\Git Hub\repGen\Resources\obj\Debug\ar\Resources.resources.dll
 D:\Git Hub\repGen\Resources\obj\Debug\Resources.dll
 D:\Git Hub\repGen\Resources\obj\Debug\Resources.pdb
+F:\Projects\ReportGenerator\Resources\obj\Debug\Resources.csprojResolveAssemblyReference.cache

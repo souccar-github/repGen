@@ -142,3 +142,15 @@ F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHiberna
 F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.application
 F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.exe
 F:\Projects\ReportGenerator\Souccar.NHibernateManager\obj\Debug\Souccar.NHibernateManager.pdb
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.Mvc.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.Razor.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.WebPages.Razor.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.WebPages.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Microsoft.Web.Infrastructure.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.Mvc.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.Razor.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.WebPages.Razor.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.WebPages.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\Microsoft.Web.Infrastructure.xml
+F:\Projects\ReportGenerator\Souccar.NHibernateManager\bin\Debug\System.Web.WebPages.Deployment.xml

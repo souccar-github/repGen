@@ -73,7 +73,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>i6E4BL2Ns070FHfAoW/e2K/su0iwQBdOzKbQTrTx2G0=</dsig:DigestValue>
+        <dsig:DigestValue>QXlIOT5YLWFT1nw6SgQz523/p1yUhgcOdEUVfZbVMgs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oUNV8Nv2JmofJEdMXomwQ1zpgzfGhXiORY8JG1MNbmQ=</dsig:DigestValue>
+        <dsig:DigestValue>kMZ0mxw+rg3CC7swo1A+rTdZl4cwr2znJaQuyAQKX+I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -138,6 +138,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Web.Infrastructure.dll" size="45416">
+      <assemblyIdentity name="Microsoft.Web.Infrastructure" version="1.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>/hj0JZyUfB/W108YJzcOctetCa77S3IK8iczNYPgFp8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NHibernate.dll" size="4089856">
       <assemblyIdentity name="NHibernate" version="3.3.1.4000" publicKeyToken="AA95F207798DFDB4" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -181,7 +193,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HZ3tfMxyHSCMchj3H90yUuaknvglNokukPbvWJMy53k=</dsig:DigestValue>
+        <dsig:DigestValue>e19eizCck2ZZ0BGd7cYKu+0by/LVIyu9pY9eoqVF+78=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -193,7 +205,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lDBczEuN2nOxO59MPe9lnijnzr+0kJJWN5iaMfOSicE=</dsig:DigestValue>
+        <dsig:DigestValue>N6FvTt9hkROh6PXftf2VqS0UQ6kfl8LaH/0zVDD0xHY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -205,7 +217,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UP0k0yaWfiizgXE5NYCEyiNnnwFVU2AFh7OCJShoLa0=</dsig:DigestValue>
+        <dsig:DigestValue>bLQ00ttoEWGJRRtAogCZNAduTgk4XLOPAyqDTUwyjgc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -217,7 +229,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z2yC7zPumrBg0SSnNVcukzV4mbKkPDUcEHevtmdMdJU=</dsig:DigestValue>
+        <dsig:DigestValue>pRGt2meLdLlRAtdmhP7GOSJfNbmzghoLGzLzz8D7UKo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -229,19 +241,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LxJCgTl3NgozA0IbRbFhQCXYrbwPwqzeZ0Xy6NuNgFI=</dsig:DigestValue>
+        <dsig:DigestValue>rXBm+OiVRSG3WFFwsh6D896Adfx9kGXUMY8pad67FXA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Souccar.ReportGenerator.Domain.dll" size="27136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Souccar.ReportGenerator.Domain.dll" size="27648">
       <assemblyIdentity name="Souccar.ReportGenerator.Domain" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>W0Tjs7HvLTRN+KsmRUTNnTIVPs04g2MNyv7g9G+vdbQ=</dsig:DigestValue>
+        <dsig:DigestValue>3bBiUsTf3kefwhgly2/g+jsBrhGnPCNBAB26zZcESf8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -254,6 +266,66 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>HAQEGZrlh4dGTRX/C1D/4FqFAUkOjuZjVCbYdeEUtws=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Web.Mvc.dll" size="538320">
+      <assemblyIdentity name="System.Web.Mvc" version="5.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zwbC2iR1fZhw3wyJAms+SRMOM9g2TA8g+MSuDjSL2kw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Web.Razor.dll" size="271056">
+      <assemblyIdentity name="System.Web.Razor" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>mr0Jmg1fDzcv2a2vPFHwEc4lmvqPv7KtemRk/UdbjWk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Web.WebPages.dll" size="207568">
+      <assemblyIdentity name="System.Web.WebPages" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>QFVbWx5cW17MuNzzA/PaICj/pQ1mtlTsMA2GwpH6CnQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Web.WebPages.Deployment.dll" size="41680">
+      <assemblyIdentity name="System.Web.WebPages.Deployment" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>l3gSEnds7tA972GdFDBkP8KZcV0i2OMtNIGOEjLY51M=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Web.WebPages.Razor.dll" size="39632">
+      <assemblyIdentity name="System.Web.WebPages.Razor" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>tOqnLZr5AlP0eqOot+/0gPrMQ4MX+d6fMGGTCKNI7e0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

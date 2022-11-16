@@ -1,5 +1,6 @@
 ﻿var CurrentFiltersFieldsNames = new Array();
 var FiltersStringOperators = new Array();
+var FiltersIndexOperators = new Array();
 var FiltersNumericAndDateOperators = new Array();
 var FielterIdCounter = 0;
 var IsFilterAddMode = 0;
@@ -25,7 +26,7 @@ var QueryTree;
 var TreeNodeSelectedFirstTime = 1;
 
 function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
-   
+
     var treeview = $("#tree").data("kendoTreeView");
     var root = $("#tree").find('.k-item').first();
     treeview.select(root);
@@ -33,8 +34,8 @@ function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
     treeview.select($());
     QueryTree = SelectedTreeNode;
     debugger;
-    if (reportTemplate == "")       
-    { reportTemplate =0 }
+    if (reportTemplate == "")
+    { reportTemplate = 0 }
     $.ajax(
         {
             url: window.applicationpath + "ReportGenerator/ReportBuilder/SaveQueryTree",
@@ -150,12 +151,17 @@ function GetFilterFieldNameById(id) {
 }
 
 function GetFilterOperatorNameById(id) {
+
+    if (FiltersIndexOperators.value == id) {
+        return FiltersIndexOperators.text;
+    }
+
     for (var i = 0; i < FiltersStringOperators.length; i++) {
         if (FiltersStringOperators[i].value == id) {
             return FiltersStringOperators[i].text;
         }
     }
-
+    
     for (var x = 0; x < FiltersNumericAndDateOperators.length; x++) {
         if (FiltersNumericAndDateOperators[x].value == id) {
             return FiltersNumericAndDateOperators[x].text;
@@ -230,24 +236,31 @@ function IntializeFiltersDataSource(selectedTreeNodeData) {
     IsFilterAddMode = 0;
 
     var type = "";
+   
     for (var i = 0; i < selectedTreeNodeData.Leaves.length; i++) {
-        
-        if (selectedTreeNodeData.Leaves[i].PropertyType.indexOf("String") != -1) {
-            type = "String";
+        if (selectedTreeNodeData.Leaves[i].PropertyType.includes('Indexes')) {
+            type = "Index";
         }
-        else if (selectedTreeNodeData.Leaves[i].PropertyType.indexOf("Int") != -1 || selectedTreeNodeData.Leaves[i].PropertyType.indexOf("Double") != -1) {
-            type = "Integer";
+        else {
+            if (selectedTreeNodeData.Leaves[i].PropertyType.indexOf("String") != -1) {
+                type = "String";
+            }
+            else if (selectedTreeNodeData.Leaves[i].PropertyType.indexOf("Int") != -1 || selectedTreeNodeData.Leaves[i].PropertyType.indexOf("Double") != -1 || selectedTreeNodeData.Leaves[i].PropertyType.indexOf("Single") != -1) {
+                type = "Integer";
+            }
+            else if (selectedTreeNodeData.Leaves[i].PropertyType.indexOf("DateTime") != -1) {
+                type = "DateTime";
+            }
         }
-        else if (selectedTreeNodeData.Leaves[i].PropertyType.indexOf("DateTime") != -1) {
-            type = "DateTime";
-        }
-
+       
+        //selectedTreeNodeData.Leaves[i].PropertyType.IsEn
+        //if (Leaves[i].Type.GetProperty(referencesProperty.Name)) { alert("yesss"); }
         var fieldName = {
             text: selectedTreeNodeData.Leaves[i].DisplayName,
             value: selectedTreeNodeData.Leaves[i].PropertyFullPath + "-" + type
         };
         CurrentFiltersFieldsNames.push(fieldName);
-        
+        debugger;
         for (var x = 0; x < selectedTreeNodeData.Leaves[i].FilterDescriptors.length; x++) {
             var filter = {
                 "ID": ++FielterIdCounter,
@@ -277,7 +290,7 @@ function IntializeFiltersDataSource(selectedTreeNodeData) {
             }
         }
     });
-    
+
     if ($("#filtersPager").data("kendoPager") != null) {
         $("#filtersPager").data("kendoPager").setDataSource(dataSource);
         $("#filtersListView").data("kendoListView").setDataSource(dataSource);
@@ -285,7 +298,7 @@ function IntializeFiltersDataSource(selectedTreeNodeData) {
         $("#filtersPager").kendoPager({
             dataSource: dataSource
         });
-        
+
         var listView = $("#filtersListView").kendoListView({
             dataSource: dataSource,
             editable: true,
@@ -513,8 +526,12 @@ function AggregateFilterFieldName_Changed() {
     });
 }
 function FilterFieldChanged() {
-    
+    debugger;
     var fieldType = $("#FilterFieldName").data("kendoDropDownList").value().split("-")[1];
+    if(fieldType== "Index"){
+        $("#FilterFieldOperator").data("kendoDropDownList").setDataSource(FiltersIndexOperators);
+    }
+     
     if (fieldType == "String") {
         $("#FilterFieldOperator").data("kendoDropDownList").setDataSource(FiltersStringOperators);
     }
@@ -531,7 +548,7 @@ function FilterFieldChanged() {
 }
 
 function FilterFieldName_Changed() {
-    
+
     FilterFieldChanged();
     $("#FilterFieldName").bind("change", function () {
         $("#FilterFieldValue").parents("dd")
@@ -541,7 +558,7 @@ function FilterFieldName_Changed() {
 }
 
 function FilterFieldName_Save(e) {
-    
+
     FielterIdCounter++;
 
     e.model.ID = IsFilterAddMode == 1 ? FielterIdCounter : e.model.ID;

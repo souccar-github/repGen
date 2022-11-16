@@ -54,14 +54,18 @@
              }
          );
 
-
+            debugger;
             $.ajax(
                 {
+                  
                     url: window.applicationpath + "ReportGenerator/ReportBuilder/GetAvailableFilterOperators",
                     type: "POST",
                     data: {},
                     success: function (response) {
                         FiltersStringOperators = response.stringOperators;
+                        ////
+                        FiltersIndexOperators = response.IndexOperators;
+                        ////
                         FiltersNumericAndDateOperators = response.numericAndDateOperators;
                         AggregateFilterOperators = response.aggregateOperators;
                         AggregateFilterFunctions = response.aggregateFunctions;
@@ -591,7 +595,7 @@
             </dd>
             <dt>Operator</dt>
             <dd>
-                <input id="FilterFieldOperator" data-role="dropdownlist" data-text-field="text" data-value-field="value" # if(data.type=="String" ){ # data-source="FiltersStringOperators" # }else { # data-source="FiltersNumericAndDateOperators" # } # data-bind="value:Operator" required="required" validationmessage="required" />
+                <input id="FilterFieldOperator" data-role="dropdownlist" data-text-field="text" data-value-field="value" # if(data.type=="String" ){ # data-source="FiltersStringOperators" # }else if (data.type=="Index" ){ # data-source="FiltersIndexOperators" # } else { # data-source="FiltersNumericAndDateOperators" # } # data-bind="value:Operator" required="required" validationmessage="required" />
                 <span data-for="FilterFieldOperator" class="k-invalid-msg"></span>
             </dd>
             <dt>Value</dt>

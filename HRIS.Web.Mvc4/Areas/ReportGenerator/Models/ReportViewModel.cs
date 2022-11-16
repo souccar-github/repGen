@@ -39,25 +39,25 @@ namespace Project.Web.Mvc4.Areas.ReportGenerator.Models
             model.Views[0].EditHandler = "QueryTreeEditHandler";
             model.Views[0].ViewHandler = "QueryTreeViewHandler";
         }
-        //public override void AfterValidation(RequestInformation requestInformation, Entity entity, IDictionary<string, object> originalState, IList<ValidationResult> validationResults, CrudOperationType operationType, string customInformation = null, Entity parententity = null)
-        //{
-        //    var report = entity as Report;
+        public override void AfterValidation(RequestInformation requestInformation, Entity entity, IDictionary<string, object> originalState, IList<ValidationResult> validationResults, CrudOperationType operationType, string customInformation = null, Entity parententity = null)
+        {
+            var report = entity as Report;
 
-        //    var theReportNameIsExist = ServiceFactory.ORMService.All<Report>().
-        //        Any(x => (x.Name == report.Name && x.Id != report.Id)|| (x.Name == null && x.Id != report.Id))  ;
+            //var theReportNameIsExist = ServiceFactory.ORMService.All<Report>().
+            //    Any(x => (x.Name == report.Name && x.Id != report.Id) || (x.Name == null && x.Id != report.Id));
 
-        //    if (theReportNameIsExist)
-        //    {
-        //        validationResults.Add(
-        //            new ValidationResult()
-        //            {
-        //                Message = ReportLocalizationHelper.GetResource(ReportLocalizationHelper.ReportNameAlreadyExists),
-        //                Property = typeof(Report).GetProperty("Name")
+            if (report.Name == null)
+            {
+                validationResults.Add(
+                    new ValidationResult()
+                    {
+                        Message = ReportLocalizationHelper.GetResource(ReportLocalizationHelper.ReportNameAlreadyExists),
+                        Property = typeof(Report).GetProperty("Name")
 
-        //            });
+                    });
 
-        //   }
-        //}
+            }
+        }
         public override void BeforeInsert(RequestInformation requestInformation, Entity entity,
          string customInformation = null)
         {

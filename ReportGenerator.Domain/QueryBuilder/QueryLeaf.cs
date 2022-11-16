@@ -211,7 +211,15 @@ namespace Souccar.ReportGenerator.Domain.QueryBuilder
                              };
             return result;
         }
+        public virtual Dictionary<FilterOperator, string> GetAvailableIndexFilterOperators()
+        {
+            var result = new Dictionary<FilterOperator, string>
+                             {
+                                {FilterOperator.IsEqualTo, FilterOperator.IsEqualTo.GetDescription()}
 
+                             };
+            return result;
+        }
         /// <summary>
         /// Returns the supported filter operators of this query leaf with their display name.
         /// </summary>
@@ -222,6 +230,9 @@ namespace Souccar.ReportGenerator.Domain.QueryBuilder
                 return GetAvailableNumericFilterOperators();
             else if (PropertyType == typeof(DateTime))
                 return GetAvailableDateTimeFilterOperators();
+            else if(PropertyType.GetInterfaces().Any(inter => inter == typeof(IAggregateRoot)) &&
+                   PropertyType.GetInterfaces().Any(inter => inter == typeof(IIndex)))
+                return GetAvailableIndexFilterOperators();
             return GetAvailableStringFilterOperators();
         }
 
@@ -243,6 +254,11 @@ namespace Souccar.ReportGenerator.Domain.QueryBuilder
                 throw new ArgumentException("This filter operator can't be applied to this property type");
             if (PropertyType == typeof(DateTime) &&
                 GetAvailableDateTimeFilterOperators().Keys.All(filter => filter != filterOperator))
+                throw new ArgumentException("This filter operator can't be applied to this property type");
+            //////////////
+            if (PropertyType.GetInterfaces().Any(inter => inter == typeof(IAggregateRoot)) &&
+                   PropertyType.GetInterfaces().Any(inter => inter == typeof(IIndex)) &&
+                GetAvailableIndexFilterOperators().Keys.All(filter => filter != filterOperator))
                 throw new ArgumentException("This filter operator can't be applied to this property type");
             if (PropertyType == typeof(DateTime) && value.GetType() != typeof(DateTime))
             {
