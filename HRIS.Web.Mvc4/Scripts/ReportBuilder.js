@@ -36,6 +36,25 @@ function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
     debugger;
     if (reportTemplate == "")
     { reportTemplate = 0 }
+    debugger;
+    var tempdata = JSON.stringify({
+        queryTree: QueryTree, requestInformation: window.requestInformation,
+        /////
+        reportName: reportName, reportResourceName: reportResourceName, reportTemplate_id: reportTemplate
+    });
+    debugger;
+    for (var i = 0; i < QueryTree.Leaves.length; i++)
+    {
+        if (QueryTree.Leaves[i].SortDescriptor.SortOrder > 0) {
+            if (QueryTree.Leaves[i].SortDescriptor.SortDirection == "Asc") {
+                QueryTree.Leaves[i].SortDescriptor.SortDirection = 0;
+            }
+            else {
+                QueryTree.Leaves[i].SortDescriptor.SortDirection = 1;
+            }
+        }
+    }
+
     $.ajax(
         {
             url: window.applicationpath + "ReportGenerator/ReportBuilder/SaveQueryTree",
@@ -116,6 +135,7 @@ function refreshGroupList(item) {
 }
 
 function refreshSortList(item) {
+    debugger;
     var template = kendo.template($("#sortListTemplate").html());
     var ordreList = _.sortBy(item.Leaves, function (leaf) { return leaf.SortDescriptor.SortOrder; });
     $("#sorts").html(template(ordreList));
@@ -130,6 +150,7 @@ function onSelectNode(e) {
         SelectedTreeNode.Nodes = QueryTree.Nodes;
         return;
     }
+    debugger;
     var item = SelectedTreeNode;
     refreshSelectList(item);
     refreshGroupList(item);

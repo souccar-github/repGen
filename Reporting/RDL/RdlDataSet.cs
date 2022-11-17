@@ -468,7 +468,7 @@ namespace Reporting.RDL
 
         private string GetSortChar(SortDescriptor sort)
         {
-            if (sort.SortOrder == 0)
+            if (sort.SortDirection == ListSortDirection.Ascending)
                 return "Asc";
             else 
                 return "Desc";
