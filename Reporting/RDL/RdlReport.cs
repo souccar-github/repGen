@@ -309,6 +309,7 @@ namespace Reporting.RDL
                             KeepTogether = true
                         });
                         var name = node.GetTableName();
+
                         rowTablixMembers.Add(new TablixMember()
                         {
                             DataElementName = name + "_Collection",
@@ -442,7 +443,15 @@ namespace Reporting.RDL
             foreach (var leaf in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 string name = queryTree.GetTableName() + leaf.DisplayName;
-                tablixRow.TablixCells.Add(CreateCell(name));
+                if (leaf.PropertyType.IsEnum)
+                {
+                    
+                    tablixRow.TablixCells.Add(CreateEnumCell(queryTree.GetTableName(),leaf.PropertyType));
+                }
+                else
+                {
+                    tablixRow.TablixCells.Add(CreateCell(name));
+                }
             }
             foreach (QueryTree supQueryTree in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
@@ -465,6 +474,50 @@ namespace Reporting.RDL
 
             var textBox = new Syncfusion.RDL.DOM.TextBox();
             textBox.Name = name;
+            textBox.Style = style;
+            textBox.KeepTogether = true;
+            textBox.HideDuplicates = _dataSet.Name;
+            textBox.Paragraphs = new Paragraphs();
+            textBox.Paragraphs.Add(paragraph);
+
+            var cellContent = new CellContents();
+            cellContent.ReportItem = textBox;
+
+            var tablixCell = new TablixCell();
+            tablixCell.CellContents = cellContent;
+
+
+            return tablixCell;
+        }
+
+        private TablixCell CreateEnumCell(string tableName,System.Type name)
+        {
+            var style = GetTableBodyStyle();
+
+            var textRun = new TextRun();
+            string SwitchContent = "";
+            int counter = 0;
+            foreach (var nameOfEnum in Enum.GetNames(name))
+            {
+                if (counter == 0)
+                {
+                    SwitchContent += "Fields!" + tableName + name.Name + ".Value = " + counter + $@",""{nameOfEnum}""";
+                }
+                else
+                {
+                    SwitchContent += ",Fields!" + tableName + name.Name + ".Value = " + counter + $@",""{nameOfEnum}""";
+                }
+                counter++;
+            }
+            textRun.Value = $"=Switch({SwitchContent})";
+
+            var paragraph = new Syncfusion.RDL.DOM.Paragraph();
+            paragraph.Style = GetParagraphStyle();
+            paragraph.TextRuns = new TextRuns();
+            paragraph.TextRuns.Add(textRun);
+
+            var textBox = new Syncfusion.RDL.DOM.TextBox();
+            textBox.Name = name.Name;
             textBox.Style = style;
             textBox.KeepTogether = true;
             textBox.HideDuplicates = _dataSet.Name;

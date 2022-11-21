@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <DataSourceReference>SharedDataSource</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>f69a86f1-4259-4827-be0d-2f9347ac260a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Gender">
+            <Value>=Parameters!Gender.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>
+SELECT 
+ja.Id as JobApplicationId,
+ja.FirstName+' '+LastName as FullName,
+ja.FatherName,
+ja.MotherName,
+ja.DateOfBirth,
+ja.PlaceOfBirth_id as PlaceOfBirthId,
+c.Name as PlaceOfBirth,
+ja.IdentificationNo,
+ja.CivilRecordPlaceAndNumber,
+ja.Nationality_id as NationalityId,
+n.Name as NationalityName,
+ja.PersonalRecordSource,
+ja.OtherNationality_id as OtherNationalityId,
+na.Name as OtherNationalityName,
+ja.Gender ,
+(CASE WHEN ja.Religion=0 THEN 'Muslim' WHEN ja.Religion=1 THEN 'Christian' WHEN ja.Religion=2 THEN 'Jewish' ELSE 'Other' END) as Religion,
+(CASE WHEN ja.BloodType=0 THEN 'Nothing' WHEN ja.BloodType=1 THEN 'O+' WHEN ja.BloodType=2 THEN 'O-' WHEN ja.BloodType=3 THEN 'A+' WHEN ja.BloodType=4 THEN 'A-' WHEN ja.BloodType=5 THEN 'B+' WHEN ja.BloodType=6 THEN 'B-' WHEN ja.BloodType=7 THEN 'AB+' ELSE 'AB-' END) as BloodType,
+r.Name as RaceName,
+r.Id as RaceId,
+(CASE WHEN ja.MaritalStatus=0 THEN 'Single' WHEN ja.MaritalStatus=1 THEN 'Married' WHEN ja.MaritalStatus=2 THEN 'Divorced' WHEN ja.MaritalStatus=3 THEN 'Widow' ELSE 'Engaged' END) as MaritalStatus,
+(CASE WHEN ja.MilitaryStatus=0 THEN 'Served' WHEN ja.MilitaryStatus=1 THEN 'Exempt' WHEN ja.MilitaryStatus=2 THEN 'Delayed' WHEN ja.MilitaryStatus=3 THEN 'NotObligedToServe' WHEN ja.MilitaryStatus=4 THEN 'Hold' WHEN ja.MilitaryStatus=5 THEN 'Serving' WHEN ja.MilitaryStatus=6 THEN 'Reserve'  ELSE 'Nothing' END) as MilitaryStatus,
+ja.NoOfChildren,
+ja.NoOfDependents,
+ja.HaveWorkPermit,
+ja.Duration as WorkPermitDuration,
+ja.HaveResidencyCard,
+ja.Phone as FirstMobile,
+ja.SecondaryMobile,
+ja.Email as FirstEmail,
+ja.SecondaryEmail,
+ja.Address as [Address],
+ja.DisabilityExist,
+dt.Name as DisabilityName,
+ja.InterviewArrangements,
+
+ja.ApplicationDate,
+
+--Interview Info
+(CASE WHEN ja.ApplicationStatus=0 THEN 'Initiated' WHEN ja.ApplicationStatus=0 THEN 'Accepted' WHEN ja.ApplicationStatus=0 THEN 'Rejected' ELSE 'ForFuture' END) as ApplicationStatus,
+rr.RequestCode,
+ISNULL(ja.Position_id,0) as PositionId,
+jd.Name+'='+p.Code as PositionName,
+(select TOP 1 (CONVERT(VARCHAR(10),i.InterviewDate, 111)+' '+convert(nvarchar(8), i.InterViewStartingTime, 108)) from Interview i where i.JobApplication_id=ja.Id AND i.IsVertualDeleted=0) as InterviewDateAndTime,
+(select TOP 1 it.Name from Interview i inner join InterviewType it on i.InterviewType_id=it.Id where i.JobApplication_id=ja.Id AND i.IsVertualDeleted=0) as InterviewType,
+(select TOP 1 i.FinalMark from Interview i  where i.JobApplication_id=ja.Id AND i.IsVertualDeleted=0)  as FinalMark,
+
+--Education
+re.Id as re_Id,
+ISNULL(re.Major_id,0) as re_MajorId,
+re_m.Name as re_MajorName,
+ISNULL(re.Type_id,0) as re_MajorTypeId,
+re_mt.Name as re_MajorTypeName,
+re.DateOfIssuance as re_DateOfIssuance,
+re_st.Name as re_ScoreType,
+re.ScoreType_id as re_ScoreTypeId,
+re_s.Name as re_Score,
+re.Score_id as re_ScoreId,
+re_lt.Name as re_Rank,
+re.Rank_id as re_RankId,
+
+--Working Experience
+we.Id as we_Id,
+we_i.Name as we_Industry,
+ISNULL(we.Industry_id,0) as we_IndustryId,
+we_jt.Name as we_JobTitle,
+ISNULL(we.JobTitle_id,0) as we_JobTitleId,
+we.CompanyName as we_CompanyName,
+we.LeaveReason as we_LeaveReason,
+we.StartDate as we_StartDate,
+we.EndDate as we_EndDate,
+we.WorkingDuration as we_WorkingDuration,
+
+--Certification
+pc.Id as pc_Id,
+pc_ct.Name as pc_CertificationType,
+ISNULL(pc.Type_id,0) as pc_CertificationTypeId,
+pc.DateOfIssuance as pc_DateOfIssuance,
+pc.PlaceOfIssuance_id as pc_PlaceOfIssuanceId,
+pc_c.Name as pc_PlaceOfIssuance,
+pc.ExpirationDate as pc_ExpirationDate ,
+
+--Training Course
+tc.Id as tc_Id,
+ISNULL(tc.CompetencyLevel_id,0) as tc_CompetencyLevelId,
+tc_lt.Name as tc_CompetencyLevel,
+ISNULL(tc.CompetencyName_id,0) as tc_CompetencyNameId,
+tc_cs.Name as tc_CompetencyName,
+tc.Status_id as tc_StatusId,
+tc_s.Name as tc_STatus,
+tc.CourseName as tc_CourseName,
+tc.CourseDuration as tc_CourseDuration,
+tc.TrainingCenter as tc_TrainingCenter,
+tc.TrainingLocation as tc_TrainingLocation,
+tc.AttendanceCertificateIssuanceDate as tc_AttendanceCertificateIssuanceDate,
+
+--Language
+tcl.Id as tcl_Id,
+tcl.Speaking_id as tcl_SpeakingId,
+tcl_s.Name as tcl_Speaking,
+tcl.Reading_id as tcl_ReadingId,
+tcl_r.Name as tcl_Reading,
+tcl.Listening_id as tcl_ListeningId,
+tcl_l.Name as tcl_Listening,
+tcl.Writing_id as tcl_WritingId,
+tcl_w.Name as tcl_Writing,
+
+--RecruitmentComputerSkill
+rcs.Id as rcs_Id,
+ISNULL(rcs.Level_id,0) as rcs_LevelId,
+rcs_lt.Name as rcs_Level,
+ISNULL(rcs.SkillType_id,0) as rcs_SkillTypeId,
+rcs_st.Name as rcs_SkillType,
+
+--JobApplicationAttachment
+jaa.Id as jaa_Id,
+jaa.Description as jaa_Description,
+jaa_at.Name as jaa_AttachmentType,
+
+--PersonalSkill
+ps.Id as ps_Id,
+ps.Level_id as ps_LevelId,
+ps_lt.Name as ps_Level,
+ps.SkillType_id as ps_SkillTypeId,
+ps_st.Name as ps_SkillType,
+ps.Description as ps_Description
+
+FROM JobApplication ja
+LEFT JOIN City c ON c.Id=ja.PlaceOfBirth_id AND c.IsVertualDeleted=0
+LEFT JOIN Nationality n ON n.Id=ja.Nationality_id AND n.IsVertualDeleted=0 
+LEFT JOIN Nationality na ON na.Id=ja.OtherNationality_id AND na.IsVertualDeleted=0 
+LEFT JOIN Race r ON r.Id=ja.Race_id AND r.IsVertualDeleted=0
+LEFT JOIN DisabilityType dt ON dt.Id=ja.DisabilityType_id AND dt.IsVertualDeleted=0
+-- Interview Info
+LEFT JOIN RecruitmentRequest rr ON rr.Id=ja.RecruitmentRequest_id AND rr.IsVertualDeleted=0
+LEFT JOIN Position p ON p.Id=ja.Position_id AND p.IsVertualDeleted=0
+LEFT JOIN JobDescription jd on jd.Id=p.JobDescription_id
+--Education
+LEFT JOIN RecruitmentEducation re on ja.Id=re.JobApplication_id AND re.IsVertualDeleted=0
+LEFT JOIN Major re_m on re_m.Id=re.Major_id
+LEFT JOIN MajorType re_mt on re_mt.Id=re.Type_id
+LEFT JOIN ScoreType re_st on re_st.Id=re.ScoreType_id
+LEFT JOIN Score re_s on re_s.Id=re.Score_id
+LEFT JOIN LevelType re_lt on re_lt.Id=re.Rank_id
+--Working Experience
+LEFT JOIN WorkingExperience we on ja.Id=we.JobApplication_id AND we.IsVertualDeleted=0
+LEFT JOIN GlobalJobTitle we_jt on we_jt.Id=we.JobTitle_id
+LEFT JOIN Industry we_i on we_i.Id=we.Industry_id
+--Certification
+LEFT JOIN ProfessionalCertification pc on ja.Id=pc.JobApplication_id AND pc.IsVertualDeleted=0
+LEFT JOIN CertificationType pc_ct on pc_ct.Id=pc.Type_id
+LEFT JOIN Country pc_c on pc_c.Id=pc.PlaceOfIssuance_id
+--Training Course
+LEFT JOIN TrainingCourse tc on ja.Id=tc.JobApplication_id AND tc.IsVertualDeleted=0
+LEFT JOIN CourseSpecialize tc_cs on tc_cs.Id=tc.CompetencyName_id
+LEFT JOIN LevelType tc_lt on tc_lt.Id=tc.CompetencyLevel_id
+LEFT JOIN Status tc_s on tc_s.Id=tc.Status_id
+--Language
+LEFT JOIN TrainingCourseLanguage tcl on ja.Id=tcl.JobApplication_id AND tcl.IsVertualDeleted=0
+LEFT JOIN LevelType tcl_s on tcl_s.Id=tcl.Speaking_id
+LEFT JOIN LevelType tcl_l on tcl_l.Id=tcl.Listening_id
+LEFT JOIN LevelType tcl_r on tcl_r.Id=tcl.Reading_id
+LEFT JOIN LevelType tcl_w on tcl_w.Id=tcl.Writing_id
+--RecruitmentComputerSkill
+LEFT JOIN RecruitmentComputerSkill rcs on ja.Id=rcs.JobApplication_id AND rcs.IsVertualDeleted=0
+LEFT JOIN SkillType rcs_st on rcs_st.Id=rcs.SkillType_id
+LEFT JOIN LevelType rcs_lt on rcs_lt.Id=rcs.Level_id
+--JobApplicationAttachment
+LEFT JOIN JobApplicationAttachment jaa on ja.Id=jaa.JobApplication_id AND jaa.IsVertualDeleted=0
+LEFT JOIN AttachmentType jaa_at on jaa_at.Id=jaa.AttachmentType_id
+--PersonalSkill
+LEFT JOIN PersonalSkill ps on ja.Id=ps.JobApplication_id AND ps.IsVertualDeleted=0
+LEFT JOIN SkillType ps_st on ps_st.Id=ps.SkillType_id
+LEFT JOIN LevelType ps_lt on ps_lt.Id=ps.Level_id
+
+where
+ja.Gender in (@Gender)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="JobApplicationId">
+          <DataField>JobApplicationId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FullName">
+          <DataField>FullName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FatherName">
+          <DataField>FatherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MotherName">
+          <DataField>MotherName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DateOfBirth">
+          <DataField>DateOfBirth</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PlaceOfBirthId">
+          <DataField>PlaceOfBirthId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PlaceOfBirth">
+          <DataField>PlaceOfBirth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IdentificationNo">
+          <DataField>IdentificationNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CivilRecordPlaceAndNumber">
+          <DataField>CivilRecordPlaceAndNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NationalityId">
+          <DataField>NationalityId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NationalityName">
+          <DataField>NationalityName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PersonalRecordSource">
+          <DataField>PersonalRecordSource</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OtherNationalityId">
+          <DataField>OtherNationalityId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OtherNationalityName">
+          <DataField>OtherNationalityName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Gender">
+          <DataField>Gender</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Religion">
+          <DataField>Religion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BloodType">
+          <DataField>BloodType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RaceName">
+          <DataField>RaceName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RaceId">
+          <DataField>RaceId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MaritalStatus">
+          <DataField>MaritalStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MilitaryStatus">
+          <DataField>MilitaryStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NoOfChildren">
+          <DataField>NoOfChildren</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NoOfDependents">
+          <DataField>NoOfDependents</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HaveWorkPermit">
+          <DataField>HaveWorkPermit</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="WorkPermitDuration">
+          <DataField>WorkPermitDuration</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HaveResidencyCard">
+          <DataField>HaveResidencyCard</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="FirstMobile">
+          <DataField>FirstMobile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SecondaryMobile">
+          <DataField>SecondaryMobile</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FirstEmail">
+          <DataField>FirstEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SecondaryEmail">
+          <DataField>SecondaryEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Address">
+          <DataField>Address</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DisabilityExist">
+          <DataField>DisabilityExist</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DisabilityName">
+          <DataField>DisabilityName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InterviewArrangements">
+          <DataField>InterviewArrangements</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ApplicationDate">
+          <DataField>ApplicationDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ApplicationStatus">
+          <DataField>ApplicationStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RequestCode">
+          <DataField>RequestCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PositionId">
+          <DataField>PositionId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PositionName">
+          <DataField>PositionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InterviewDateAndTime">
+          <DataField>InterviewDateAndTime</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InterviewType">
+          <DataField>InterviewType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FinalMark">
+          <DataField>FinalMark</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
+        </Field>
+        <Field Name="re_Id">
+          <DataField>re_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="re_MajorId">
+          <DataField>re_MajorId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="re_MajorName">
+          <DataField>re_MajorName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="re_MajorTypeId">
+          <DataField>re_MajorTypeId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="re_MajorTypeName">
+          <DataField>re_MajorTypeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="re_DateOfIssuance">
+          <DataField>re_DateOfIssuance</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="re_ScoreType">
+          <DataField>re_ScoreType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="re_ScoreTypeId">
+          <DataField>re_ScoreTypeId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="re_Score">
+          <DataField>re_Score</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="re_ScoreId">
+          <DataField>re_ScoreId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="re_Rank">
+          <DataField>re_Rank</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="re_RankId">
+          <DataField>re_RankId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="we_Id">
+          <DataField>we_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="we_Industry">
+          <DataField>we_Industry</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="we_IndustryId">
+          <DataField>we_IndustryId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="we_JobTitle">
+          <DataField>we_JobTitle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="we_JobTitleId">
+          <DataField>we_JobTitleId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="we_CompanyName">
+          <DataField>we_CompanyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="we_LeaveReason">
+          <DataField>we_LeaveReason</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="we_StartDate">
+          <DataField>we_StartDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="we_EndDate">
+          <DataField>we_EndDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="we_WorkingDuration">
+          <DataField>we_WorkingDuration</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pc_Id">
+          <DataField>pc_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="pc_CertificationType">
+          <DataField>pc_CertificationType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pc_CertificationTypeId">
+          <DataField>pc_CertificationTypeId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="pc_DateOfIssuance">
+          <DataField>pc_DateOfIssuance</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="pc_PlaceOfIssuanceId">
+          <DataField>pc_PlaceOfIssuanceId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="pc_PlaceOfIssuance">
+          <DataField>pc_PlaceOfIssuance</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pc_ExpirationDate">
+          <DataField>pc_ExpirationDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="tc_Id">
+          <DataField>tc_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tc_CompetencyLevelId">
+          <DataField>tc_CompetencyLevelId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tc_CompetencyLevel">
+          <DataField>tc_CompetencyLevel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_CompetencyNameId">
+          <DataField>tc_CompetencyNameId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tc_CompetencyName">
+          <DataField>tc_CompetencyName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_StatusId">
+          <DataField>tc_StatusId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tc_STatus">
+          <DataField>tc_STatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_CourseName">
+          <DataField>tc_CourseName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_CourseDuration">
+          <DataField>tc_CourseDuration</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_TrainingCenter">
+          <DataField>tc_TrainingCenter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_TrainingLocation">
+          <DataField>tc_TrainingLocation</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tc_AttendanceCertificateIssuanceDate">
+          <DataField>tc_AttendanceCertificateIssuanceDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="tcl_Id">
+          <DataField>tcl_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tcl_SpeakingId">
+          <DataField>tcl_SpeakingId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tcl_Speaking">
+          <DataField>tcl_Speaking</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tcl_ReadingId">
+          <DataField>tcl_ReadingId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tcl_Reading">
+          <DataField>tcl_Reading</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tcl_ListeningId">
+          <DataField>tcl_ListeningId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tcl_Listening">
+          <DataField>tcl_Listening</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="tcl_WritingId">
+          <DataField>tcl_WritingId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="tcl_Writing">
+          <DataField>tcl_Writing</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="rcs_Id">
+          <DataField>rcs_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="rcs_LevelId">
+          <DataField>rcs_LevelId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="rcs_Level">
+          <DataField>rcs_Level</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="rcs_SkillTypeId">
+          <DataField>rcs_SkillTypeId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="rcs_SkillType">
+          <DataField>rcs_SkillType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="jaa_Id">
+          <DataField>jaa_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="jaa_Description">
+          <DataField>jaa_Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="jaa_AttachmentType">
+          <DataField>jaa_AttachmentType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ps_Id">
+          <DataField>ps_Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ps_LevelId">
+          <DataField>ps_LevelId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ps_Level">
+          <DataField>ps_Level</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ps_SkillTypeId">
+          <DataField>ps_SkillTypeId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ps_SkillType">
+          <DataField>ps_SkillType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ps_Description">
+          <DataField>ps_Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.82292in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.63542in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Full Name</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Father Name</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Gender</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="FullName">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!FullName.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>FullName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="FatherName">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!FatherName.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>FatherName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Gender">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Switch(Fields!Gender.Value = 1,"Male",Fields!Gender.Value = 0,"Female")</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Gender</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DataSet1</DataSetName>
+            <Top>0.73833in</Top>
+            <Left>1.35292in</Left>
+            <Height>0.5in</Height>
+            <Width>4.45833in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Gender">
+      <DataType>Integer</DataType>
+      <Prompt>Gender</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>Female</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Male</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Gender</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>2248546c-c3cb-408a-acc5-68afbf47c42d</rd:ReportID>
+</Report>

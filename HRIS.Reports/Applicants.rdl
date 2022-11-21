@@ -4704,7 +4704,7 @@ AND ISNULL(tc.CompetencyLevel_id,0) IN(@Recruitment0TrainingCourse0CompetencyLev
                               <Top>3.59552in</Top>
                               <Left>7.90434in</Left>
                               <Height>0.75in</Height>
-                              <Width>7.4962in</Width>
+                              <Width>7.49622in</Width>
                               <ZIndex>2</ZIndex>
                               <Style>
                                 <Border>
@@ -5373,7 +5373,7 @@ AND ISNULL(tc.CompetencyLevel_id,0) IN(@Recruitment0TrainingCourse0CompetencyLev
                               <Top>3.59552in</Top>
                               <Left>0.125in</Left>
                               <Height>0.75in</Height>
-                              <Width>7.65in</Width>
+                              <Width>7.64998in</Width>
                               <ZIndex>3</ZIndex>
                               <Style>
                                 <Border>
@@ -6514,7 +6514,7 @@ AND ISNULL(tc.CompetencyLevel_id,0) IN(@Recruitment0TrainingCourse0CompetencyLev
                               <Top>4.47692in</Top>
                               <Left>0.125in</Left>
                               <Height>0.75in</Height>
-                              <Width>7.65in</Width>
+                              <Width>7.64996in</Width>
                               <ZIndex>5</ZIndex>
                               <Style>
                                 <Border>
@@ -6861,7 +6861,7 @@ AND ISNULL(tc.CompetencyLevel_id,0) IN(@Recruitment0TrainingCourse0CompetencyLev
                               <Top>5.35834in</Top>
                               <Left>7.93261in</Left>
                               <Height>0.75in</Height>
-                              <Width>7.46791in</Width>
+                              <Width>7.4679in</Width>
                               <ZIndex>6</ZIndex>
                               <Style>
                                 <Border>
