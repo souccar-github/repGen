@@ -72,7 +72,22 @@ namespace Souccar.ReportGenerator.Domain.QueryBuilder
                            String.Format("{0}.{1}", result.FullClassPath, referencesProperty.Name)
                         });
                     }
-                    else if (!referencesProperty.PropertyType.IsEntity())
+
+               else if (referencesProperty.PropertyType.IsEnum())
+                {
+                    result.Leaves.Add(new QueryLeaf
+                    {
+                        IsReference = false,
+                        IsPrimitive = true,
+                        PropertyType = referencesProperty.PropertyType,
+                        ParentType = typeClassTree.Type,
+                        PropertyName = referencesProperty.Name,
+                        DefiningType = typeClassTree.Type,
+                        PropertyFullPath =
+                       String.Format("{0}.{1}", result.FullClassPath, referencesProperty.Name)
+                    });
+                }
+                else if (!referencesProperty.PropertyType.IsEntity())
                     {
                         foreach (SimpleProperty simpleProperty in referencesProperty.ClassTree.SimpleProperties)
                             if (referencesProperty.PropertyType.GetProperty(simpleProperty.Name).CanWrite &&

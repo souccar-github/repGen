@@ -58,12 +58,12 @@ namespace Reporting.RDL
             var query = new Syncfusion.RDL.DOM.Query();
             query.DataSourceName = _dataSource.Name;
             //Parans
-          //  var queryParameters = new Syncfusion.RDL.DOM.QueryParameters();
-           // GenerateQueryParameters(queryParameters, _queryTree);
-          //  query.QueryParameters = new QueryParameters();
-          //  query.QueryParameters.AddRange(queryParameters);
+            //  var queryParameters = new Syncfusion.RDL.DOM.QueryParameters();
+            // GenerateQueryParameters(queryParameters, _queryTree);
+            //  query.QueryParameters = new QueryParameters();
+            //  query.QueryParameters.AddRange(queryParameters);
             query.CommandType = CommandType.Text;
-            query.CommandText = QueryBuilderForIndex(_queryTree,PropName);
+            query.CommandText = QueryBuilderForIndex(_queryTree, PropName);
             query.Timeout = 30;
 
 
@@ -223,7 +223,7 @@ namespace Reporting.RDL
 
         private List<string> GetFieldsNames(List<string> fields, QueryTree queryTree)
         {
-           // var name = queryTree.GetTableName();
+            // var name = queryTree.GetTableName();
             var name = GetTableName(queryTree.Type);
             //Id field
             fields.Add($"{name}Id");
@@ -249,7 +249,7 @@ namespace Reporting.RDL
             return fields;
         }
 
-        private string QueryBuilderForIndex(QueryTree queryTree,string propName)
+        private string QueryBuilderForIndex(QueryTree queryTree, string propName)
         {
             var strBuilder = new StringBuilder();
             strBuilder.Append("SELECT DISTINCT ");
@@ -272,7 +272,7 @@ namespace Reporting.RDL
 
             GetIndexTables(tables, queryTree, propName);
 
-           
+
             foreach (var table in tables)
             {
                 strBuilder.Append(table);
@@ -280,7 +280,7 @@ namespace Reporting.RDL
             return strBuilder.ToString();
         }
 
-        private List<string> GetIndexTables(List<string> tables,QueryTree queryTree,string propName)
+        private List<string> GetIndexTables(List<string> tables, QueryTree queryTree, string propName)
         {
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
@@ -296,7 +296,7 @@ namespace Reporting.RDL
                     }
                 }
             }
-            foreach(var node in queryTree.Nodes.Where(x=>x.HasSelectedFields))
+            foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
                 GetIndexTables(tables, node, propName);
             }
@@ -327,7 +327,7 @@ namespace Reporting.RDL
             }
 
             var parameters = new List<string>();
-            parameters = GetParameters(parameters,queryTree);
+            parameters = GetParameters(parameters, queryTree);
 
             //Function To Add QueryParameter
 
@@ -336,7 +336,7 @@ namespace Reporting.RDL
 
             var filters = new List<string>();
             // filters = GetQueryFilters(filters,queryTree);
-            filters = GetQueryFiltersbyParameter(filters,queryTree);
+            filters = GetQueryFiltersbyParameter(filters, queryTree);
             if (filters.Count > 0)
             {
                 strBuilder.Append(" WHERE ");
@@ -347,14 +347,14 @@ namespace Reporting.RDL
             }
             //
             var sorts = new List<string>();
-            
+
             sorts = GetSorts(queryTree, sorts);
             if (sorts.Count > 0)
             {
                 strBuilder.Append(" order by");
             }
 
-            foreach (var sort  in sorts )
+            foreach (var sort in sorts)
             {
                 strBuilder.Append(sort);
             }
@@ -364,7 +364,7 @@ namespace Reporting.RDL
 
         private List<string> GetQueryFields(List<string> fields, QueryTree queryTree, QueryTree parent = null)
         {
-           // var name = queryTree.GetTableName();
+            // var name = queryTree.GetTableName();
             var name = GetTableName(queryTree.Type);
             var comma = "";
             if (parent != null)
@@ -382,6 +382,7 @@ namespace Reporting.RDL
                 {
                     fields.Add($" , [{GetTableName(propInfo.PropertyType)}].[Name] AS {name}{leafs[i].DisplayName}");
                 }
+
                 else
                 {
                     fields.Add($" , [{name}].[{leafs[i].DisplayName}] AS {name}{leafs[i].DisplayName}");
@@ -408,7 +409,7 @@ namespace Reporting.RDL
             if (parent != null)
             {
                 var parentName = GetTableName(parent.Type);
-              //  var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == parent.GetTableName());
+                //  var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == parent.GetTableName());
                 var foreignKey = queryTree.Type.GetProperties().Any(x => x.PropertyType.Name == GetTableName(parent.Type));
                 if (foreignKey)
                 {
@@ -416,7 +417,7 @@ namespace Reporting.RDL
                 }
                 else
                 {
-                    
+
                     tables.Add($" LEFT JOIN [{name}] ON [{parentName}].[{name}_Id] = [{name}].[Id] ");
                 }
             }
@@ -450,36 +451,36 @@ namespace Reporting.RDL
 
         private string GetOperatorChar(FilterDescriptor filter)
         {
-                if (filter.FilterOperator == FilterOperator.IsGreaterThan)
-                    return ">";
-                else if (filter.FilterOperator == FilterOperator.IsGreaterThanOrEqualTo)
-                    return ">=";
-                else if (filter.FilterOperator == FilterOperator.IsLessThan)
-                    return "<";
-                else if (filter.FilterOperator == FilterOperator.IsLessThanOrEqualTo)
-                    return "<=";
-                else if (filter.FilterOperator == FilterOperator.IsEqualTo)
-                    return "=";
-                else if (filter.FilterOperator == FilterOperator.IsNotEqualTo)
-                    return "!=";
-                else
-                    return "like";
+            if (filter.FilterOperator == FilterOperator.IsGreaterThan)
+                return ">";
+            else if (filter.FilterOperator == FilterOperator.IsGreaterThanOrEqualTo)
+                return ">=";
+            else if (filter.FilterOperator == FilterOperator.IsLessThan)
+                return "<";
+            else if (filter.FilterOperator == FilterOperator.IsLessThanOrEqualTo)
+                return "<=";
+            else if (filter.FilterOperator == FilterOperator.IsEqualTo)
+                return "=";
+            else if (filter.FilterOperator == FilterOperator.IsNotEqualTo)
+                return "!=";
+            else
+                return "like";
         }
 
         private string GetSortChar(SortDescriptor sort)
         {
-            if (sort.SortOrder == 0)
+            if (sort.SortDirection == ListSortDirection.Ascending)
                 return "Asc";
-            else 
+            else
                 return "Desc";
         }
         private List<string> GetQueryFilters(List<string> filters, QueryTree queryTree, int counter = 0)
         {
-           // var name = queryTree.GetTableName();
+            // var name = queryTree.GetTableName();
             var name = GetTableName(queryTree.Type);
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
-                if(leave.FilterDescriptors.Count > 0)
+                if (leave.FilterDescriptors.Count > 0)
                 {
                     if (counter > 0)
                     {
@@ -488,10 +489,10 @@ namespace Reporting.RDL
                     foreach (var filter in leave.FilterDescriptors)
                     {
                         var op = GetOperatorChar(filter);
-                       
+
                         if (filter.FilterOperator == FilterOperator.Contains || filter.FilterOperator == FilterOperator.StartsWith || filter.FilterOperator == FilterOperator.EndsWith)
                         {
-                            if(filter.FilterOperator == FilterOperator.Contains)
+                            if (filter.FilterOperator == FilterOperator.Contains)
                             {
                                 filters.Add($" [{name}].[{leave.PropertyName}] {op} N'%{filter.Value}%' ");
                             }
@@ -512,16 +513,16 @@ namespace Reporting.RDL
                     }
                 }
             }
-            foreach(var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                GetQueryFilters(filters, node,counter);
+                GetQueryFilters(filters, node, counter);
             }
             return filters;
         }
 
         private List<string> GetParameters(List<string> parameters, QueryTree queryTree)
         {
-           // var name = queryTree.GetTableName();
+            // var name = queryTree.GetTableName();
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 if (leave.FilterDescriptors.Count > 0)
@@ -538,31 +539,31 @@ namespace Reporting.RDL
             }
             return parameters;
         }
-        private List<string> GetSorts(QueryTree queryTree ,List<string> sorts, int counter = 0)
+        private List<string> GetSorts(QueryTree queryTree, List<string> sorts, int counter = 0)
         {
             var name = GetTableName(queryTree.Type);
 
-            foreach (var leave in queryTree.Leaves.Where(x=>x.IsSelected && x.IsSorted ))
+            foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected && x.IsSorted))
             {
-              
+
                 if (counter > 0)
                 {
                     sorts.Add(" , ");
                 }
-               
+
                 var sortchar = GetSortChar(leave.SortDescriptor);
                 sorts.Add($" [{name}].[{leave.PropertyName}] {sortchar}");
                 counter++;
             }
-            foreach(var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
+            foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields))
             {
-                GetSorts(node , sorts, counter);
+                GetSorts(node, sorts, counter);
             }
             return sorts;
         }
         private List<string> GetQueryFiltersbyParameter(List<string> filters, QueryTree queryTree, int counter = 0)
         {
-           //var name = queryTree.GetTableName();
+            //var name = queryTree.GetTableName();
             var name = GetTableName(queryTree.Type);
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
@@ -601,6 +602,11 @@ namespace Reporting.RDL
                             }
                             counter++;
                         }
+                        else if (propInfo.PropertyType.IsEnum)
+                        {
+                            filters.Add($" [{name}].[{leave.PropertyName}] in (@{leave.PropertyName}) ");
+                            counter++;
+                        }
                         else
                         {
                             if (filter.FilterOperator == FilterOperator.Contains || filter.FilterOperator == FilterOperator.StartsWith || filter.FilterOperator == FilterOperator.EndsWith)
@@ -625,7 +631,7 @@ namespace Reporting.RDL
                             counter++;
                         }
 
-                       
+
                     }
                 }
             }
@@ -638,9 +644,9 @@ namespace Reporting.RDL
 
         public string GetTableName(System.Type entityType)
         {
-            if(entityType.Name == "Level")
+            if (entityType.Name == "Level")
             {
-               
+
             }
             var persisterEntity = NHibernateSession.Current.SessionFactory.GetClassMetadata(entityType) as NHibernate.Persister.Entity.AbstractEntityPersister;
             if (persisterEntity == null)

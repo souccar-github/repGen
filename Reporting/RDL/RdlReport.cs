@@ -90,11 +90,11 @@ namespace Reporting.RDL
         private Syncfusion.RDL.DOM.ReportParametersLayout CreateReportParameterLayout(QueryTree queryTree)
         {
             Syncfusion.RDL.DOM.CellDefinitions cellDefs = new CellDefinitions();
-            var cellDefinitions = GetCellDefinitions( _queryTree , cellDefs,0,0 );
+            var cellDefinitions = GetCellDefinitions(_queryTree, cellDefs, 0, 0);
 
             int rowIndex = 0, columnIndex = 0;
 
-            foreach(var cellDef in cellDefinitions)
+            foreach (var cellDef in cellDefinitions)
             {
                 cellDef.RowIndex = rowIndex;
                 cellDef.ColumnIndex = columnIndex;
@@ -119,8 +119,9 @@ namespace Reporting.RDL
             };
             return RepParamLayout;
         }
-        private Syncfusion.RDL.DOM.CellDefinitions GetCellDefinitions(QueryTree queryTree, CellDefinitions cellDefs, int rowIndex , int columnIndex) {
-         
+        private Syncfusion.RDL.DOM.CellDefinitions GetCellDefinitions(QueryTree queryTree, CellDefinitions cellDefs, int rowIndex, int columnIndex)
+        {
+
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected && x.HasFilters))
             {
                 var cellDef = new CellDefinition()
@@ -140,11 +141,11 @@ namespace Reporting.RDL
             }
             foreach (var node in queryTree.Nodes.Where(x => x.HasSelectedFields && x.HasFilters))
             {
-                GetCellDefinitions(node , cellDefs, rowIndex, columnIndex);
+                GetCellDefinitions(node, cellDefs, rowIndex, columnIndex);
             }
 
-                return cellDefs;
-            }
+            return cellDefs;
+        }
 
         private int GetRowsAndColumnsNumber(bool isRow)
         {

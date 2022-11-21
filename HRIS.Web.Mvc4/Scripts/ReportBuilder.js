@@ -34,6 +34,16 @@ function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
     treeview.select($());
     QueryTree = SelectedTreeNode;
     debugger;
+    for (var i = 0; i < QueryTree.Leaves.length; i++) {
+        if (QueryTree.Leaves[i].SortDescriptor.SortOrder > 0) {
+            if (QueryTree.Leaves[i].SortDescriptor.SortDirection == "Asc") {
+                QueryTree.Leaves[i].SortDescriptor.SortDirection = 0;
+            }
+            else {
+                QueryTree.Leaves[i].SortDescriptor.SortDirection = 1;
+            }
+        }
+    }
     if (reportTemplate == "")
     { reportTemplate = 0 }
     $.ajax(
@@ -49,6 +59,7 @@ function SubmitQueryTree(reportName, reportResourceName, reportTemplate) {
             success: function () {
             }
         });
+   
 }
 
 function treeview_databound(e) {
@@ -260,7 +271,7 @@ function IntializeFiltersDataSource(selectedTreeNodeData) {
             value: selectedTreeNodeData.Leaves[i].PropertyFullPath + "-" + type
         };
         CurrentFiltersFieldsNames.push(fieldName);
-        debugger;
+     
         for (var x = 0; x < selectedTreeNodeData.Leaves[i].FilterDescriptors.length; x++) {
             var filter = {
                 "ID": ++FielterIdCounter,
@@ -526,7 +537,7 @@ function AggregateFilterFieldName_Changed() {
     });
 }
 function FilterFieldChanged() {
-    debugger;
+   
     var fieldType = $("#FilterFieldName").data("kendoDropDownList").value().split("-")[1];
     if(fieldType== "Index"){
         $("#FilterFieldOperator").data("kendoDropDownList").setDataSource(FiltersIndexOperators);

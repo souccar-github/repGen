@@ -328,6 +328,7 @@
                 for (var i = 0; i < selectedItems.length; i++) {
                     _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortOrder = ++maxSortOrder;
                     _.findWhere(item.Leaves, { PropertyName: selectedItems[i].value }).SortDescriptor.SortDirection = "Asc";
+                   
                 }
                 refreshSortList(item);
                 var temp = [];
@@ -575,8 +576,8 @@
             <dd>#:GetFilterFieldNameById(Field)#</dd>
             <dt>Operator</dt>
             <dd>#:GetFilterOperatorNameById(Operator)#</dd>
-            <dt>Value</dt>
-            <dd>#:Value#</dd>
+            @*<dt>Value</dt>
+            <dd>#:Value#</dd>*@
         </dl>
     </div>
 </script>
@@ -598,11 +599,11 @@
                 <input id="FilterFieldOperator" data-role="dropdownlist" data-text-field="text" data-value-field="value" # if(data.type=="String" ){ # data-source="FiltersStringOperators" # }else if (data.type=="Index" ){ # data-source="FiltersIndexOperators" # } else { # data-source="FiltersNumericAndDateOperators" # } # data-bind="value:Operator" required="required" validationmessage="required" />
                 <span data-for="FilterFieldOperator" class="k-invalid-msg"></span>
             </dd>
-            <dt>Value</dt>
+            @*<dt>Value</dt>
             <dd>
                 <input type="text" #if(data.type=="DateTime" ){ # data-role="datepicker" # }else if(data.type=="Integer" ){ # data-role="numerictextbox" # } # class="k-textbox" data-bind="value:Value" id="FilterFieldValue" required="required" validationmessage="required" />
                 <span data-for="FilterFieldValue" class="k-invalid-msg"></span>
-            </dd>
+            </dd>*@
             @*<input type="hidden" data-bind="value:Type" id="FilterFieldType" />*@
         </dl>
     </div>

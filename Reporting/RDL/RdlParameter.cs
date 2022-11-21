@@ -16,10 +16,13 @@ namespace Reporting.RDL
     {
         private Syncfusion.RDL.DOM.ReportParameters _reportParameters;
         private Syncfusion.RDL.DOM.ReportParameter parameter;
+        private Syncfusion.RDL.DOM.ParameterValues parameterValues;
+        private Syncfusion.RDL.DOM.ParameterValue parameterValue;
+
         private QueryTree _queryTree;
         public RdlParameter(QueryTree queryTree)
         {
-           
+
             _queryTree = queryTree;
             _reportParameters = new Syncfusion.RDL.DOM.ReportParameters();
         }
@@ -62,14 +65,15 @@ namespace Reporting.RDL
 
         public Syncfusion.RDL.DOM.ReportParameters Create(QueryTree queryTree)
         {
+
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
                 if (leave.FilterDescriptors.Count > 0)
                 {
-                        parameter = new Syncfusion.RDL.DOM.ReportParameter();
+                    parameter = new Syncfusion.RDL.DOM.ReportParameter();
 
-                        var type = queryTree.Type;
-                        var propInfo = type.GetProperty(leave.PropertyName);
+                    var type = queryTree.Type;
+                    var propInfo = type.GetProperty(leave.PropertyName);
                     parameter.Name = leave.PropertyName;
                     parameter.Prompt = leave.DisplayName;
                     parameter.DataType = GetTypes(propInfo);
@@ -79,12 +83,19 @@ namespace Reporting.RDL
                         parameter.ValidValues = GetIndexValidValues(propInfo);
                         parameter.MultiValue = true;
                     }
+                    if (propInfo.PropertyType.IsEnum)
+                    {
+                        parameterValues = new Syncfusion.RDL.DOM.ParameterValues();
+                        parameter.ValidValues = GetEnumValidValues(propInfo, parameterValues);
+                        parameter.DataType = Syncfusion.RDL.DOM.DataTypes.Integer;
+                        parameter.MultiValue = true;
+                    }
                     //else
                     //{
                     //    parameter.ValidValues = GetValidValues(propInfo);
                     //}
-                  
-                   // parameter.ValidValues = GetValidValues(propInfo);
+
+                    // parameter.ValidValues = GetValidValues(propInfo);
                     //  parameter.DefaultValue = GetDefaultValue(propInfo);
                     _reportParameters.Add(parameter);
                 }
@@ -105,7 +116,7 @@ namespace Reporting.RDL
         //    {
         //        return Syncfusion.RDL.DOM.DataTypes.Boolean;
         //    }
-           
+
         //}
 
         //private Syncfusion.RDL.DOM.ReportParameter GetParameterName(QueryTree queryTree)
@@ -156,9 +167,29 @@ namespace Reporting.RDL
             return IndexvalidValue;
         }
 
+        private Syncfusion.RDL.DOM.ValidValues GetEnumValidValues(PropertyInfo propInfo, ParameterValues parameterValues)
+        {
+            var EnumvalidValue = new Syncfusion.RDL.DOM.ValidValues();
+            //var parameterValue = new Syncfusion.RDL.DOM.ParameterValue();
+
+            // var lengthOfEnum = Enum.GetNames(typeof(HRIS.Domain.Personnel.Enums.BloodType)).Length;
+            var counter = 0;
+            foreach (var nameOfEnum in Enum.GetNames(propInfo.PropertyType))
+            {
+
+                var parameterValue = new Syncfusion.RDL.DOM.ParameterValue();
+                parameterValue.Label = $"{nameOfEnum}";
+                parameterValue.Value = $"{counter}";
+                // IndexvalidValue.DataSetReference = dataSetReference;
+                parameterValues.Add(parameterValue);
+                counter++;
+            }
+            EnumvalidValue.ParameterValues = parameterValues;
+            return EnumvalidValue;
+        }
         private Syncfusion.RDL.DOM.DataTypes GetTypes(PropertyInfo Leave)
         {
-            if(Leave == null)
+            if (Leave == null)
             {
                 return Syncfusion.RDL.DOM.DataTypes.String;
             }
@@ -176,7 +207,7 @@ namespace Reporting.RDL
             {
                 propType = Syncfusion.RDL.DOM.DataTypes.Integer;
             }
-            else if(datatype == typeof(float))
+            else if (datatype == typeof(float))
             {
                 propType = Syncfusion.RDL.DOM.DataTypes.Float;
             }
