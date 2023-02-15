@@ -284,7 +284,7 @@ namespace Reporting.RDL
                         KeepTogether = true
                     });
                     var name = leave.DisplayName;
-
+                    var parent = queryTree.GetTableName();
 
                     TablixMembers Childrens = new TablixMembers();
 
@@ -320,7 +320,7 @@ namespace Reporting.RDL
                         {
                             Name = name + "_Details_Group",
                             DataElementName = name + "Detail",
-                            GroupExpressions = GetGroupExpressions($"=Fields!{name}.Value")
+                            GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
                         },
                         TablixMembers = Childrens,
                     });
@@ -368,8 +368,9 @@ namespace Reporting.RDL
                             KeepTogether = true
                         });
                          var name = leave.DisplayName;
+                         var parent = queryTree.GetTableName();
 
-                        rowTablixMembers.Add(new TablixMember()
+                    rowTablixMembers.Add(new TablixMember()
                         {
                             DataElementName = name + "_Collection",
                             DataElementOutput = DataElementOutputs.Output,
@@ -378,7 +379,7 @@ namespace Reporting.RDL
                             {
                                 Name = name + "_Details_Group",
                                 DataElementName = name + "Detail",
-                                GroupExpressions = GetGroupExpressions($"=Fields!{name}.Value")
+                                GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
                             },
                             TablixMembers = GetChildRowHierarchyMembers(leave.QueryTree)
                         });

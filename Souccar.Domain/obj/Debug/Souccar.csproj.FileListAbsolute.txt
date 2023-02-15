@@ -11,3 +11,10 @@ D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.ca
 D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.dll
 D:\Git Hub\repGen\Souccar.Domain\obj\Debug\Souccar.pdb
 F:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\ui\binaries\Souccar.dll
+D:\Projects\ReportGenerator\ui\binaries\Souccar.pdb
+D:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Interop.zkemkeeper.dll
+D:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.csproj.ResolveComReference.cache
+D:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.dll
+D:\Projects\ReportGenerator\Souccar.Domain\obj\Debug\Souccar.pdb

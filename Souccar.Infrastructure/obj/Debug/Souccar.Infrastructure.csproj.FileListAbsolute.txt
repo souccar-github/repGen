@@ -8,3 +8,8 @@ D:\Git Hub\repGen\ui\binaries\Souccar.Infrastructure.pdb
 D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
 D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
 D:\Git Hub\repGen\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb
+D:\Projects\ReportGenerator\ui\binaries\Souccar.Infrastructure.dll
+D:\Projects\ReportGenerator\ui\binaries\Souccar.Infrastructure.pdb
+D:\Projects\ReportGenerator\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.dll
+D:\Projects\ReportGenerator\Souccar.Infrastructure\obj\Debug\Souccar.Infrastructure.pdb

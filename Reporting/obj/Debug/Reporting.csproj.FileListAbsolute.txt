@@ -20,3 +20,14 @@ D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.JobDesc.TestReporting.resources
 D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.csproj.GenerateResource.Cache
 D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.dll
 D:\Git Hub\repGen\Reporting\obj\Debug\Reporting.pdb
+D:\Projects\ReportGenerator\UI\Binaries\Reporting.dll
+D:\Projects\ReportGenerator\UI\Binaries\Reporting.pdb
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.DynamicReports.DynamicReport.resources
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.Infrastructure.BaseReport.resources
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.JobDesc.SubReport.resources
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.JobDesc.JobDescTemplate.resources
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.JobDesc.TestReporting.resources
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.csproj.GenerateResource.Cache
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.dll
+D:\Projects\ReportGenerator\Reporting\obj\Debug\Reporting.pdb

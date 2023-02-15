@@ -8,3 +8,8 @@ D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAss
 D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
 D:\Git Hub\repGen\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb
 F:\Projects\ReportGenerator\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\UI\Binaries\Souccar.Reflector.dll
+D:\Projects\ReportGenerator\UI\Binaries\Souccar.Reflector.pdb
+D:\Projects\ReportGenerator\Souccar.Reflector\obj\Debug\Souccar.Reflector.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\Souccar.Reflector\obj\Debug\Souccar.Reflector.dll
+D:\Projects\ReportGenerator\Souccar.Reflector\obj\Debug\Souccar.Reflector.pdb

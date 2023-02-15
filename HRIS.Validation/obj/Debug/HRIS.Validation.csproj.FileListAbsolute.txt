@@ -16,3 +16,12 @@ D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalM
 D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
 D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.dll
 D:\Git Hub\repGen\HRIS.Validation\obj\Debug\HRIS.Validation.pdb
+D:\Projects\ReportGenerator\ui\binaries\HRIS.Validation.dll
+D:\Projects\ReportGenerator\ui\binaries\HRIS.Validation.pdb
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.CustomMessagesResource.resources
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.DefaultValidationMessagesResource.resources
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.MessageStore.GlobalMessagesResource.resources
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.csproj.GenerateResource.Cache
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.dll
+D:\Projects\ReportGenerator\HRIS.Validation\obj\Debug\HRIS.Validation.pdb

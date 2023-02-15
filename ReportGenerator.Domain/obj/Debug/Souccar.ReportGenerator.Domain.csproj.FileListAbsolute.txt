@@ -33,3 +33,8 @@ F:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Domain.pdb
 F:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
 F:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
 F:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb
+D:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Domain.dll
+D:\Projects\ReportGenerator\UI\Binaries\Souccar.ReportGenerator.Domain.pdb
+D:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.dll
+D:\Projects\ReportGenerator\ReportGenerator.Domain\obj\Debug\Souccar.ReportGenerator.Domain.pdb

@@ -8,3 +8,8 @@ F:\Projects\ReportGenerator\ui\binaries\Souccar.NHibernate.dll
 F:\Projects\ReportGenerator\ui\binaries\Souccar.NHibernate.pdb
 F:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.dll
 F:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.pdb
+D:\Projects\ReportGenerator\ui\binaries\Souccar.NHibernate.dll
+D:\Projects\ReportGenerator\ui\binaries\Souccar.NHibernate.pdb
+D:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.dll
+D:\Projects\ReportGenerator\Souccar.NHibernate\obj\Debug\Souccar.NHibernate.pdb

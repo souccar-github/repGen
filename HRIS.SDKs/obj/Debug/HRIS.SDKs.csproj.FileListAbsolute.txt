@@ -11,3 +11,10 @@ D:\Git Hub\repGen\HRIS.SDKs\bin\Debug\Castle.Windsor.dll
 D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.csprojResolveAssemblyReference.cache
 D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.dll
 D:\Git Hub\repGen\HRIS.SDKs\obj\Debug\HRIS.SDKs.pdb
+D:\Projects\ReportGenerator\HRIS.SDKs\bin\Debug\HRIS.SDKs.dll
+D:\Projects\ReportGenerator\HRIS.SDKs\bin\Debug\HRIS.SDKs.pdb
+D:\Projects\ReportGenerator\HRIS.SDKs\bin\Debug\Castle.Core.dll
+D:\Projects\ReportGenerator\HRIS.SDKs\bin\Debug\Castle.Windsor.dll
+D:\Projects\ReportGenerator\HRIS.SDKs\obj\Debug\HRIS.SDKs.csprojResolveAssemblyReference.cache
+D:\Projects\ReportGenerator\HRIS.SDKs\obj\Debug\HRIS.SDKs.dll
+D:\Projects\ReportGenerator\HRIS.SDKs\obj\Debug\HRIS.SDKs.pdb
