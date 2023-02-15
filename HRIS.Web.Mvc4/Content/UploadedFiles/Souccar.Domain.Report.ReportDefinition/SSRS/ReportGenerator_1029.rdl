@@ -348,9 +348,25 @@
               <TablixMembers>
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
+                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Detail" />
+                  <Group Name="FatherName_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!FatherName.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>FatherNameDetail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Detail">
+                        <DataElementName>Detail</DataElementName>
+                      </Group>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementName>FatherName_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>

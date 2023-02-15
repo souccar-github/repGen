@@ -352,6 +352,64 @@
                 <TablixMember>
                   <Group Name="Detail" />
                 </TablixMember>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="FirstName_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!FirstNameId.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>FirstNameDetail</DataElementName>
+                  </Group>
+                  <DataElementName>FirstName_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="LastName_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!LastNameId.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>LastNameDetail</DataElementName>
+                  </Group>
+                  <DataElementName>LastName_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="FatherName_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!FatherNameId.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>FatherNameDetail</DataElementName>
+                  </Group>
+                  <DataElementName>FatherName_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="DateOfBirth_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!DateOfBirthId.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>DateOfBirthDetail</DataElementName>
+                  </Group>
+                  <DataElementName>DateOfBirth_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <LayoutDirection>LTR</LayoutDirection>

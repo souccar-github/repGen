@@ -34,13 +34,10 @@
             <Left>1in</Left>
             <Top>1in</Top>
             <Height>0.50000in</Height>
-            <Width>9in</Width>
+            <Width>7in</Width>
             <DataSetName>MainDataSet</DataSetName>
             <TablixBody>
               <TablixColumns>
-                <TablixColumn>
-                  <Width>2in</Width>
-                </TablixColumn>
                 <TablixColumn>
                   <Width>2in</Width>
                 </TablixColumn>
@@ -114,41 +111,6 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>Last Name</Value>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                                <VerticalAlign>Middle</VerticalAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0FatherName">
-                          <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Style>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <FontFamily>tahoma</FontFamily>
-                            <FontSize>12pt</FontSize>
-                            <FontWeight>Bold</FontWeight>
-                            <TextAlign>Center</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                          </Style>
-                          <HideDuplicates>MainDataSet</HideDuplicates>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Father Name</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -268,39 +230,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeFatherName">
-                          <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Style>
-                            <FontFamily>tahoma</FontFamily>
-                            <FontSize>11pt</FontSize>
-                            <TextAlign>Center</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                          </Style>
-                          <HideDuplicates>MainDataSet</HideDuplicates>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!EmployeeFatherName.Value</Value>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                                <VerticalAlign>Middle</VerticalAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="EmployeeDateOfBirth">
                           <Left>0in</Left>
                           <Top>0in</Top>
@@ -341,7 +270,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -359,10 +287,10 @@
         </ReportItems>
         <Height>2.03333in</Height>
       </Body>
-      <Width>9in</Width>
+      <Width>7in</Width>
       <Page>
         <PageHeight>5in</PageHeight>
-        <PageWidth>9in</PageWidth>
+        <PageWidth>7in</PageWidth>
         <LeftMargin>0.50000in</LeftMargin>
         <RightMargin>0.50000in</RightMargin>
         <TopMargin>0.50000in</TopMargin>
@@ -392,9 +320,6 @@
         <Field Name="EmployeeLastName">
           <DataField>EmployeeLastName</DataField>
         </Field>
-        <Field Name="EmployeeFatherName">
-          <DataField>EmployeeFatherName</DataField>
-        </Field>
         <Field Name="EmployeeDateOfBirth">
           <DataField>EmployeeDateOfBirth</DataField>
         </Field>
@@ -402,14 +327,14 @@
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Employee].[FatherName] AS EmployeeFatherName , [Employee].[DateOfBirth] AS EmployeeDateOfBirth FROM Employee order by [Employee].[FirstName] Desc</CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Employee].[DateOfBirth] AS EmployeeDateOfBirth FROM Employee order by [Employee].[FirstName] Desc</CommandText>
         <Timeout>30</Timeout>
       </Query>
     </DataSet>
   </DataSets>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfColumns>3</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>

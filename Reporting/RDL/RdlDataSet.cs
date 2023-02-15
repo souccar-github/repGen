@@ -525,6 +525,7 @@ namespace Reporting.RDL
             // var name = queryTree.GetTableName();
             foreach (var leave in queryTree.Leaves.Where(x => x.IsSelected))
             {
+                //var g = leave.GroupDescriptor;
                 if (leave.FilterDescriptors.Count > 0)
                 {
                     foreach (var filter in leave.FilterDescriptors)

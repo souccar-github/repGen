@@ -248,24 +248,87 @@ namespace Reporting.RDL
         {
             var tablixRowHierarchy = new TablixRowHierarchy();
             tablixRowHierarchy.TablixMembers = GetRowHierarchyMembers(queryTree);
+
+        //    tablixRowHierarchy.TablixMembers.AddRange(GetGroupMembers(queryTree));
+
             return tablixRowHierarchy;
         }
 
         private TablixMembers GetRowHierarchyMembers(QueryTree queryTree)
         {
             var rowTablixMembers = new TablixMembers();
-            rowTablixMembers.Add(new TablixMember()
+            //rowTablixMembers.Add(new TablixMember()
+            //{
+            //    KeepWithGroup = KeepWithGroup.After,
+            //    //KeepTogether = true
+            //});
+            //rowTablixMembers.Add(new TablixMember()
+            //{
+            //    Group = new Syncfusion.RDL.DOM.Group()
+            //    {
+            //        Name = "Detail"
+            //    }
+            //});
+            var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
+
+            if (leaves != null && leaves.Any())
             {
-                KeepWithGroup = KeepWithGroup.After,
-                //KeepTogether = true
-            });
-            rowTablixMembers.Add(new TablixMember()
-            {
-                Group = new Syncfusion.RDL.DOM.Group()
+
+                //List
+                foreach (QueryLeaf leave in leaves)
                 {
-                    Name = "Detail"
+
+                    rowTablixMembers.Add(new TablixMember()
+                    {
+                        KeepWithGroup = KeepWithGroup.After,
+                        KeepTogether = true
+                    });
+                    var name = leave.DisplayName;
+
+
+                    TablixMembers Childrens = new TablixMembers();
+
+                    //Childrens.Add(new TablixMember()
+                    //{
+                    //    Group = new Syncfusion.RDL.DOM.Group()
+                    //    {
+                    //        Name = "Detail"
+                    //    }
+                    //});
+
+                    Childrens.Add(new TablixMember()
+                    {
+                        //DataElementName = name + "_Collection",
+                        //DataElementOutput = DataElementOutputs.Output,
+                        //KeepTogether = true,
+
+                        Group = new Syncfusion.RDL.DOM.Group()
+                        {
+                            Name = "Detail",
+                            DataElementName = "Detail",
+                            //GroupExpressions = GetGroupExpressions($"=Fields!{name}.Value")
+                        },
+                        // TablixMembers = GetChildRowHierarchyMembers(leave.QueryTree)
+                    });
+
+                    rowTablixMembers.Add(new TablixMember()
+                    {
+                        DataElementName = name + "_Collection",
+                        DataElementOutput = DataElementOutputs.Output,
+                        KeepTogether = true,
+                        Group = new Syncfusion.RDL.DOM.Group()
+                        {
+                            Name = name + "_Details_Group",
+                            DataElementName = name + "Detail",
+                            GroupExpressions = GetGroupExpressions($"=Fields!{name}.Value")
+                        },
+                        TablixMembers = Childrens,
+                    });
+
                 }
-            });
+
+            }
+
             //var name = queryTree.GetTableName();
             //rowTablixMembers.Add(new TablixMember()
             //{
@@ -281,6 +344,48 @@ namespace Reporting.RDL
             //    TablixMembers = GetChildRowHierarchyMembers(queryTree)
             //});
 
+            return rowTablixMembers;
+        }
+
+        private TablixMembers GetGroupMembers(QueryTree queryTree)
+        {
+            var rowTablixMembers = new TablixMembers();
+
+            var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
+
+            if (leaves != null && leaves.Any())
+            {
+                rowTablixMembers.Add(new TablixMember());
+                rowTablixMembers.Add(new TablixMember());
+
+                //List
+                foreach (QueryLeaf leave in leaves)
+                {
+                    
+                        rowTablixMembers.Add(new TablixMember()
+                        {
+                            KeepWithGroup = KeepWithGroup.After,
+                            KeepTogether = true
+                        });
+                         var name = leave.DisplayName;
+
+                        rowTablixMembers.Add(new TablixMember()
+                        {
+                            DataElementName = name + "_Collection",
+                            DataElementOutput = DataElementOutputs.Output,
+                            KeepTogether = true,
+                            Group = new Syncfusion.RDL.DOM.Group()
+                            {
+                                Name = name + "_Details_Group",
+                                DataElementName = name + "Detail",
+                                GroupExpressions = GetGroupExpressions($"=Fields!{name}.Value")
+                            },
+                            TablixMembers = GetChildRowHierarchyMembers(leave.QueryTree)
+                        });
+                    
+                }
+
+            }
             return rowTablixMembers;
         }
 
