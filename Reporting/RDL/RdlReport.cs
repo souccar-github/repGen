@@ -269,65 +269,75 @@ namespace Reporting.RDL
             //        Name = "Detail"
             //    }
             //});
-            var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
+            //////var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
 
-            if (leaves != null && leaves.Any())
-            {
 
-                //List
-                foreach (QueryLeaf leave in leaves)
-                {
 
-                    rowTablixMembers.Add(new TablixMember()
-                    {
-                        KeepWithGroup = KeepWithGroup.After,
-                        KeepTogether = true
-                    });
-                    var name = leave.DisplayName;
-                    var parent = queryTree.GetTableName();
+            //////if (leaves != null && leaves.Any())
+            //////{
+            //////    TablixMember child = null;
+            //////    TablixMember currentParent = null;
 
-                    TablixMembers Childrens = new TablixMembers();
+            //////    //List
+            //////    foreach (QueryLeaf leave in leaves)
+            //////    {
 
-                    //Childrens.Add(new TablixMember()
-                    //{
-                    //    Group = new Syncfusion.RDL.DOM.Group()
-                    //    {
-                    //        Name = "Detail"
-                    //    }
-                    //});
 
-                    Childrens.Add(new TablixMember()
-                    {
-                        //DataElementName = name + "_Collection",
-                        //DataElementOutput = DataElementOutputs.Output,
-                        //KeepTogether = true,
 
-                        Group = new Syncfusion.RDL.DOM.Group()
-                        {
-                            Name = "Detail",
-                            DataElementName = "Detail",
-                            //GroupExpressions = GetGroupExpressions($"=Fields!{name}.Value")
-                        },
-                        // TablixMembers = GetChildRowHierarchyMembers(leave.QueryTree)
-                    });
 
-                    rowTablixMembers.Add(new TablixMember()
-                    {
-                        DataElementName = name + "_Collection",
-                        DataElementOutput = DataElementOutputs.Output,
-                        KeepTogether = true,
-                        Group = new Syncfusion.RDL.DOM.Group()
-                        {
-                            Name = name + "_Details_Group",
-                            DataElementName = name + "Detail",
-                            GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
-                        },
-                        TablixMembers = Childrens,
-                    });
+            //////        //rowTablixMembers.Add(new TablixMember()
+            //////        //{
+            //////        //    KeepWithGroup = KeepWithGroup.After,
+            //////        //    KeepTogether = true
+            //////        //});
+            //////        var name = leave.DisplayName;
+            //////        var parent = queryTree.GetTableName();
 
-                }
+            //////        TablixMembers Childrens = new TablixMembers();
 
-            }
+            //////        if(currentParent != null && child != null)
+            //////        {
+            //////            currentParent = child;
+            //////        }
+
+            //////            child = new TablixMember()
+            //////            {
+
+            //////                Group = new Syncfusion.RDL.DOM.Group()
+            //////                {
+            //////                    Name = "Detail",
+            //////                    DataElementName = "Detail",
+            //////                },
+            //////            };
+
+            //////        Childrens.Add(child);
+
+            //////        if (currentParent == null)
+            //////        {
+            //////            currentParent = new TablixMember()
+            //////            {
+            //////                DataElementName = name + "_Collection",
+            //////                DataElementOutput = DataElementOutputs.Output,
+            //////                KeepTogether = true,
+            //////                Group = new Syncfusion.RDL.DOM.Group()
+            //////                {
+            //////                    Name = name + "_Details_Group",
+            //////                    DataElementName = name + "Detail",
+            //////                    GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
+            //////                },
+            //////                TablixMembers = Childrens,
+            //////            };
+            //////        }
+            //////        else
+            //////        {
+            //////            currentParent.TablixMembers = Childrens;
+            //////        }
+
+            //////        rowTablixMembers.Add(currentParent);
+
+            //////    }
+
+            //////}
 
             //var name = queryTree.GetTableName();
             //rowTablixMembers.Add(new TablixMember()
@@ -344,8 +354,111 @@ namespace Reporting.RDL
             //    TablixMembers = GetChildRowHierarchyMembers(queryTree)
             //});
 
+
+
+            //var child = new TablixMember()
+            //{
+
+            //    Group = new Syncfusion.RDL.DOM.Group()
+            //    {
+            //        Name = "Detail Tester",
+            //        DataElementName = "Detail",
+            //    },
+            //};
+            //rowTablixMembers.Add(child);
+
+            rowTablixMembers = GetAllGroups(queryTree);
+
             return rowTablixMembers;
         }
+
+
+
+        private TablixMembers GetAllGroups(QueryTree queryTree)
+        {
+            var rowTablixMembers = new TablixMembers();
+
+            TablixMember TTM = new TablixMember();
+            rowTablixMembers.Add(TTM);
+
+
+            var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
+
+
+            TablixMember previousParent = null;
+            foreach (QueryLeaf leave in leaves)
+            {
+
+                var name = leave.DisplayName;
+                var parent = queryTree.GetTableName();
+                if (previousParent == null)
+                {
+
+
+                    TablixMembers Childrens = new TablixMembers();
+                    var child = new TablixMember()
+                    {
+
+                        Group = new Syncfusion.RDL.DOM.Group()
+                        {
+                            Name = "Detail",
+                            DataElementName = "Detail",
+                        },
+                    };
+
+                    Childrens.Add(child);
+
+                    var TM = new TablixMember()
+                    {
+                        DataElementName = name + "_Collection",
+                        DataElementOutput = DataElementOutputs.Output,
+                        KeepTogether = true,
+                        Group = new Syncfusion.RDL.DOM.Group()
+                        {
+                            Name = name + "_Details_Group",
+                            DataElementName = name + "Detail",
+                            GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
+                        },
+                        TablixMembers = Childrens,
+                    };
+
+                    previousParent = TM;
+
+                }
+                else
+                {
+
+                    TablixMembers Childrens = new TablixMembers();
+                    var child = previousParent;
+                    Childrens.Add(child);
+                    var TM = new TablixMember()
+                    {
+                        DataElementName = name + "_Collection",
+                        DataElementOutput = DataElementOutputs.Output,
+                        KeepTogether = true,
+                        Group = new Syncfusion.RDL.DOM.Group()
+                        {
+                            Name = name + "_Details_Group",
+                            DataElementName = name + "Detail",
+                            GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
+                        },
+                        TablixMembers = Childrens,
+                    };
+
+                    previousParent = TM;
+                }
+
+            }
+
+            rowTablixMembers.Add(previousParent);
+
+            return rowTablixMembers;
+
+
+        }
+
+
+
 
         private TablixMembers GetGroupMembers(QueryTree queryTree)
         {

@@ -6,16 +6,17 @@
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=.;Initial Catalog=SEI-ORC;User ID=sa;Password=123456;</ConnectString>
+        <Prompt>Specify a user name and password for data source DataSource1:</Prompt>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
-      <rd:DataSourceID>d5dad6aa-c76d-4c31-bbec-86d08b27d597</rd:DataSourceID>
+      <rd:DataSourceID>d4b1a66d-cb83-4d4d-a36a-f586e985832b</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="MainDataSet">
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Employee].[FatherName] AS EmployeeFatherName , [Employee].[Code] AS EmployeeCode FROM Employee</CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Employee].[FatherName] AS EmployeeFatherName , [Employee].[DateOfBirth] AS EmployeeDateOfBirth FROM Employee order by [Employee].[FirstName] Desc</CommandText>
         <Timeout>30</Timeout>
       </Query>
       <Fields>
@@ -31,8 +32,8 @@
         <Field Name="EmployeeFatherName">
           <DataField>EmployeeFatherName</DataField>
         </Field>
-        <Field Name="EmployeeCode">
-          <DataField>EmployeeCode</DataField>
+        <Field Name="EmployeeDateOfBirth">
+          <DataField>EmployeeDateOfBirth</DataField>
         </Field>
       </Fields>
     </DataSet>
@@ -95,7 +96,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>First Name</Value>
+                                  <Value>Father Name</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -163,7 +164,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Father Name</Value>
+                                  <Value>First Name</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -190,14 +191,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0Code">
+                        <Textbox Name="LabelPersonnel0Employee0DateOfBirth">
                           <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Code</Value>
+                                  <Value>Date Of Birth</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -232,11 +233,12 @@
                         <Textbox Name="EmployeeFirstName">
                           <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
+						  <CanGrow>true</CanGrow>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeFirstName.Value</Value>
+                                  <Value>=Fields!EmployeeFatherName.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -257,7 +259,6 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -301,7 +302,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeFatherName.Value</Value>
+                                  <Value>=Fields!EmployeeFirstName.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -326,14 +327,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeCode">
+                        <Textbox Name="EmployeeDateOfBirth">
                           <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeCode.Value</Value>
+                                  <Value>=Fields!EmployeeDateOfBirth.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -403,151 +404,75 @@
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>1in</Size>
-                        <CellContents>
-                          <Textbox Name="Textbox3">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>Employee Last Name</Value>
-                                    <Style />
-                                  </TextRun>
-                                </TextRuns>
-                                <Style>
-                                  <TextAlign>Center</TextAlign>
-                                </Style>
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Textbox3</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Color>LightGrey</Color>
-                                <Style>Solid</Style>
-                              </Border>
-                              <BackgroundColor>LightGrey</BackgroundColor>
-                              <VerticalAlign>Middle</VerticalAlign>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <KeepTogether>true</KeepTogether>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
+                    <TablixMember />
                   </TablixMembers>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="FatherName_Details_Group">
+                  <Group Name="EmployeeFirstName">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!EmployeeFatherName.Value</GroupExpression>
+                      <GroupExpression>=Fields!EmployeeFirstName.Value</GroupExpression>
                     </GroupExpressions>
-                    <DataElementName>FatherNameDetail</DataElementName>
                   </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!EmployeeFirstName.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>1in</Size>
+                    <CellContents>
+                      <Textbox Name="EmployeeFirstName1">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!EmployeeFirstName.Value</Value>
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>EmployeeFirstName1</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
-                      <Group Name="EmployeeFirstName">
+                      <Group Name="FatherName_Details_Group">
                         <GroupExpressions>
-                          <GroupExpression>=Fields!EmployeeFirstName.Value</GroupExpression>
+                          <GroupExpression>=Fields!EmployeeFatherName.Value</GroupExpression>
                         </GroupExpressions>
+                        <DataElementName>FatherNameDetail</DataElementName>
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!EmployeeFirstName.Value</Value>
+                          <Value>=Fields!EmployeeFatherName.Value</Value>
                         </SortExpression>
                       </SortExpressions>
-                      <TablixHeader>
-                        <Size>1in</Size>
-                        <CellContents>
-                          <Textbox Name="EmployeeFirstName1">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Fields!EmployeeFirstName.Value</Value>
-                                    <Style />
-                                  </TextRun>
-                                </TextRuns>
-                                <Style>
-                                  <TextAlign>Center</TextAlign>
-                                </Style>
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>EmployeeFirstName1</rd:DefaultName>
-                            <Style>
-                              <Border>
-                                <Color>LightGrey</Color>
-                                <Style>Solid</Style>
-                              </Border>
-                              <VerticalAlign>Middle</VerticalAlign>
-                            </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="EmployeeLastName">
-                            <GroupExpressions>
-                              <GroupExpression>=Fields!EmployeeLastName.Value</GroupExpression>
-                            </GroupExpressions>
+                          <Group Name="Detail">
+                            <DataElementName>Detail</DataElementName>
                           </Group>
-                          <SortExpressions>
-                            <SortExpression>
-                              <Value>=Fields!EmployeeLastName.Value</Value>
-                            </SortExpression>
-                          </SortExpressions>
-                          <TablixHeader>
-                            <Size>1in</Size>
-                            <CellContents>
-                              <Textbox Name="EmployeeLastName1">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Fields!EmployeeLastName.Value</Value>
-                                        <Style />
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style>
-                                      <TextAlign>Center</TextAlign>
-                                    </Style>
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>EmployeeLastName1</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Color>LightGrey</Color>
-                                    <Style>Solid</Style>
-                                  </Border>
-                                  <VerticalAlign>Middle</VerticalAlign>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember>
-                              <Group Name="Detail">
-                                <DataElementName>Detail</DataElementName>
-                              </Group>
-                            </TablixMember>
-                          </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
+                      <DataElementName>FatherName_Collection</DataElementName>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <KeepTogether>true</KeepTogether>
                     </TablixMember>
                   </TablixMembers>
-                  <DataElementName>FatherName_Collection</DataElementName>
-                  <DataElementOutput>Output</DataElementOutput>
-                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -555,15 +480,15 @@
             <Top>1in</Top>
             <Left>1in</Left>
             <Height>0.5in</Height>
-            <Width>10in</Width>
+            <Width>9in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>6.46041in</Height>
+        <Height>2.03333in</Height>
         <Style />
       </Body>
-      <Width>11.9375in</Width>
+      <Width>10in</Width>
       <Page>
         <PageHeight>5in</PageHeight>
         <PageWidth>9in</PageWidth>
@@ -582,5 +507,5 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>7b67ece5-2142-4b5b-a301-096ac8b8b2a5</rd:ReportID>
+  <rd:ReportID>20d956bc-67f4-4128-ae98-c05bcf6da72c</rd:ReportID>
 </Report>
