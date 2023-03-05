@@ -247,16 +247,19 @@ namespace Reporting.RDL
         private TablixRowHierarchy GetRowHierarchy(QueryTree queryTree)
         {
             var tablixRowHierarchy = new TablixRowHierarchy();
-            tablixRowHierarchy.TablixMembers = GetRowHierarchyMembers(queryTree);
+            var rowTablixMembers = new TablixMembers();
+            tablixRowHierarchy.TablixMembers = GetRowHierarchyMembers(queryTree, rowTablixMembers);
 
-        //    tablixRowHierarchy.TablixMembers.AddRange(GetGroupMembers(queryTree));
+            //    tablixRowHierarchy.TablixMembers.AddRange(GetGroupMembers(queryTree));
 
             return tablixRowHierarchy;
         }
 
-        private TablixMembers GetRowHierarchyMembers(QueryTree queryTree)
+        private TablixMembers GetRowHierarchyMembers(QueryTree queryTree, TablixMembers rowTablixMembers)
         {
-            var rowTablixMembers = new TablixMembers();
+
+            TablixMember TTM = new TablixMember();
+            rowTablixMembers.Add(TTM);
             //rowTablixMembers.Add(new TablixMember()
             //{
             //    KeepWithGroup = KeepWithGroup.After,
@@ -366,35 +369,30 @@ namespace Reporting.RDL
             //    },
             //};
             //rowTablixMembers.Add(child);
-
-            rowTablixMembers = GetAllGroups(queryTree);
+            Boolean flag = false;
+            TablixMember previousParent = new TablixMember();
+            rowTablixMembers = GetAllGroups(queryTree, rowTablixMembers, previousParent, flag);
 
             return rowTablixMembers;
         }
 
 
 
-        private TablixMembers GetAllGroups(QueryTree queryTree)
+        private TablixMembers GetAllGroups(QueryTree queryTree, TablixMembers rowTablixMembers, TablixMember previousParent, Boolean flag)
         {
-            var rowTablixMembers = new TablixMembers();
-
-            TablixMember TTM = new TablixMember();
-            rowTablixMembers.Add(TTM);
-
 
             var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
 
 
-            TablixMember previousParent = null;
+            //TablixMember previousParent = new TablixMember();
             foreach (QueryLeaf leave in leaves)
             {
 
                 var name = leave.DisplayName;
                 var parent = queryTree.GetTableName();
-                if (previousParent == null)
+                //TablixMember previousParent = null;
+                if (flag == false)
                 {
-
-
                     TablixMembers Childrens = new TablixMembers();
                     var child = new TablixMember()
                     {
@@ -423,6 +421,7 @@ namespace Reporting.RDL
                     };
 
                     previousParent = TM;
+                    flag = true;
 
                 }
                 else
@@ -449,14 +448,66 @@ namespace Reporting.RDL
                 }
 
             }
+            //////////walaa 19/2
 
-            rowTablixMembers.Add(previousParent);
 
+            var Nodes = queryTree.Nodes.Where(x => x.HasSelectedFields);
+            if (Nodes.Count() == 0)
+            {
+                rowTablixMembers.Add(previousParent);
+            }
+            else
+            {
+                foreach (var node in Nodes)
+                {
+
+                    //    GetAllGroups(node, rowTablixMembers , previousParent , true);
+                    previousParent = GetChildrenNode(node, previousParent);
+                }
+                rowTablixMembers.Add(previousParent);
+            }
+            //rowTablixMembers.Add(previousParent);
             return rowTablixMembers;
 
 
         }
 
+        private TablixMember GetChildrenNode(QueryTree queryTree, TablixMember previousParent)
+        {
+            var Nodes = queryTree.Nodes.Where(x => x.HasSelectedFields);
+            var leaves = queryTree.Leaves.Where(x => x.IsSelected && x.GroupDescriptor.GroupByOrder != 0);
+
+            foreach (QueryLeaf leave in leaves)
+            {
+
+                var name = leave.DisplayName;
+                var parent = queryTree.GetTableName();
+                //TablixMember previousParent = null;
+
+
+                TablixMembers Childrens = new TablixMembers();
+                var child = previousParent;
+                Childrens.Add(child);
+                var TM = new TablixMember()
+                {
+                    DataElementName = name + "_Collection",
+                    DataElementOutput = DataElementOutputs.Output,
+                    KeepTogether = true,
+                    Group = new Syncfusion.RDL.DOM.Group()
+                    {
+                        Name = name + "_Details_Group",
+                        DataElementName = name + "Detail",
+                        GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
+                    },
+                    TablixMembers = Childrens,
+                };
+
+                previousParent = TM;
+
+            }
+
+            return previousParent;
+        }
 
 
 
@@ -474,29 +525,29 @@ namespace Reporting.RDL
                 //List
                 foreach (QueryLeaf leave in leaves)
                 {
-                    
-                        rowTablixMembers.Add(new TablixMember()
-                        {
-                            KeepWithGroup = KeepWithGroup.After,
-                            KeepTogether = true
-                        });
-                         var name = leave.DisplayName;
-                         var parent = queryTree.GetTableName();
 
                     rowTablixMembers.Add(new TablixMember()
+                    {
+                        KeepWithGroup = KeepWithGroup.After,
+                        KeepTogether = true
+                    });
+                    var name = leave.DisplayName;
+                    var parent = queryTree.GetTableName();
+
+                    rowTablixMembers.Add(new TablixMember()
+                    {
+                        DataElementName = name + "_Collection",
+                        DataElementOutput = DataElementOutputs.Output,
+                        KeepTogether = true,
+                        Group = new Syncfusion.RDL.DOM.Group()
                         {
-                            DataElementName = name + "_Collection",
-                            DataElementOutput = DataElementOutputs.Output,
-                            KeepTogether = true,
-                            Group = new Syncfusion.RDL.DOM.Group()
-                            {
-                                Name = name + "_Details_Group",
-                                DataElementName = name + "Detail",
-                                GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
-                            },
-                            TablixMembers = GetChildRowHierarchyMembers(leave.QueryTree)
-                        });
-                    
+                            Name = name + "_Details_Group",
+                            DataElementName = name + "Detail",
+                            GroupExpressions = GetGroupExpressions($"=Fields!{parent}{name}.Value")
+                        },
+                        TablixMembers = GetChildRowHierarchyMembers(leave.QueryTree)
+                    });
+
                 }
 
             }
@@ -664,8 +715,8 @@ namespace Reporting.RDL
                 string name = queryTree.GetTableName() + leaf.DisplayName;
                 if (leaf.PropertyType.IsEnum)
                 {
-                    
-                    tablixRow.TablixCells.Add(CreateEnumCell(queryTree.GetTableName(),leaf.PropertyType));
+
+                    tablixRow.TablixCells.Add(CreateEnumCell(queryTree.GetTableName(), leaf.PropertyType));
                 }
                 else
                 {
@@ -709,7 +760,7 @@ namespace Reporting.RDL
             return tablixCell;
         }
 
-        private TablixCell CreateEnumCell(string tableName,System.Type name)
+        private TablixCell CreateEnumCell(string tableName, System.Type name)
         {
             var style = GetTableBodyStyle();
 

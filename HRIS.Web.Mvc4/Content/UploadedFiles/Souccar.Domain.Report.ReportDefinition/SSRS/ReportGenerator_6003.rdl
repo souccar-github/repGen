@@ -30,14 +30,20 @@
               </Paragraph>
             </Paragraphs>
           </Textbox>
-          <Tablix Name="EmployeeTable">
+          <Tablix Name="JobDescriptionTable">
             <Left>1in</Left>
             <Top>1in</Top>
             <Height>0.50000in</Height>
-            <Width>7in</Width>
+            <Width>5in</Width>
             <DataSetName>MainDataSet</DataSetName>
             <TablixBody>
               <TablixColumns>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
                 <TablixColumn>
                   <Width>2in</Width>
                 </TablixColumn>
@@ -54,7 +60,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0FirstName">
+                        <Textbox Name="LabelJobDescription0JobDescription0Name">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -75,7 +81,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>First Name</Value>
+                                  <Value>Name</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -89,7 +95,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0LastName">
+                        <Textbox Name="LabelJobDescription0JobDescription0Summary">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -110,7 +116,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Last Name</Value>
+                                  <Value>Summary</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -124,7 +130,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0Nationality">
+                        <Textbox Name="LabelGrades0JobTitle0Name">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -145,7 +151,77 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nationality</Value>
+                                  <Value>Name</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelGrades0JobTitle0EmployeeCount">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Employee Count</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelGrades0JobTitle0Vacancies">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Vacancies</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -164,7 +240,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeFirstName">
+                        <Textbox Name="JobDescriptionName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -183,7 +259,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeFirstName.Value</Value>
+                                  <Value>=Fields!JobDescriptionName.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -197,7 +273,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeLastName">
+                        <Textbox Name="JobDescriptionSummary">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -216,7 +292,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeLastName.Value</Value>
+                                  <Value>=Fields!JobDescriptionSummary.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -230,7 +306,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeNationality">
+                        <Textbox Name="JobTitleName">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -249,7 +325,73 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeNationality.Value</Value>
+                                  <Value>=Fields!JobTitleName.Value</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="JobTitleEmployeeCount">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!JobTitleEmployeeCount.Value</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="JobTitleVacancies">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!JobTitleVacancies.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -270,15 +412,43 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
-                <TablixMember>
-                  <Group Name="Detail" />
+                  <Group Name="Vacancies_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!JobTitleVacancies.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>VacanciesDetail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Name_Details_Group">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!JobDescriptionName.Value</GroupExpression>
+                        </GroupExpressions>
+                        <DataElementName>NameDetail</DataElementName>
+                      </Group>
+                      <TablixMembers>
+                        <TablixMember>
+                          <Group Name="Detail">
+                            <DataElementName>Detail</DataElementName>
+                          </Group>
+                        </TablixMember>
+                      </TablixMembers>
+                      <DataElementName>Name_Collection</DataElementName>
+                      <DataElementOutput>Output</DataElementOutput>
+                      <KeepTogether>true</KeepTogether>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementName>Vacancies_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -287,10 +457,10 @@
         </ReportItems>
         <Height>2.03333in</Height>
       </Body>
-      <Width>7in</Width>
+      <Width>5in</Width>
       <Page>
         <PageHeight>5in</PageHeight>
-        <PageWidth>7in</PageWidth>
+        <PageWidth>5in</PageWidth>
         <LeftMargin>0.50000in</LeftMargin>
         <RightMargin>0.50000in</RightMargin>
         <TopMargin>0.50000in</TopMargin>
@@ -311,49 +481,40 @@
   <DataSets>
     <DataSet Name="MainDataSet">
       <Fields>
-        <Field Name="EmployeeId">
-          <DataField>EmployeeId</DataField>
+        <Field Name="JobDescriptionId">
+          <DataField>JobDescriptionId</DataField>
         </Field>
-        <Field Name="EmployeeFirstName">
-          <DataField>EmployeeFirstName</DataField>
+        <Field Name="JobDescriptionName">
+          <DataField>JobDescriptionName</DataField>
         </Field>
-        <Field Name="EmployeeLastName">
-          <DataField>EmployeeLastName</DataField>
+        <Field Name="JobDescriptionSummary">
+          <DataField>JobDescriptionSummary</DataField>
         </Field>
-        <Field Name="EmployeeNationality">
-          <DataField>EmployeeNationality</DataField>
+        <Field Name="JobTitleId">
+          <DataField>JobTitleId</DataField>
+        </Field>
+        <Field Name="JobTitleName">
+          <DataField>JobTitleName</DataField>
+        </Field>
+        <Field Name="JobTitleEmployeeCount">
+          <DataField>JobTitleEmployeeCount</DataField>
+        </Field>
+        <Field Name="JobTitleVacancies">
+          <DataField>JobTitleVacancies</DataField>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Nationality].[Name] AS EmployeeNationality FROM Employee INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  order by [Employee].[FirstName] Desc</CommandText>
-        <QueryParameters>
-          <QueryParameter Name="@FirstName">
-            <Value>=Parameters!FirstName.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
+        <CommandText>SELECT DISTINCT  [JobDescription].[Id] AS JobDescriptionId , [JobDescription].[Name] AS JobDescriptionName , [JobDescription].[Summary] AS JobDescriptionSummary, [JobTitle].[Id] AS JobTitleId , [JobTitle].[Name] AS JobTitleName , [JobTitle].[EmployeeCount] AS JobTitleEmployeeCount , [JobTitle].[Vacancies] AS JobTitleVacancies FROM JobDescription LEFT JOIN [JobTitle] ON [JobDescription].[JobTitle_Id] = [JobTitle].[Id] </CommandText>
         <Timeout>30</Timeout>
       </Query>
     </DataSet>
   </DataSets>
-  <ReportParameters>
-    <ReportParameter Name="FirstName">
-      <DataType>String</DataType>
-      <Prompt>FirstName</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>3</NumberOfColumns>
+      <NumberOfColumns>5</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>FirstName</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>

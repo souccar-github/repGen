@@ -6,35 +6,31 @@
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=.;Initial Catalog=SEI-ORC;User ID=sa;Password=123456;</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
-      <rd:DataSourceID>114ebee6-a93e-42fd-adf9-dcf5096f57f1</rd:DataSourceID>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>8dfefd2e-d350-4737-9f8f-c54ba19cc545</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="MainDataSet">
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="@Te">
-            <Value>=Parameters!Te.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName FROM Employee WHERE  [Employee].[FirstName] like N'%' + @Te+ '%' </CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Nationality].[Name] AS EmployeeNationality FROM Employee INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id] </CommandText>
         <Timeout>30</Timeout>
       </Query>
       <Fields>
         <Field Name="EmployeeId">
           <DataField>EmployeeId</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="EmployeeFirstName">
           <DataField>EmployeeFirstName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="EmployeeLastName">
           <DataField>EmployeeLastName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EmployeeNationality">
+          <DataField>EmployeeNationality</DataField>
         </Field>
       </Fields>
     </DataSet>
@@ -77,6 +73,9 @@
                 <TablixColumn>
                   <Width>2in</Width>
                 </TablixColumn>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
@@ -85,6 +84,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="LabelPersonnel0Employee0FirstName">
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -118,12 +118,47 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="LabelPersonnel0Employee0LastName">
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
                                   <Value>Last Name</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelPersonnel0Employee0Nationality">
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Nationality</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -156,6 +191,7 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="EmployeeFirstName">
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -187,12 +223,45 @@
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="EmployeeLastName">
+                          <HideDuplicates>MainDataSet</HideDuplicates>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!EmployeeLastName.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="EmployeeNationality">
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!EmployeeNationality.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -223,22 +292,103 @@
               <TablixMembers>
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
                 <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
+                  <TablixHeader>
+                    <Size>1.19792in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox1">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Employee First Name</Value>
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox1</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <BackgroundColor>LightGrey</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="Detail" />
+                  <Group Name="EmployeeFirstName">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!EmployeeFirstName.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!EmployeeFirstName.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>1.19792in</Size>
+                    <CellContents>
+                      <Textbox Name="EmployeeFirstName1">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!EmployeeFirstName.Value</Value>
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>EmployeeFirstName1</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <VerticalAlign>Middle</VerticalAlign>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Detail">
+                        <DataElementName>Detail</DataElementName>
+                      </Group>
+                    </TablixMember>
+                  </TablixMembers>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <DataSetName>MainDataSet</DataSetName>
             <Top>1in</Top>
             <Left>1in</Left>
             <Height>0.5in</Height>
-            <Width>4in</Width>
+            <Width>7.19792in</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
@@ -246,10 +396,10 @@
         <Height>2.03333in</Height>
         <Style />
       </Body>
-      <Width>7.27in</Width>
+      <Width>10.47917in</Width>
       <Page>
         <PageHeight>5in</PageHeight>
-        <PageWidth>5in</PageWidth>
+        <PageWidth>7in</PageWidth>
         <LeftMargin>0.5in</LeftMargin>
         <RightMargin>0.5in</RightMargin>
         <TopMargin>0.5in</TopMargin>
@@ -258,34 +408,12 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParameters>
-    <ReportParameter Name="FirstName">
-      <DataType>String</DataType>
-      <Prompt>FirstName</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="Te">
-      <DataType>String</DataType>
-      <Prompt>Te</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>3</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>FirstName</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>Te</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>c885ea66-7fcb-4031-94e3-f6017c2f1c82</rd:ReportID>
+  <rd:ReportID>de084a70-a1be-4a1e-a9fa-10b596ae141c</rd:ReportID>
 </Report>

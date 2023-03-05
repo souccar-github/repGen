@@ -34,10 +34,22 @@
             <Left>1in</Left>
             <Top>1in</Top>
             <Height>0.50000in</Height>
-            <Width>9in</Width>
+            <Width>7in</Width>
             <DataSetName>MainDataSet</DataSetName>
             <TablixBody>
               <TablixColumns>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2in</Width>
+                </TablixColumn>
                 <TablixColumn>
                   <Width>2in</Width>
                 </TablixColumn>
@@ -133,7 +145,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0PlaceOfBirth">
+                        <Textbox Name="LabelPersonnel0Employee0PlaceOfBirthL2">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -154,7 +166,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Place Of Birth</Value>
+                                  <Value>Place Of Birth L2</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -168,7 +180,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Employee0Nationality">
+                        <Textbox Name="LabelEmployeeRelationServices0EmployeeCard0ProbationPeriodEndDate">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -189,7 +201,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nationality</Value>
+                                  <Value>Probation Period End Date</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -203,7 +215,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Certification0Type">
+                        <Textbox Name="LabelEmployeeRelationServices0EmployeeCard0Salary">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -224,7 +236,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Type</Value>
+                                  <Value>Salary</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -238,7 +250,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LabelPersonnel0Certification0PlaceOfIssuance">
+                        <Textbox Name="LabelEmployeeRelationServices0EmployeeCard0ProbationPeriodPercentage">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -259,7 +271,147 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Place Of Issuance</Value>
+                                  <Value>Probation Period Percentage</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelPersonnel0Spouse0FirstName">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>First Name</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelPersonnel0Spouse0LastName">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Last Name</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelPersonnel0Spouse0Note">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Note</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="LabelPersonnel0Spouse0MarriageDate">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>12pt</FontSize>
+                            <FontWeight>Bold</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Marriage Date</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -344,7 +496,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeePlaceOfBirth">
+                        <Textbox Name="EmployeePlaceOfBirthL2">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -363,7 +515,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeePlaceOfBirth.Value</Value>
+                                  <Value>=Fields!EmployeePlaceOfBirthL2.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -377,7 +529,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EmployeeNationality">
+                        <Textbox Name="EmployeeCardProbationPeriodEndDate">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -396,7 +548,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmployeeNationality.Value</Value>
+                                  <Value>=Fields!EmployeeCardProbationPeriodEndDate.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -410,7 +562,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CertificationType">
+                        <Textbox Name="EmployeeCardSalary">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -429,7 +581,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CertificationType.Value</Value>
+                                  <Value>=Fields!EmployeeCardSalary.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -443,7 +595,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CertificationPlaceOfIssuance">
+                        <Textbox Name="EmployeeCardProbationPeriodPercentage">
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Style>
@@ -462,7 +614,139 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CertificationPlaceOfIssuance.Value</Value>
+                                  <Value>=Fields!EmployeeCardProbationPeriodPercentage.Value</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SpouseFirstName">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SpouseFirstName.Value</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SpouseLastName">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SpouseLastName.Value</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SpouseNote">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SpouseNote.Value</Value>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                                <VerticalAlign>Middle</VerticalAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="SpouseMarriageDate">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Style>
+                            <FontFamily>tahoma</FontFamily>
+                            <FontSize>11pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <HideDuplicates>MainDataSet</HideDuplicates>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!SpouseMarriageDate.Value</Value>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -486,15 +770,32 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
-                <TablixMember>
-                  <Group Name="Detail" />
+                  <Group Name="FirstName_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!EmployeeFirstName.Value</GroupExpression>
+                    </GroupExpressions>
+                    <DataElementName>FirstNameDetail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Detail">
+                        <DataElementName>Detail</DataElementName>
+                      </Group>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementName>FirstName_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
@@ -503,10 +804,10 @@
         </ReportItems>
         <Height>2.03333in</Height>
       </Body>
-      <Width>9in</Width>
+      <Width>7in</Width>
       <Page>
         <PageHeight>5in</PageHeight>
-        <PageWidth>9in</PageWidth>
+        <PageWidth>7in</PageWidth>
         <LeftMargin>0.50000in</LeftMargin>
         <RightMargin>0.50000in</RightMargin>
         <TopMargin>0.50000in</TopMargin>
@@ -536,128 +837,49 @@
         <Field Name="EmployeeLastName">
           <DataField>EmployeeLastName</DataField>
         </Field>
-        <Field Name="EmployeePlaceOfBirth">
-          <DataField>EmployeePlaceOfBirth</DataField>
+        <Field Name="EmployeePlaceOfBirthL2">
+          <DataField>EmployeePlaceOfBirthL2</DataField>
         </Field>
-        <Field Name="EmployeeNationality">
-          <DataField>EmployeeNationality</DataField>
+        <Field Name="EmployeeCardId">
+          <DataField>EmployeeCardId</DataField>
         </Field>
-        <Field Name="CertificationId">
-          <DataField>CertificationId</DataField>
+        <Field Name="EmployeeCardProbationPeriodEndDate">
+          <DataField>EmployeeCardProbationPeriodEndDate</DataField>
         </Field>
-        <Field Name="CertificationType">
-          <DataField>CertificationType</DataField>
+        <Field Name="EmployeeCardSalary">
+          <DataField>EmployeeCardSalary</DataField>
         </Field>
-        <Field Name="CertificationPlaceOfIssuance">
-          <DataField>CertificationPlaceOfIssuance</DataField>
+        <Field Name="EmployeeCardProbationPeriodPercentage">
+          <DataField>EmployeeCardProbationPeriodPercentage</DataField>
         </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource1</DataSourceName>
-        <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [City].[Name] AS EmployeePlaceOfBirth , [Nationality].[Name] AS EmployeeNationality, [Certification].[Id] AS CertificationId , [CertificationType].[Name] AS CertificationType , [Country].[Name] AS CertificationPlaceOfIssuance FROM Employee LEFT JOIN [Certification] ON [Employee].[Id] = [Certification].[Employee_id]  INNER JOIN [CertificationType] ON [CertificationType].[Id] = [Certification].[Type_id]  INNER JOIN [Country] ON [Country].[Id] = [Certification].[PlaceOfIssuance_id]  INNER JOIN [City] ON [City].[Id] = [Employee].[PlaceOfBirth_id]  INNER JOIN [Nationality] ON [Nationality].[Id] = [Employee].[Nationality_id]  WHERE  [Employee].[FirstName] like  @FirstName + '%'  AND  [Employee].[Nationality_Id] = @Nationality  AND  [Certification].[Type_Id] = @Type </CommandText>
-        <QueryParameters>
-          <QueryParameter Name="@FirstName">
-            <Value>=Parameters!FirstName.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@Nationality">
-            <Value>=Parameters!Nationality.Value</Value>
-          </QueryParameter>
-          <QueryParameter Name="@Type">
-            <Value>=Parameters!Type.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <Timeout>30</Timeout>
-      </Query>
-    </DataSet>
-    <DataSet Name="NationalityDataSet">
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
+        <Field Name="SpouseId">
+          <DataField>SpouseId</DataField>
         </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
+        <Field Name="SpouseFirstName">
+          <DataField>SpouseFirstName</DataField>
         </Field>
-        <Field Name="ValueOrder">
-          <DataField>ValueOrder</DataField>
+        <Field Name="SpouseLastName">
+          <DataField>SpouseLastName</DataField>
+        </Field>
+        <Field Name="SpouseNote">
+          <DataField>SpouseNote</DataField>
+        </Field>
+        <Field Name="SpouseMarriageDate">
+          <DataField>SpouseMarriageDate</DataField>
         </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT [Id],[Name],[ValueOrder] FROM Nationality</CommandText>
-        <Timeout>30</Timeout>
-      </Query>
-    </DataSet>
-    <DataSet Name="TypeDataSet">
-      <Fields>
-        <Field Name="Id">
-          <DataField>Id</DataField>
-        </Field>
-        <Field Name="Name">
-          <DataField>Name</DataField>
-        </Field>
-        <Field Name="ValueOrder">
-          <DataField>ValueOrder</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource1</DataSourceName>
-        <CommandType>Text</CommandType>
-        <CommandText>SELECT DISTINCT [Id],[Name],[ValueOrder] FROM CertificationType</CommandText>
+        <CommandText>SELECT DISTINCT  [Employee].[Id] AS EmployeeId , [Employee].[FirstName] AS EmployeeFirstName , [Employee].[LastName] AS EmployeeLastName , [Employee].[PlaceOfBirthL2] AS EmployeePlaceOfBirthL2, [EmployeeCard].[Id] AS EmployeeCardId , [EmployeeCard].[ProbationPeriodEndDate] AS EmployeeCardProbationPeriodEndDate , [EmployeeCard].[Salary] AS EmployeeCardSalary , [EmployeeCard].[ProbationPeriodPercentage] AS EmployeeCardProbationPeriodPercentage, [Spouse].[Id] AS SpouseId , [Spouse].[FirstName] AS SpouseFirstName , [Spouse].[LastName] AS SpouseLastName , [Spouse].[Note] AS SpouseNote , [Spouse].[MarriageDate] AS SpouseMarriageDate FROM Employee LEFT JOIN [EmployeeCard] ON [Employee].[Id] = [EmployeeCard].[Employee_id]  LEFT JOIN [Spouse] ON [Employee].[Id] = [Spouse].[Employee_id] </CommandText>
         <Timeout>30</Timeout>
       </Query>
     </DataSet>
   </DataSets>
-  <ReportParameters>
-    <ReportParameter Name="FirstName">
-      <DataType>String</DataType>
-      <Prompt>FirstName</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="Nationality">
-      <DataType>String</DataType>
-      <Prompt>Nationality</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>NationalityDataSet</DataSetName>
-          <ValueField>Id</ValueField>
-          <LabelField>Name</LabelField>
-        </DataSetReference>
-      </ValidValues>
-    </ReportParameter>
-    <ReportParameter Name="Type">
-      <DataType>String</DataType>
-      <Prompt>Type</Prompt>
-      <ValidValues>
-        <DataSetReference>
-          <DataSetName>TypeDataSet</DataSetName>
-          <ValueField>Id</ValueField>
-          <LabelField>Name</LabelField>
-        </DataSetReference>
-      </ValidValues>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
-      <NumberOfColumns>6</NumberOfColumns>
+      <NumberOfColumns>10</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>FirstName</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>Nationality</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>Type</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
